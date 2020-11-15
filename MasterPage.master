@@ -1,0 +1,278 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <%--<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />--%>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <script type="text/javascript" language="ecmascript" src="Scripts/djs.js"></script>
+    <link id="Link4" runat="server" rel="shortcut icon" href="~/image/favicon.ico" type="image/x-icon" />
+    <link id="Link3" runat="server" rel="icon" href="~/image/favicon.ico" type="image/ico" />
+    <meta name="keywords" content="Milk procurement, milk test, milk collection, milk software, milk analyser, analyzer, milk products software, dairy software, milk ERP, milk accounts software,milk weighing machine, milk weighing scale, milk chilling center software, collection centre software, milk test software, milk procurement software, software for dairy industry, online milk procurement, online milk test, online milk ERP, milk test online, Indian milk software, software in tamilnadu, dairy software in Tamilnadu, milk software in south India, milk reports, milk billing, dairy billing software, FAT, SNF, TS charts, Eko Milk Ultra sales, Eko Milk Ultra Distributor, Eko milk ultra Service, Eko Milk sales, Eko Milk Distributor, Eko milk Service, Milk Stirrer, Milk Producers, Milk products, Dairy Products and Solutions,procurement, collection, milk, farmers, direct, reach, milk tanker, milk plant,milk processing, milk process, milk packaging, milk package" />
+    <meta name="description" content="MILK TEST (PROCUREMENT) SOFTWARE | Online & Windows Application" />
+    <link id="Link1" rel="Stylesheet" type="text/css" href="SampleStyleSheet1.css" runat="server"
+        media="screen" />
+    <link id="Link2" type="text/css" href="style/Menu.css" rel="Stylesheet" runat="server" />
+    <script src="js/jquery-1.4.4.js" type="text/javascript"></script>
+    <script src="js/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+    <title>ONLINEMILK MASTER</title>
+    <style type="text/css">
+        /* Remove margins from the 'html' and 'body' tags, and ensure the page takes up full screen height */
+        
+        bodys {
+    width: 100%;
+               }
+        
+        html, body
+        {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        /* Set the position and dimensions of the background image. */
+        #page-background
+        {
+            position: fixed;
+            top: 0; /*  width: 100%; */
+            height: 150%;
+            width: 100%;
+        }
+        /* Specify the position and layering for the content that needs to appear in front of the background image. Must have a higher z-index value than the background image. Also add some padding to compensate for removing the margin from the 'html' and 'body' tags. */
+        #content
+        {
+            position: relative;
+            z-index: 1;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <style type="text/css">
+        .menuItem
+        {
+            border: Solid 1px black;
+            width: 100px;
+            padding: 4px;
+            background-color: Silver;
+            font-size:small;
+            font-style: normal;
+        }
+        .menuItem a
+        {
+            color:ThreeDDarkShadow;
+            font-size: small;
+        }
+        
+        .IE8Fix
+        {
+            z-index: 1000;
+            background-color: Silver;
+        }
+    </style>
+    <style type="text/css">
+        .parent_menu
+        {
+            width: 108px;
+            background-color: #8AE0F2;
+            color: #000;
+            text-align: center;
+            height: 30px;
+            margin-right: 5px;
+            font-size: small;
+        }
+        .child_menu
+        {
+            width: 110px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            font-size: small;
+        }
+        .sub_menu
+        {
+            width: 150px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 5px;
+            font-size: small;
+        }
+        .selected_menu
+        {
+            background-color: #FF6600;
+        }
+        .hover_menu
+        {
+            background-color: #990000;
+            color: #fff;
+        }
+    </style>
+    <style type="text/css">
+    #menu {
+    width: 960px;
+    margin: 60px auto;
+    border: 1px solid #222;
+    background-color: #111;
+    background-image: linear-gradient(#444, #111);
+    border-radius: 6px;
+    box-shadow: 0 1px 1px #777;
+}
+
+#menu:before,
+#menu:after {
+    content: "";
+    display: table;
+}
+
+#menu:after {
+    clear: both;
+}
+
+#menu {
+    zoom:1;
+}
+    
+    #menu li {
+    float: left;
+    border-right: 1px solid #222;
+    box-shadow: 1px 0 0 #444;
+    position: relative;
+}
+
+#menu a {
+    float: left;
+    padding: 12px 30px;
+    color: #999;
+    text-transform: uppercase;
+    font: bold 12px Arial, Helvetica;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #000;
+}
+
+#menu li:hover > a {
+    color: #fafafa;
+}
+
+*html #menu li a:hover { /* IE6 only */
+    color: #fafafa;
+}
+    
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" style="background-color: #FFFFFF; border: thin none #FFFFFF">
+    <div id="content">
+        <div >
+            <table width="100%" border="0" cellpadding="0" cellspacing="1">
+                <tr width="100%">
+                    <td width="100%">
+                        <right>
+                 <div>
+
+                         <table  width="100%" >
+                             <tr align="right">
+                                 <td bgcolor="#FFCC66" style="text-align: center" width=30%>
+                                <%--  <MARQUEE   SCROLLDELAY=100 DIRECTION=right   Width="300px">      <asp:Image ID="Image3" runat="server" Height="30px"      ImageUrl="~/Image/Vyshnavilogo.png" Width="50px"></asp:Image></MARQUEE> --%>
+
+                               <%--   <MARQUEE   SCROLLDELAY=100 DIRECTION=right   Width="300px">   --%>   <asp:Image ID="Image3" runat="server" Height="30px"      ImageUrl="~/Image/Vyshnavilogo.png" Width="50px"></asp:Image><%--</MARQUEE> --%>
+                                                                 </td>
+                                 <td bgcolor="#FFCC66" style="text-align: center" width=40%>
+                                <marquee behavior=alternate scrolldelay=750  direction=right  style="height:30px">   <asp:Label ID="title" Text="VYSHNAVI DAIRY WELCOME YOU" runat="server" CssClass="treecolor"></asp:Label>  </marquee></td>
+                                 <td bgcolor="#FFCC66" style="text-align: center"   width=30%>
+                                  <%--    <MARQUEE SCROLLDELAY=100 DIRECTION=LEFT   Width="300px"   >  --%>  <asp:Image ID="Image4" runat="server" Height="30px" ImageUrl="~/Image/imagesUPS.jpg" 
+                                     Width="50px"></asp:Image><%--</MARQUEE>--%>
+                                     </td>
+                             </tr>
+                             </table>
+
+                                       
+                                       
+</div>
+</right>
+                    </td>
+                </tr>
+            </table>
+            <div width="100%">
+                <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0">
+                    <tr>
+                     <td width="15%" align="center" style="background-color: #000000">
+            <%--<MARQUEE   SCROLLDELAY=250 DIRECTION=RIGHT>      <asp:Image ID="Image1" runat="server" Height="25px"      ImageUrl="~/Image/Vyshnavilogo.png" Width="40px"></asp:Image></MARQUEE>--%> 
+                                </td>
+                     <td width="70%">
+                            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" Font-Size="Small" BackColor="#FF9933"
+                                Width="100%" Font-Bold="True">
+                                <LevelMenuItemStyles>
+                                    <asp:MenuItemStyle CssClass="parent_menu" />
+                                </LevelMenuItemStyles>
+                                <LevelSelectedStyles>
+                                    <asp:MenuItemStyle CssClass="child_menu" />
+                                </LevelSelectedStyles>
+                                <DynamicMenuItemStyle CssClass="sub_menu" />
+                                <DynamicHoverStyle CssClass="hover_menu" />
+                                <StaticSelectedStyle CssClass="selected_menu" />
+                                <StaticHoverStyle CssClass="hover_menu" />
+                                <%-- This CSS used for fixing the browser problem with IE8--%>
+                                <DynamicMenuStyle CssClass="IE8Fix" />
+                                <DataBindings>
+                                    <asp:MenuItemBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="title" />
+                                </DataBindings>
+                            </asp:Menu>
+                           </td>
+                       
+                        <td width="15%" align="center" style="background-color: #000000">
+                <%--<MARQUEE   SCROLLDELAY=250 DIRECTION=LEFT>     <asp:Image ID="Image2" runat="server" Height="25px" ImageUrl="~/Image/imagesUPS.jpg" 
+                                     Width="40px"></asp:Image></MARQUEE>--%>
+                                 </td>
+                    </tr>
+                </table>
+            </div>
+            <!---END MENU DIV   -->
+            <div width="100%" height="300%">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    <asp:Panel ID="Panel1" runat="server" Width="100%" Height="200%" BorderStyle="Double">
+                    </asp:Panel>
+                </asp:ContentPlaceHolder>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                <div align="center" class="foo">
+                    <a href="home.aspx" class="fotmenu">HOME</a><em style="color: White;">|</em>
+                    <a href="Agent.aspx"
+                        class="fotmenu">AGENT</a> <em style="color: White;">|</em>
+                    <a onclick="window.open ('WeightSingle.aspx', '_blank', 'width=1280, height=1000, scrollbars=yes, resizable=yes, location=no, status=no, menubar=no, toolbar=no');"
+                            class="fotmenu">WEIGHER</a><em style="color: White;">|</em>
+                    <a onclick="window.open ('AnalizerSingle.aspx', '_blank', 'width=1280, height=1000, scrollbars=yes, resizable=yes, location=no, status=no, menubar=no, toolbar=no');"
+                                class="fotmenu">MILK ANALIZER</a> <em style="color: White;">|</em>
+                    <a href="RateChart.aspx"
+                                    class="fotmenu">RATE CHART</a> <em style="color: White;">|</em>
+                    <a href="Contact us.aspx" class="fotmenu">CONTACT</a>
+                </div>
+                <div align="center" style="font-family: 'Times New Roman', Times, serif; font-size: 13px;
+                    font-weight: inherit; text-transform: inherit; color: #FFFFFF; font-variant: normal;">
+                    <p style="color: White; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 9pt;
+                        font-weight: normal; font-style: normal;">
+                        Best viewed in
+                        <a href="http://www.microsoft.com/en-us/download/details.aspx?id=2"
+                            title="" target="_blank" style="text-shadow: white; color: White; text-decoration: none;">Internet Explorer 7.0</a> and above | Best screen resolution 1024 x 768
+                    </p>
+                    <br />
+                    <%-- <a href="http://10solution.com" title="10solution In." target="_blank" style="background:White;   text-decoration: none;">--%>
+                    <%--<asp:Image ID="Image1" runat="server" ImageUrl="~/Image/logo.png" />--%>
+                    </a>
+                </div>
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

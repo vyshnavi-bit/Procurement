@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Balance_Statement" targetNamespace="http://tempuri.org/Balance_Statement.xsd" xmlns:mstns="http://tempuri.org/Balance_Statement.xsd" xmlns="http://tempuri.org/Balance_Statement.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Balance_Statement" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="Balance_Statement" msprop:Generator_UserDSName="Balance_Statement">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Stockdetails" msprop:Generator_TableClassName="StockdetailsDataTable" msprop:Generator_TableVarName="tableStockdetails" msprop:Generator_TablePropName="Stockdetails" msprop:Generator_RowDeletingName="StockdetailsRowDeleting" msprop:Generator_UserTableName="Stockdetails" msprop:Generator_RowChangingName="StockdetailsRowChanging" msprop:Generator_RowEvHandlerName="StockdetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="StockdetailsRowDeleted" msprop:Generator_RowEvArgName="StockdetailsRowChangeEvent" msprop:Generator_RowChangedName="StockdetailsRowChanged" msprop:Generator_RowClassName="StockdetailsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MilkKg" msprop:Generator_ColumnVarNameInTable="columnMilkKg" msprop:Generator_ColumnPropNameInRow="MilkKg" msprop:Generator_ColumnPropNameInTable="MilkKgColumn" msprop:Generator_UserColumnName="MilkKg" type="xs:double" minOccurs="0" />
+              <xs:element name="Fat" msprop:Generator_ColumnVarNameInTable="columnFat" msprop:Generator_ColumnPropNameInRow="Fat" msprop:Generator_ColumnPropNameInTable="FatColumn" msprop:Generator_UserColumnName="Fat" type="xs:double" minOccurs="0" />
+              <xs:element name="Snf" msprop:Generator_ColumnVarNameInTable="columnSnf" msprop:Generator_ColumnPropNameInRow="Snf" msprop:Generator_ColumnPropNameInTable="SnfColumn" msprop:Generator_UserColumnName="Snf" type="xs:double" minOccurs="0" />
+              <xs:element name="FATKG" msprop:Generator_ColumnVarNameInTable="columnFATKG" msprop:Generator_ColumnPropNameInRow="FATKG" msprop:Generator_ColumnPropNameInTable="FATKGColumn" msprop:Generator_UserColumnName="FATKG" type="xs:double" minOccurs="0" />
+              <xs:element name="SNFKG" msprop:Generator_ColumnVarNameInTable="columnSNFKG" msprop:Generator_ColumnPropNameInRow="SNFKG" msprop:Generator_ColumnPropNameInTable="SNFKGColumn" msprop:Generator_UserColumnName="SNFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Rate" msprop:Generator_ColumnVarNameInTable="columnRate" msprop:Generator_ColumnPropNameInRow="Rate" msprop:Generator_ColumnPropNameInTable="RateColumn" msprop:Generator_UserColumnName="Rate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Clr" msprop:Generator_ColumnVarNameInTable="columnClr" msprop:Generator_ColumnPropNameInRow="Clr" msprop:Generator_ColumnPropNameInTable="ClrColumn" msprop:Generator_UserColumnName="Clr" type="xs:double" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Storage_Name" msprop:Generator_ColumnVarNameInTable="columnStorage_Name" msprop:Generator_ColumnPropNameInRow="Storage_Name" msprop:Generator_ColumnPropNameInTable="Storage_NameColumn" msprop:Generator_UserColumnName="Storage_Name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

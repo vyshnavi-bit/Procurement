@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DbtoLinq">
+  <DataContextMoniker Name="/DbtoLinqDataContext" />
+  <nestedChildShapes>
+    <classShape Id="355bac6c-69cf-4b3b-9dc4-1b45f1e41fab" absoluteBounds="3.5, 1.125, 3.875, 4.3830997721354166">
+      <DataClassMoniker Name="/DbtoLinqDataContext/WeightDemoTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a515e4fe-4f36-4e3b-b521-49d807ac4b00" absoluteBounds="3.515, 1.585, 3.8449999999999998, 3.823099772135417" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

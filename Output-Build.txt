@@ -1,0 +1,63 @@
+------ Rebuild All started: Project: F:\...\17-01-13\, Configuration: Debug Any CPU ------
+Warning: Unable to update auto-refresh reference 'itextsharp.dll'. Cannot find assembly 'F:\Jan13\17-01-13\new mainn\Bin\itextsharp.dll'.
+Warning: Unable to update auto-refresh reference 'captchacontrol.dll'. Cannot find assembly 'F:\Jan13\17-01-13\new mainn\Bin\CaptchaControl.dll'.
+Warning: Unable to update auto-refresh reference 'ajaxcontroltoolkit.dll'. Cannot find assembly 'F:\Program Files\ajaxtoolkit\AjaxControlToolkit.dll'.
+Warning: Unable to update auto-refresh reference 'urlrewritingnet.urlrewriter.dll'. Cannot find assembly 'C:\Documents and Settings\bala\Desktop\UrlRewritingNet_20\UrlRewritingNet.UrlRewriter.dll'.
+Validating Web Site
+Building directory '/17-01-13/App_Code/'.
+Building directory '/17-01-13/Gallery/highslide/'.
+Building directory '/17-01-13/Gallery/script/'.
+Building directory '/17-01-13/Gallery/'.
+Building directory '/17-01-13/highslide/'.
+Building directory '/17-01-13/javascript/'.
+Building directory '/17-01-13/MCN.WebControls/Properties/'.
+Building directory '/17-01-13/MCN.WebControls/'.
+Building directory '/17-01-13/MessageBoxUsc/'.
+Building directory '/17-01-13/'.
+
+F:\Jan13\17-01-13\17-01-13\app_code\BLL\BLLroutmaster.cs(29,13): warning CS0219: The variable 'res' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\app_code\BLL\BLLroutmaster.cs(97,26): warning CS0168: The variable 'ex' is declared but never used
+F:\Jan13\17-01-13\17-01-13\app_code\DAL\DALProcurement.cs(32,199): warning CS0168: The variable 'parnetamount' is declared but never used
+F:\Jan13\17-01-13\17-01-13\app_code\DAL\DALProcurement.cs(32,256): warning CS0168: The variable 'parcomamnt' is declared but never used
+F:\Jan13\17-01-13\17-01-13\app_code\DAL\DALProcurement.cs(32,268): warning CS0168: The variable 'parbonamnt' is declared but never used
+F:\Jan13\17-01-13\17-01-13\app_code\Createtext.cs(462,25): warning CS0219: The variable 'col1' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\app_code\PdfReport.cs(444,25): warning CS0219: The variable 'col1' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\app_code\CreatePdf.cs(529,25): warning CS0219: The variable 'col1' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\app_code\PdfReport.cs(206,26): warning CS0169: The field 'PdfReport.agentno2' is never used
+F:\Jan13\17-01-13\17-01-13\app_code\BOL\BOLLoinfo.cs(18,17): warning CS0414: The field 'BOLLoinfo._Company_Id' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\app_code\BOL\BOLLoinfo.cs(19,17): warning CS0414: The field 'BOLLoinfo._Plant_Id' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\app_code\BLL\BLLCompanymaster.cs(12,12): warning CS0169: The field 'BLLCompanymaster.sqlstr' is never used
+F:\Jan13\17-01-13\17-01-13\PlantMaster.aspx.cs(20,12): warning CS0649: Field 'PlantMaster.centreid' is never assigned to, and will always have its default value null
+F:\Jan13\17-01-13\17-01-13\WeightSingle.aspx(115,59): warning CS0109: The member 'WeightSingle.title' does not hide an inherited member. The new keyword is not required.
+F:\Jan13\17-01-13\17-01-13\AnalizerSingle.aspx(113,59): warning CS0109: The member 'AnalizerSingle.title' does not hide an inherited member. The new keyword is not required.
+F:\Jan13\17-01-13\17-01-13\Logoutnew.aspx(30,59): warning CS0109: The member 'Logoutnew.title' does not hide an inherited member. The new keyword is not required.
+F:\Jan13\17-01-13\17-01-13\RateChart.aspx(90,59): warning CS0109: The member 'RateChart.title' does not hide an inherited member. The new keyword is not required.
+F:\Jan13\17-01-13\17-01-13\LoginDefault.aspx(78,59): warning CS0109: The member 'LoginDefault.title' does not hide an inherited member. The new keyword is not required.
+F:\Jan13\17-01-13\17-01-13\AnalizerSingle.aspx.cs(673,20): warning CS0219: The variable 'tfat1' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\WeightSingle.aspx.cs(26,12): warning CS0414: The field 'WeightSingle.rate' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\WeightSingle.aspx.cs(26,24): warning CS0414: The field 'WeightSingle.fat' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\WeightSingle.aspx.cs(26,35): warning CS0414: The field 'WeightSingle.snf' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\WeightSingle.aspx.cs(26,46): warning CS0414: The field 'WeightSingle.amount' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\AnalizerSingle.aspx.cs(30,21): warning CS0169: The field 'AnalizerSingle.sampleno' is never used
+F:\Jan13\17-01-13\17-01-13\AnalizerSingle.aspx.cs(30,31): warning CS0414: The field 'AnalizerSingle.promilktype1' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\AnalizerSingle.aspx.cs(32,72): warning CS0169: The field 'AnalizerSingle.drate' is never used
+F:\Jan13\17-01-13\17-01-13\AnalizerSingle.aspx.cs(263,12): warning CS0169: The field 'AnalizerSingle.delid' is never used
+F:\Jan13\17-01-13\17-01-13\AnalizerSingle.aspx.cs(263,19): warning CS0649: Field 'AnalizerSingle.samp' is never assigned to, and will always have its default value null
+F:\Jan13\17-01-13\17-01-13\RateChart.aspx.cs(30,9): warning CS0649: Field 'RateChart.tidd' is never assigned to, and will always have its default value 0
+F:\Jan13\17-01-13\17-01-13\MasterPage.master.cs(24,19): warning CS0169: The field 'MasterPage.dr1' is never used
+c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\17-01-13\98803066\91911991\App_Web_moizejcg.4.cs(142,49): warning CS0436: The type 'RateChart' in 'c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\17-01-13\98803066\91911991\App_Web_moizejcg.4.cs' conflicts with the imported type 'RateChart' in 'c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\17-01-13\98803066\91911991\App_Web_ha9mu4ao.dll'. Using the type defined in 'c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\17-01-13\98803066\91911991\App_Web_moizejcg.4.cs'.
+F:\Jan13\17-01-13\17-01-13\LoanMaster.aspx.cs(282,26): warning CS0168: The variable 'ex' is declared but never used
+F:\Jan13\17-01-13\17-01-13\PortSetting.aspx.cs(17,20): warning CS0414: The field 'PortSetting.SearchString' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\PortSetting.aspx.cs(29,19): warning CS0169: The field 'PortSetting.dar' is never used
+F:\Jan13\17-01-13\17-01-13\PortSetting.aspx.cs(30,9): warning CS0169: The field 'PortSetting.DeleteFlag' is never used
+F:\Jan13\17-01-13\17-01-13\RolePermissionSetting.aspx.cs(24,13): warning CS0169: The field 'RolePermissionSetting.dr2' is never used
+F:\Jan13\17-01-13\17-01-13\RolePermissionSetting.aspx.cs(27,19): warning CS0169: The field 'RolePermissionSetting.dr1' is never used
+F:\Jan13\17-01-13\17-01-13\Bankmaster.aspx.cs(23,11): warning CS0649: Field 'Bankmaster.centreid' is never assigned to, and will always have its default value null
+F:\Jan13\17-01-13\17-01-13\Rpt_Procurement.aspx.cs(20,19): warning CS0169: The field 'Rpt_Procurement.dr' is never used
+F:\Jan13\17-01-13\17-01-13\Admin.aspx.cs(22,19): warning CS0169: The field 'Admin.con' is never used
+F:\Jan13\17-01-13\17-01-13\Admin.aspx.cs(23,12): warning CS0169: The field 'Admin.strpassword' is never used
+F:\Jan13\17-01-13\17-01-13\StateMaster.aspx.cs(25,12): warning CS0649: Field 'StateMaster.centreid' is never assigned to, and will always have its default value null
+F:\Jan13\17-01-13\17-01-13\Routemaster.aspx.cs(27,19): warning CS0414: The field 'Routemaster.kk' is assigned but its value is never used
+F:\Jan13\17-01-13\17-01-13\changepassword.aspx.cs(20,12): warning CS0169: The field 'changepassword.USer_LoginID' is never used
+Validation Complete
+========== Rebuild All: 1 succeeded, 0 failed, 0 skipped ==========

@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode url=""  title="Masters"  description="" >
+    <siteMapNode url="" title="Plant Master"  description="" >
+      <!--<siteMapNode url="PlantMaster.aspx" title="Create Plant"  description="" />
+      <siteMapNode url="StateMaster.aspx" title="Create State"  description="" />-->
+      <siteMapNode url="Routemaster.aspx" title="Create Route"  description="" />
+      <!--<siteMapNode url="Agent.aspx" title="Create Agent"  description="" />--> 
+        <siteMapNode url="SubAgentsMaster.aspx" title="SubAgent Master"  description="" />
+      <siteMapNode url="SUPERWISERDETAILS.aspx" title="Create Supervisor"  description="" />
+      <siteMapNode url="VehicleDetails.aspx" title="Create Vehicle"  description="" />
+    </siteMapNode>
+
+    <siteMapNode url="" title="Bank Masters"  description="" >
+      <!--<siteMapNode url="addnewbank.aspx" title="Create Bank"  description="" />-->
+      <siteMapNode url="Bankmaster.aspx" title="Create Ifsc"  description="" />
+    </siteMapNode>
+
+    <!--<siteMapNode url="" title="Users Permissions "  description="" >
+      --><!--<siteMapNode url="Newuser.aspx" title="New User"  description="" />--><!--
+      --><!--<siteMapNode url="RolePermissionSetting.aspx" title="Permissions"  description="" />
+      <siteMapNode url="cgnp.aspx" title="Closed Group Network Portal"  description="" />--><!--
+    </siteMapNode>-->
+
+    <siteMapNode url="" title="Agent Information"  description="" >
+      <siteMapNode url="AgentDetails.aspx" title="Agent Details"  description="" />
+    </siteMapNode>
+
+    <!--<siteMapNode url=" " title="Stock Master"  description="" >
+      <siteMapNode url="StockMaster.aspx" title="Create Stock"  description="" />
+      <siteMapNode url="StockRateFixing.aspx" title="Fix Stock Rate"  description="" />
+    </siteMapNode>-->
+
+    <siteMapNode url="Newpassword.aspx" title="Password Change"  description="" />
+
+    <siteMapNode url=" " title="Dpu Master"  description="" >
+      <siteMapNode url="DPUAGENT.aspx" title="Dpu New Agent"  description="" />
+    </siteMapNode>
+
+
+  </siteMapNode>
+  <siteMapNode url=""  title="Transactions"  description="" >
+    <!--<siteMapNode url="LiveDumping.aspx" title="Live Procurement"  description="" >
+    </siteMapNode>
+    <siteMapNode url="DashBoard.aspx" title="DashBoard"  description="" />-->
+    <siteMapNode url="compressionruntimehours.aspx" title="compressRunHours"  description="" />
+    <siteMapNode url="GensetPowerDiesel.aspx" title="GensetPowerDieselEntry"  description="" />
+    <siteMapNode url="RouteTimeMaintenance.aspx" title="RouteTimeMaintenance"  description="" />
+    <siteMapNode url="GensetPowerDieselReport.aspx" title="GensetPowerDieselReport"  description="" />
+    <siteMapNode url="RouteTimeMaintenanceReport.aspx" title="RouteTimeMaintenReport"  description="" />
+    <siteMapNode url="compressioReport.aspx" title="compressRunHours Report"  description="" />
+    <siteMapNode url="DailyMasters.aspx" title="Plant Machine Details"  description="" />
+   <siteMapNode url="" title="PlantRequestingForm"  description="" >
+    <siteMapNode url="PlantRequestingForm.aspx" title="PlantRequestingForm"  description="" />
+    <siteMapNode url="PlantRequestingFormVerify.aspx" title="PlantRequestingFormVerify"  description="" />
+  </siteMapNode>
+    
+    
+    <siteMapNode url="" title="Sms"  description="" >
+      <!--<siteMapNode url="SMS.aspx" title="Send Sms"  description="" />-->
+      <siteMapNode url="Sms_Report.aspx" title="Sms Report"  description="" />
+      <!--<siteMapNode url="smstestingpage.aspx" title="Message Balance"  description="" />-->
+    </siteMapNode>
+
+
+
+    <siteMapNode url="" title="Data Manuplation"  description="" >
+
+      <!--<siteMapNode url="CHECKSTATUS.aspx" title="Data Status"  description="" />
+      <siteMapNode url="Remarksadminmodify.aspx" title="Remarks Approval"  description="" />
+      <siteMapNode url="AGENTDAILYSUMMARY.aspx" title="Data Modify"  description="" />-->
+      <siteMapNode url="CheckPlantReceivingData.aspx" title="Proocessing Data"  description="" />
+      <siteMapNode url="DataReceivedAndImportTime%20.aspx" title="Data Process Time"  description="" />
+      <siteMapNode url="PlantSessionwiseReport.aspx" title="Plant Milk quantity"  description="" />
+        <siteMapNode url="AgentsProcurementList.aspx" title="Per day Milk With Avg"  description="" />
+      <siteMapNode url="GarbarTest.aspx" title="GarbarReport"  description="" />
+      <siteMapNode url="PlantOPCBStockDetails.aspx" title="Plant Stock Sms"  description="" />
+      <siteMapNode url="CowBuffaloTotalAbstract.aspx" title="CowBuffaloTotalAbstract"  description="" />
+
+      <!--<siteMapNode url="DeleteProcurementData.aspx" title="Delete Procure Data"  description="" />-->
+      <!--<siteMapNode url="SetBillDate.aspx" title="Set Bill Date"  description="" />
+      <siteMapNode url="Rpt_Procurement.aspx" title="Delete Billproceed"  description="" />
+      <siteMapNode url="ProcurementDataBulkBackup.aspx" title="MonthlyProDataBackup"  description="" />-->
+      <!--<siteMapNode url="RolePermissionSetting.aspx" title="Permissions"  description="" />
+      <siteMapNode url="cgnp.aspx" title="Closed Group Network Portal"  description="" />-->
+    </siteMapNode>
+  </siteMapNode>
+
+
+
+
+  <siteMapNode url=""  title="Plant Process"  description="" >
+    <siteMapNode url=""  title="Loan Details"  description="" >
+      <siteMapNode url="NewLoanVoucher.aspx" title="NewLoanVoucher"  description="" />
+      <siteMapNode url="LoanRequestFormEntry.aspx" title="LoanRequestFormEntry"  description="" />
+      <!--<siteMapNode url="LoanMaster.aspx" title="Loan entry"  description="" />-->
+      <siteMapNode url="LoanEntryTrack.aspx" title="LoanEntryTrack"  description="" />
+      <!--<siteMapNode url="AvailableLloans.aspx" title="AvailableLloans"  description="" />
+      <siteMapNode url="LoanDueRecovery.aspx" title="Loan Recovery"  description="" />
+      <siteMapNode url="LoanRecoveryReport" title="Loan Recovery Report"  description="" />
+      <siteMapNode url="LoandetailsReport.aspx" title="Loan details"  description="" />
+      <siteMapNode url="StopedLoanAgents.aspx" title="StopedLoanAgents"  description="" />-->
+    </siteMapNode>
+
+
+    <siteMapNode url=""  title="Deduction"  description="" >
+      <siteMapNode url="DeductionEntry.aspx" title="Deduction Entry"  description="" />
+      <!--<siteMapNode url="PlantstockEntry.aspx" title="Stock Adding"  description="" />
+      <siteMapNode url="StockDistibuteToPlant.aspx" title="Stock To Plant"  description="" />-->
+      <!--<siteMapNode url="DeductionPendingList.aspx" title="Deduction Pending"  description="" />
+      <siteMapNode url="Deduction_Rpt.aspx" title="Deduction Recovery"  description="" />-->
+      <!--<siteMapNode url="RolePermissionSetting.aspx" title="Permissions"  description="" />
+      <siteMapNode url="cgnp.aspx" title="Closed Group Network Portal"  description="" />-->
+    </siteMapNode>
+
+
+    <siteMapNode url=""  title="RateChart"  description="" >
+      <!--<siteMapNode url="RateChart.aspx" title="Create RateChart"  description="" />-->
+      <siteMapNode url="NewRateChartViewer.aspx" title="View RateChart"  description="" />
+      <!--<siteMapNode url="SelectRatechart.aspx" title="Select RateChart"  description="" />
+      <siteMapNode url="AgentRatechartStatus.aspx" title="Agent Chart Status"  description="" />
+      <siteMapNode url="PlantRatechartUseage.aspx" title="Plant Chart"  description="" />
+      <siteMapNode url="RatechartAgentList.aspx" title="Chart List Agents"  description="" />
+      <siteMapNode url="Agentcharttype.aspx" title="Billwise Chart"  description="" />
+      <siteMapNode url="RolePermissionSetting.aspx" title="Permissions"  description="" />
+      <siteMapNode url="cgnp.aspx" title="Closed Group Network Portal"  description="" />-->
+    </siteMapNode>
+
+    <siteMapNode url=""  title="DispatchAndClosing"  description="" >
+      <siteMapNode url="Dispatch.aspx" title="Dispatch Entry"  description="" />
+      <siteMapNode url="DispatchAcknowledgement.aspx" title="Acknowledgement Entry"  description="" />
+      <siteMapNode url="ClosingStockNew.aspx" title="Closing Entry"  description="" />
+      <!--<siteMapNode url="Despatch_Rpt.aspx" title="Despatch Report"  description="" />-->
+      <!--<siteMapNode url="RolePermissionSetting.aspx" title="Permissions"  description="" />
+      <siteMapNode url="cgnp.aspx" title="Closed Group Network Portal"  description="" />-->
+    </siteMapNode>
+
+    <siteMapNode url=""  title="Transport"  description="" >
+      <siteMapNode url="TruckRouteAllotment.aspx" title="Route Allotement"  description="" />
+      <siteMapNode url="TransportDistanceChange.aspx" title="Transport Day Update"  description="" />
+      <siteMapNode url="TransportImportStatus.aspx" title="Import Status"  description="" />
+      <!--<siteMapNode url="TransportRpt.aspx" title="Transport Report"  description="" />-->
+      <!--<siteMapNode url="RolePermissionSetting.aspx" title="Permissions"  description="" />
+      <siteMapNode url="cgnp.aspx" title="Closed Group Network Portal"  description="" />-->
+    </siteMapNode>
+
+      <siteMapNode url=""  title="Mannual Transport Bill"  description="" >
+          <siteMapNode url="TRANSPORTROUTEMASTER.aspx" title="Transport Route Assaign"  description="" />
+          <siteMapNode url="TransportpaymentReporte.aspx" title="Transportpayment Entry"  description="" />
+         
+      </siteMapNode>
+
+
+      <!--<siteMapNode url="AdminApprovalMonitor.aspx" title="Admin Monitor"  description="" >
+    </siteMapNode>-->
+    <!--<siteMapNode url="AdminApproval.aspx" title="Bill Approval"  description="" >
+    </siteMapNode>-->
+    <!--<siteMapNode url="Voucher_Clear.aspx" title="Voucher Clear"  description="" />-->
+  </siteMapNode>
+
+  <siteMapNode url=""  title="Dpu Process"  description="" >
+    <siteMapNode url="CompareDpuProcureData.aspx" title="Compare Data"  COLOR="red" description="" />
+    <!--<siteMapNode url="DpuDataTrasfer.aspx" title="Data Transfer"  description="" />-->
+    <!--<siteMapNode url="DpuDataCheckStatus.aspx" title="Data Status"  description="" />-->
+    <!--<siteMapNode url="DpuAgentDailySummary.aspx" title="Data Modify"  description="" />-->
+     <siteMapNode url="Rpt_CollectionCenterDifferenceLink.aspx" title="DpuVsPlantdifferent"  description="" />
+    <siteMapNode url="DpuBill.aspx" title="Dpu Bill Copy"  description="" />
+    <!--<siteMapNode url="RolePermissionSetting.aspx" title="Permissions"  description="" />
+      <siteMapNode url="cgnp.aspx" title="Closed Group Network Portal"  description="" />-->
+  </siteMapNode>
+  <siteMapNode url=""  title="Reports"  description="" >
+    <siteMapNode url="" title="Billing Details"  description="" >
+      <siteMapNode url="Rpt_Invoice.aspx" title="Invoice"  description="" />
+      <!--<siteMapNode url="Rpt_Procurement.aspx" title="Bill Proceed"  description="" />-->
+      <siteMapNode url="Rpt_Bill.aspx" title="Bill Copy"  description="" />
+      <siteMapNode url="RoutewiswPaymentabstarct.aspx" title="RouteWise Abstract"  description="" />
+      <siteMapNode url="PLANTOVERALLREPORT.aspx" title="Total Abstract"  description="" />
+      <siteMapNode url="TotalSummary.aspx" title="Bill Total Summary"  description="" />
+      <siteMapNode url="PaymentReceipt1.aspx" title="Payment Receipt"  description="" />
+      <siteMapNode url="DeductionPendingList.aspx" title="Deduction Pending"  description="" />
+      <siteMapNode url="Deduction_Rpt.aspx" title="Deduction Recovery"  description="" />
+      <siteMapNode url="TransportRpt.aspx" title="Transport Report"  description="" />
+      <siteMapNode url="Despatch_Rpt.aspx" title="Despatch Report"  description="" />
+      <siteMapNode url="AvailableLloans.aspx" title="AvailableLloans"  description="" />
+      <!--<siteMapNode url="LoanDueRecovery.aspx" title="Loan Recovery"  description="" />-->
+      <siteMapNode url="LoanRecoveryReport.aspx" title="Loan Recovery Report"  description="" />
+      <siteMapNode url="LoandetailsReport.aspx" title="Loan details"  description="" />
+      <siteMapNode url="StopedLoanAgents.aspx" title="StopedLoanAgents"  description="" />
+      <siteMapNode url="PlantBankPaymentSelectedList.aspx" title="BankPaymentList"  description="" />
+      <siteMapNode url="AgentMasterReport.aspx" title="AgentMasterReport"  description="" />
+      <!--<siteMapNode url="AgentDetailsMaintains.aspx" title="Over Agents"  description="" />
+      <siteMapNode url="CheckPlantReceivingData.aspx" title="Data Processing Time"  description="" />-->
+    </siteMapNode>
+
+    <siteMapNode url="" title="Silo Reports"  description="" >
+      <siteMapNode url="OpeningStockReport.aspx"  title="view Opening Stock"  description="" />
+      <siteMapNode url="ClosingStocksReport.aspx" title="view Closing Stock"  description="" />
+      <siteMapNode url="Despatch_Rpt.aspx"        title="Despatch Report   "  description="" />
+      <siteMapNode url="SiloBalanceReport.aspx" title="Silo Report"  description="" />
+        <siteMapNode url="Silostock.aspx" title="Silo stock"  description="" />
+    </siteMapNode>
+
+    <!--<siteMapNode url="" title="Over All Reports"  description="" >
+      <siteMapNode url="OverAllReport.aspx"  title="OverAllReports"  description="" />
+      <siteMapNode url="CompanyPlantwisereport.aspx" title="CompanyPlantwisereport"  description="" />
+      <siteMapNode url="DailyProcurementInvoiceData.aspx"        title="DailyProcureInvoice"  description="" />
+      <siteMapNode url="Rpt_PlantwiseSingleBilldateOverAllData.aspx" title="PlantProcureReport"  description="" />
+      <siteMapNode url="Rpt_PlantpermonthBilldateOverAllData.aspx"  title="MonthlyProcReport"  description="" />
+      <siteMapNode url="Rpt_PlantpermonthOverAllData.aspx" title="PerMonthData"  description="" />
+      <siteMapNode url="Rpt_perdaypandl.aspx" title="PerDayProfitLoss"  description="" />
+
+
+    </siteMapNode>-->
+
+    <!--<siteMapNode url="" title="Agent Report"  description="" >
+      <siteMapNode url="AgentMissingList.aspx"  title="Stoped Milk"  description="" />
+      <siteMapNode url="AgentsRemarks.aspx" title="AgentsRemarks"  description="" />
+      <siteMapNode url="CartageSplbonus.aspx"        title="CartageSplbonus"  description="" />
+      <siteMapNode url="NillpaymentCheck.aspx" title="Nillpayment"  description="" />
+      <siteMapNode url="SameAccountnoList.aspx"  title=" Same Account Number"  description="" />
+      <siteMapNode url="AgentRemarksExport.aspx" title="AgentRemarksstatus"  description="" />
+      <siteMapNode url="AgentMasterReport" title="AgentMasterReport"  description="" />
+    </siteMapNode>
+    <siteMapNode url="Frm_ChartRoute.aspx" title="Plant Graph Report"  description="" >
+    </siteMapNode>
+    <siteMapNode url="PlantMilkStaus.aspx" title="Plant Milk Status"  description="" >
+    </siteMapNode>-->
+    <!--<siteMapNode url=""                     title="Bill Check Reports"  description="" >
+      --><!--<siteMapNode url="Rpt_AgentmilkgLineGraph.aspx"     title="AgentLine Graph         ."  description="" >
+      </siteMapNode>
+      <siteMapNode url="MilkStatusAgentWise.aspx"         title="Agent Mil Status        ."  description="" >
+      </siteMapNode>
+      <siteMapNode url="DonatedMilkReports.aspx"          title="DonatedMilkReports       "  description="" >
+      </siteMapNode>
+      <siteMapNode url="Frm_PlantwiseMilkmonitoring.aspx" title="Milk Monitor Report      "  description="" >
+      </siteMapNode>
+      <siteMapNode url="AgentsProcurementList.aspx"       title="Procurement cc Reports   "  description="" >
+      </siteMapNode>
+      <siteMapNode url="NillpaymentCheck.aspx"            title="Nil Payment Check        "  description="" >
+      </siteMapNode>
+      <siteMapNode url="TsFatSnfRangeCheck.aspx"          title="FatSnf RangeCheck        "  description="" >
+      </siteMapNode>
+      <siteMapNode url="CartageSplbonus.aspx"             title="Cartage And SplbonusCheck"  description="" >
+      </siteMapNode>
+      <siteMapNode url="CurrentRateChartCheck.aspx"       title="CurrentRateChart         "  description="" >
+      </siteMapNode>
+      <siteMapNode url="IncreaseDecrease.aspx"            title="IncreaseDecreaseReports  "  description="" >
+      </siteMapNode>
+      <siteMapNode url="PlantStatusReport.aspx"           title="Plant Milk Status        "  description="" >
+      </siteMapNode>
+      <siteMapNode url="SuperwiserIncentives.aspx"        title="SuperwiserIncentives     "  description="" >
+      </siteMapNode>
+      <siteMapNode url="RouteSupervisorAllotment.aspx"    title="RouteSupervisorAllotment "  description="" >
+      </siteMapNode>
+      <siteMapNode url="PlantPerDayMilk.aspx"             title="PlantPerDayMilk          "  description="" >
+      </siteMapNode>
+      <siteMapNode url="AgentsRemarks.aspx"               title="AgentsRemarksStatus      "  description="" >
+      </siteMapNode>
+      <siteMapNode url="PLANTOVERALLREPORT1.aspx"         title="Plant Bill Comparison    "  description="" >
+      </siteMapNode>
+      <siteMapNode url="PlantRatechartUsagewithmilkkg.aspx" title="RatechartuseageWithMilkkg"  description="" >
+      </siteMapNode>
+      <siteMapNode url="PlantMonthlySheet.aspx"           title="Plant Monthly Report     "  description="" >
+      </siteMapNode>
+      <siteMapNode url="RouteWisePerformence.aspx"        title="RouteWisePerformence     "  description="" >
+      </siteMapNode>
+      <siteMapNode url="DpuMilkCommision.aspx"            title="AgentVsFarmerReport      "  description="" >
+      </siteMapNode>
+      <siteMapNode url="Deductionamount.aspx"             title="PeriodwiseDeductionAmount"  description="" >
+      </siteMapNode>--><!--
+    </siteMapNode>-->
+
+      <siteMapNode url="" title="OrganizationalChart"  description="" >
+          <siteMapNode url="OrgFormAllotement.aspx" title="ChartAllotement"  description="" >
+          </siteMapNode>
+          <siteMapNode url="OrganizationChart.ASPX" title="View Organizational Chart"  description="" >
+          </siteMapNode>
+      </siteMapNode>
+  </siteMapNode>
+
+  <siteMapNode url=""  title="Finance"  description="" >
+      <siteMapNode url="BankPaymentAllotment.aspx" title="Bank Payment"  description="" />
+    <!--<siteMapNode url="" title="Plant"  description="" >
+      <siteMapNode url="AMOUNTALLOTEMENTSaspx.aspx" title="Amount Allotement"  description="" />
+      <siteMapNode url="BankPaymentAllotment.aspx" title="Bank Payment"  description="" />
+      <siteMapNode url="Rpt_BankpaymentFinalFinanceDetail.aspx" title="Finance Report"  description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="Dpu"  description="" >
+      <siteMapNode url="DpuAmoutAllotement.aspx" title="Amount Allotment"  description="" />
+      <siteMapNode url="DpuBankPaymentAllotment.aspx" title="Amount Allot Agents"  description="" />
+    </siteMapNode>-->
+  </siteMapNode>
+
+  <siteMapNode url=""  title="Accounts"  description="" >
+     <siteMapNode url="Rpt_AccountsTotalAbstract.aspx" title="Acounts Abstract"  description="" >
+    </siteMapNode>
+    <!--<siteMapNode url="OverAllReport.aspx" title="OverAllReport"  description="" >
+    </siteMapNode>
+    <siteMapNode url="CompanyPlantwisereport.aspx" title="CompanyPlantwisereport"  description="" >
+    </siteMapNode>
+    <siteMapNode url="DailyProcurementInvoiceData.aspx" title="Daily Invoice"  description="" >
+    </siteMapNode>
+    <siteMapNode url="Rpt_PlantwiseSingleBilldateOverAllData.aspx" title="BillWise Reports"  description="" >
+    </siteMapNode>-->-->
+  </siteMapNode>
+
+    <siteMapNode url=""  title="Cash Details"  description="" >
+        <!--<siteMapNode url="HeadOfAcMaster.aspx" title="Head Of Accounts"  description="" ></siteMapNode>-->
+        <siteMapNode url="CashForm.aspx" title="Voucher Form"  description="" ></siteMapNode>
+        <siteMapNode url="ApprovalForm.aspx" title="Approval Voucher"  description="" ></siteMapNode>
+        <siteMapNode url="LedgerWiseTransactions.aspx" title="LedgerWise Report"  description="" ></siteMapNode>
+        <siteMapNode url="CashCollections.aspx" title="Cash Collections"  description="" ></siteMapNode>
+        <siteMapNode url="VoucherApprovalReport.aspx" title="VoucherApprovalReport"  description="" ></siteMapNode>
+        <siteMapNode url="CashBook.aspx" title="CashBook"  description="" ></siteMapNode>
+        <siteMapNode url="ReceiptReport.aspx" title="Receipt Report"  description="" ></siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode url="logout.aspx"  title="Log Out"  description="" >
+    </siteMapNode>
+
+  
+
+
+</siteMap>

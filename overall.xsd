@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="overall" targetNamespace="http://tempuri.org/overall.xsd" xmlns:mstns="http://tempuri.org/overall.xsd" xmlns="http://tempuri.org/overall.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AMPSConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AMPSConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AMPSConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM
+(SELECT pcode,Smltr AS Smltr1,Smkg1,AvgFat1,AvgSnf1,AvgRate1,Avgclr1,Scans1,SAmt1,Avgcrate1,Sfatkg1,Ssnfkg1,Billadv1,Ai1,feed1,can1,recovery1,others1,instamt1,((SAmt1+Fin2.ComAmt)-(Dedu)) AS Netpay,Fin2.ComAmt FROM 
+(SELECT pcode AS pcode,Smltr AS Smltr1,Smkg AS Smkg1,AvgFat AS AvgFat1,AvgSnf AS AvgSnf1,AvgRate AS AvgRate1,Avgclr AS Avgclr1,Scans AS Scans1,SAmt AS SAmt1,Avgcrate AS Avgcrate1,Sfatkg AS Sfatkg1,Ssnfkg AS Ssnfkg1,Billadv AS Billadv1,Ai AS Ai1,feed AS feed1,can AS can1,recovery AS recovery1,others AS others1,instamt AS instamt1,(Billadv+Ai+feed+instamt) AS Dedu FROM 
+(SELECT pcode,ISNULL(Smltr,0) AS Smltr,ISNULL(Smkg,0) AS Smkg,ISNULL(AvgFat,0) AS AvgFat,ISNULL(AvgSnf,0) AS AvgSnf,ISNULL(AvgRate,0) AS AvgRate,ISNULL(Avgclr,0) AS Avgclr,ISNULL(Scans,0) AS Scans,ISNULL(SAmt,0) AS SAmt,ISNULL(Avgcrate,0) AS Avgcrate,ISNULL(Sfatkg,0) AS Sfatkg,ISNULL(Ssnfkg,0) AS Ssnfkg,ISNULL(Billadv,0) AS Billadv,ISNULL(Ai,0) AS Ai,ISNULL(feed,0) AS feed,ISNULL(Can,0) AS Can,ISNULL(Recovery,0) AS Recovery,ISNULL(Others,0)AS Others,ISNULL(instamt,0) AS instamt  FROM 
+(SELECT spropcode AS pcode,CAST(Smltr AS DECIMAL(18,2)) AS Smltr,CAST(Smkg AS DECIMAL(18,2))AS Smkg,CAST(AvgFat AS DECIMAL(18,2)) AS AvgFat,CAST(AvgSnf AS DECIMAL(18,2)) AS AvgSnf,CAST(AvgRate AS DECIMAL(18,2)) AS AvgRate,CAST(Avgclr AS DECIMAL(18,2))AS Avgclr,CAST(Scans AS DECIMAL(18,2)) AS Scans,CAST(SAmt AS DECIMAL(18,2)) AS SAmt,CAST(Avgcrate AS DECIMAL(18,2)) AS Avgcrate,CAST(Sfatkg AS DECIMAL(18,2)) AS Sfatkg,CAST(Ssnfkg AS DECIMAL(18,2)) AS Ssnfkg,Billadv,Ai,feed,Can,Recovery,Others FROM 
+(SELECT plant_Code AS spropcode,SUM(Milk_ltr) AS Smltr,SUM(Milk_kg) AS Smkg,AVG(FAT) AS AvgFat,AVG(SNF) AS AvgSnf,AVG(Rate) AS AvgRate,AVG(Clr) AS Avgclr,SUM(NoofCans) AS Scans,SUM(Amount) AS SAmt,AVG(ComRate) AS Avgcrate,SUM(fat_kg) AS Sfatkg,SUM(snf_kg) AS SSnfkg  FROM Procurement  GROUP BY plant_Code ) AS spro 
+LEFT JOIN 
+(SELECT  Plant_code AS dedupcode,SUM(CAST((Billadvance) AS DECIMAL(18,2))) AS Billadv,SUM(CAST((Ai) AS DECIMAL(18,2))) AS Ai,SUM(CAST((Feed) AS DECIMAL(18,2))) AS Feed,SUM(CAST((can) AS DECIMAL(18,2))) AS can,SUM(CAST((Recovery) AS DECIMAL(18,2))) AS Recovery,SUM(CAST((others) AS DECIMAL(18,2))) AS others FROM Deduction_Details  GROUP BY Plant_code ) AS Dedu ON  spro.spropcode=Dedu.dedupcode) AS produ 
+LEFT JOIN 
+(SELECT Plant_Code AS LonPcode,SUM(CAST(inst_amount AS DECIMAL(18,2))) AS instamt FROM LoanDetails WHERE Balance&gt;0 GROUP BY Plant_Code) AS londed ON produ.pcode=londed.LonPcode) AS t1
+ LEFT JOIN 
+(SELECT Plant_Code AS cartPCode,SUM(CAST((Cartage_Amt) AS DECIMAL(18,2)))AS CarAmt FROM  Agent_Master WHERE Type=0  GROUP BY Plant_Code) AS Agnt ON t1.pcode=Agnt.cartPCode ) AS tt2 
+LEFT JOIN 
+(SELECT APCode,SUM(ISNULL(Cartage_Amt,0)) AS Cartage_Amt,SUM(ISNULL(SMltr,0)) AS SMltr,SUM(ISNULL(ComAmt,0)) AS ComAmt  FROM 
+(SELECT DISTINCT(AAid) AS Aiid,APCode,Cartage_Amt,SMltr,CAST((Cartage_Amt*SMltr) AS DECIMAL(18,2)) AS ComAmt FROM (SELECT APCode,ISNULL(Cartage_Amt,0) AS Cartage_Amt,t2.Agent_id AS AAid,ISNULL(t3.Mltrr,0) AS mlt FROM 
+(SELECT Plant_Code AS APCode,Agent_id,Cartage_Amt FROM AGENT_MASTER WHERE Type=0 AND Cartage_Amt&gt;0 ) AS t2 
+LEFT JOIN 
+(SELECT ppcode,t1.Mltr AS Mltrr,Aid FROM (SELECT Plant_Code AS ppcode,Milk_Ltr AS Mltr,Agent_id AS Aid FROM Procurement AS P WHERE  Plant_Code IN (SELECT Plant_Code AS APCode FROM  Agent_Master AS A WHERE Type=0 AND Cartage_Amt&gt;0 AND A.Plant_Code=p.Plant_Code )) AS t1 )AS t3 ON t2.APCode=t3.ppcode) AS t4 
+LEFT JOIN 
+(SELECT Plant_Code AS p2pcode,SUM(Milk_ltr) AS SMltr,Agent_id AS p2Aid FROM Procurement AS P2  GROUP BY Plant_Code,Agent_id ) AS t5 ON t4.APCode=t5.p2pcode AND AAid=t5.p2Aid )AS fin GROUP BY APCode) AS fin2 ON tt2.pcode=fin2.APCode ) AS profin
+
+INNER JOIN
+
+(SELECT tppcode ,ISNULL(SPlantTransAmount,0) AS SPlantTransAmount1,ISNULL(GMilkkg,0) AS GMilkkg1,ISNULL(GFatkg,0) AS GFatkg1,ISNULL(GSnfkg,0) AS GSnfkg1 FROM
+(SELECT ppcode AS tppcode,SUM(TransAmount) AS SPlantTransAmount FROM 
+(SELECT Distinct(TrkID),pcod AS ppcode,Lcst1,Smltrs1,Daycounts1,Distanc1,(CAST(((Distanc1*Daycounts1)*Lcst1) AS DECIMAL(18,2))) AS TransAmount FROM 
+(SELECT TrkID,pcod,ISNULL(Lcst,0) AS Lcst1,ISNULL(Smltrs,0) AS Smltrs1,ISNULL(Daycounts,0) AS Daycounts1,ISNULL(Distanc,0) AS Distanc1 FROM 
+(SELECT t2.VDTrkid AS TrkID,t2.ppcode AS pcod,CAST(t2.Lrtcst AS DECIMAL(18,2)) AS Lcst,CAST(t2.Smltr AS DECIMAL(18,2)) AS Smltrs,CAST(t3.DayCount AS DECIMAL(18,2)) AS Daycounts,CAST(t3.Distance AS DECIMAL(18,2))AS Distanc FROM 
+(SELECT VDTrkid,milk_Ltr,Lrtcst,Smltr,ppcode FROM
+(SELECT Ltr_Cost AS Lrtcst,milk_Ltr,ppcode,VDTrkid FROM
+(SELECT Truck_id AS VDTrkid,Ltr_Cost,Truck_Name,Plant_Code FROM Vehicle_Details  ) AS VD
+INNER JOIN 
+(SELECT Milk_Ltr ,Plant_code AS ppcode FROM PROCUREMENT  ) AS pro ON VD.Plant_Code=pro.ppcode) AS t1
+INNER JOIN
+(SELECT SUM(Milk_Ltr) AS Smltr ,Truck_id,Plant_code AS ppcode1 FROM PROCUREMENT  GROUP BY Plant_code,Truck_id ) AS pro1 ON t1.ppcode=pro1.ppcode1 AND t1.VDTrkid=pro1.Truck_id ) AS t2
+INNER JOIN
+(SELECT DISTINCT(tid) AS Truid,DayCount,Plant_Code,Distance FROM 
+(SELECT COUNT(Session_Id) AS DayCount,Truck_Id AS tid,Plant_Code  FROM TRUCK_PRESENT  GROUP BY Plant_Code,Truck_Id ) AS TP
+INNER JOIN 
+(SELECT Truck_id AS trtid,Distance,plant_code AS TRpcode  FROM TRUCK_ROUTEDISTANCE  ) AS RD ON TP.Plant_Code=RD.TRpcode AND TP.tid=RD.trtid) AS t3 ON t2.ppcode=t3.plant_code AND t2.VDTrkid=t3.Truid ) t4 ) AS t5 ) AS t6  GROUP BY ppcode )truckfin
+
+INNER JOIN
+
+(SELECT Pcode1,CAST(((cl_MILKKG1+db_MILKKG1)-(op_MILKKG+pr_MILKKG1)) AS DECIMAL(18,2)) AS GMilkkg,(pr_FATKG1+op_FATKG)-((dp_FATKG1+cl_FATKG1)) AS GFatkg,((pr_SNFKG1+op_SNFKG)-(dp_SNFKG1+cl_SNFKG1)) AS GSnfkg  FROM
+(SELECT Pcode1,ISNULL(pr_MILKKG,0) AS pr_MILKKG1,ISNULL(pr_FAT,0) AS pr_FAT1,ISNULL(pr_SNF,0) AS pr_SNF1,ISNULL(pr_FATKG,0) AS pr_FATKG1,ISNULL(pr_SNFKG,0)AS pr_SNFKG1,ISNULL(pr_RATE,0)AS pr_RATE1,ISNULL(pr_AMOUNT,0)AS pr_AMOUNT,op_MILKKG,op_FAT,op_SNF,op_FATKG,op_SNFKG,op_RATE,op_AMOUNT,ISNULL(t2.dp_MILKKG1,0) AS db_MILKKG1,ISNULL(t2.dp_FAT1,0) AS dp_FAT1,ISNULL(t2.dp_SNF1,0) AS dp_SNF1,ISNULL(t2.dp_FATKG1,0) AS dp_FATKG1,ISNULL(t2.dp_SNFKG1,0) AS dp_SNFKG1,ISNULL(t2.dp_RATE1,0) AS dp_RATE1,ISNULL(t2.dp_AMOUNT1,0) AS dp_AMOUNT1,ISNULL(t2.cl_MILKKG1,0) AS cl_MILKKG1,ISNULL(t2.cl_FAT1,0) AS cl_FAT1,ISNULL(t2.cl_SNF1,0) AS cl_SNF1,ISNULL(t2.cl_FATKG1,0) AS cl_FATKG1,ISNULL(t2.cl_SNFKG1,0) AS cl_SNFKG1,ISNULL(t2.cl_RATE1,0) AS cl_RATE1,ISNULL(t2.cl_AMOUNT1,0) AS cl_AMOUNT1 FROM
+(select procur.pr_MILKKG AS pr_MILKKG,cast(procur.pr_FAT as decimal(18,2)) as pr_FAT,cast(procur.pr_SNF as decimal(18,2)) as pr_SNF ,cast(procur.pr_FATKG as decimal(18,2)) as pr_FATKG,cast(procur.pr_SNFKG as decimal(18,2)) as pr_SNFKG,cast(procur.pr_RATE as decimal(18,2)) as pr_RATE,cast(procur.pr_AMOUNT as decimal(18,2)) as pr_AMOUNT,Plant_code AS Pcode1 , isnull(openstock.op_MILKKG,0) as op_MILKKG,isnull(openstock.op_FAT,0) as op_FAT,isnull(openstock.op_SNF,0)as op_SNF ,ISNULL(openstock.op_FATKG,0) as op_FATKG,ISNULL(openstock.op_SNFKG,0) as op_SNFKG,ISNULL(openstock.op_RATE,0) AS op_RATE,ISNULL(openstock.op_AMOUNT,0) AS op_AMOUNT from 
+(SELECT  sum(Milk_kg) as pr_MILKKG,AVG(Fat) as pr_FAT,AVG(Snf) as pr_SNF,AVG(fat_kg)as pr_FATKG,avg(snf_kg) as pr_SNFKG,SUM (Amount) as pr_AMOUNT,avg(Rate) as pr_RATE,Plant_code  from Procurement  group by  Plant_code) As  procur 
+LEFT JOIN
+(select top 1 cast(Milkkg  as decimal(18,2)) as op_MILKKG,cast(Fat as decimal(18,2)) as op_FAT,cast(Snf as decimal(18,2)) as op_SNF,cast(fat_kg as decimal(18,2)) as op_FATKG,cast(snf_kg as decimal(18,2)) as op_SNFKG,(Amount) as op_AMOUNT,(Rate) as op_RATE,Plant_code AS ospcode from Stock_openingmilk  order by Datee ASC) AS openstock  on procur.Plant_code= openstock.ospcode ) as joinopenprocure 
+LEFT JOIN
+(SELECT cl_Plant_code,ISNULL(dp_MILKKG,0)AS dp_MILKKG1,ISNULL(dp_FAT,0)AS dp_FAT1,ISNULL(dp_SNF,0) AS dp_SNF1,ISNULL(dp_FATKG,0) AS dp_FATKG1,ISNULL(dp_SNFKG,0) AS dp_SNFKG1,ISNULL(dp_RATE,0) AS dp_RATE1,ISNULL(dp_AMOUNT,0) AS dp_AMOUNT1,ISNULL(cl_MILKKG,0) AS cl_MILKKG1,ISNULL(cl_FAT,0) AS cl_FAT1,ISNULL(cl_SNF,0) AS cl_SNF1,ISNULL(cl_FATKG,0) AS cl_FATKG1,ISNULL(cl_SNFKG,0)AS cl_SNFKG1,ISNULL(cl_RATE,0) AS cl_RATE1,ISNULL(cl_AMOUNT,0)AS cl_AMOUNT1 FROM
+(select cl_Plant_code,CAST(despat.dp_MILKKG as decimal(18,2)) dp_MILKKG,CAST(despat.dp_FAT as decimal(18,2)) dp_FAT,CAST(despat.dp_SNF as decimal(18,2)) dp_SNF,CAST(despat.dp_FATKG as decimal(18,2)) dp_FATKG,CAST(despat.dp_SNFKG as decimal(18,2)) as dp_SNFKG,CAST(despat.dp_RATE as decimal(18,2)) as dp_RATE, CAST(despat.dp_AMOUNT as decimal(18,2)) as dp_AMOUNT,cast(closestock.cl_MILKKG as  decimal(18,2)) as  cl_MILKKG,cast(closestock.cl_FAT as  decimal(18,2)) as  cl_FAT,cast(closestock.cl_SNF as  decimal(18,2)) as cl_SNF,cast(closestock.cl_FATKG as  decimal(18,2)) as cl_FATKG,cast(closestock.cl_SNFKG as  decimal(18,2)) as cl_SNFKG,cast(closestock.cl_RATE as  decimal(18,2)) as cl_RATE,cast(closestock.cl_AMOUNT as  decimal(18,2)) as cl_AMOUNT  from
+(SELECT top 1 MilkKg as cl_MILKKG,Fat as cl_FAT,Snf as cl_SNF,Fat_Kg as cl_FATKG,Snf_Kg as cl_SNFKG,Amount AS cl_AMOUNT,Rate AS cl_RATE,Plant_code as cl_Plant_code FROM Stock_Milk  ORDER BY Date DESC ) as closestock
+LEFT JOIN 
+(select sum(MilkKg) as dp_MILKKG,AVG(Fat) as dp_FAT,AVG(Snf) as dp_SNF,avg(Fat_Kg) as dp_FATKG,avg(Snf_Kg) as dp_SNFKG,SUM (Amount) as dp_AMOUNT,avg(Rate) as dp_RATE,Plant_code as dp_Plant_code from Despatchnew   group by  Plant_code ) as despat  on closestock.cl_Plant_code=despat.dp_Plant_code) AS t1) AS t2 ON  joinopenprocure.Pcode1=t2.cl_Plant_code) AS tfin1 )  tfin2 ON truckfin.tppcode= tfin2.Pcode1 ) AS totfin ON  profin.pcode=totfin.tppcode
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="pcode" DataSetColumn="pcode" />
+              <Mapping SourceColumn="Smltr1" DataSetColumn="Smltr1" />
+              <Mapping SourceColumn="Smkg1" DataSetColumn="Smkg1" />
+              <Mapping SourceColumn="AvgFat1" DataSetColumn="AvgFat1" />
+              <Mapping SourceColumn="AvgSnf1" DataSetColumn="AvgSnf1" />
+              <Mapping SourceColumn="AvgRate1" DataSetColumn="AvgRate1" />
+              <Mapping SourceColumn="Avgclr1" DataSetColumn="Avgclr1" />
+              <Mapping SourceColumn="Scans1" DataSetColumn="Scans1" />
+              <Mapping SourceColumn="SAmt1" DataSetColumn="SAmt1" />
+              <Mapping SourceColumn="Avgcrate1" DataSetColumn="Avgcrate1" />
+              <Mapping SourceColumn="Sfatkg1" DataSetColumn="Sfatkg1" />
+              <Mapping SourceColumn="Ssnfkg1" DataSetColumn="Ssnfkg1" />
+              <Mapping SourceColumn="Billadv1" DataSetColumn="Billadv1" />
+              <Mapping SourceColumn="Ai1" DataSetColumn="Ai1" />
+              <Mapping SourceColumn="feed1" DataSetColumn="feed1" />
+              <Mapping SourceColumn="can1" DataSetColumn="can1" />
+              <Mapping SourceColumn="recovery1" DataSetColumn="recovery1" />
+              <Mapping SourceColumn="others1" DataSetColumn="others1" />
+              <Mapping SourceColumn="instamt1" DataSetColumn="instamt1" />
+              <Mapping SourceColumn="Netpay" DataSetColumn="Netpay" />
+              <Mapping SourceColumn="tppcode" DataSetColumn="tppcode" />
+              <Mapping SourceColumn="SPlantTransAmount1" DataSetColumn="SPlantTransAmount1" />
+              <Mapping SourceColumn="GMilkkg1" DataSetColumn="GMilkkg1" />
+              <Mapping SourceColumn="GFatkg1" DataSetColumn="GFatkg1" />
+              <Mapping SourceColumn="GSnfkg1" DataSetColumn="GSnfkg1" />
+              <Mapping SourceColumn="ComAmt" DataSetColumn="ComAmt" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="overall" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="overall" msprop:Generator_DataSetName="overall">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="pcode" msprop:Generator_ColumnVarNameInTable="columnpcode" msprop:Generator_ColumnPropNameInRow="pcode" msprop:Generator_ColumnPropNameInTable="pcodeColumn" msprop:Generator_UserColumnName="pcode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Smltr1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSmltr1" msprop:Generator_ColumnPropNameInRow="Smltr1" msprop:Generator_ColumnPropNameInTable="Smltr1Column" msprop:Generator_UserColumnName="Smltr1" type="xs:double" minOccurs="0" />
+              <xs:element name="Smkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSmkg1" msprop:Generator_ColumnPropNameInRow="Smkg1" msprop:Generator_ColumnPropNameInTable="Smkg1Column" msprop:Generator_UserColumnName="Smkg1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AvgFat1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgFat1" msprop:Generator_ColumnPropNameInRow="AvgFat1" msprop:Generator_ColumnPropNameInTable="AvgFat1Column" msprop:Generator_UserColumnName="AvgFat1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AvgSnf1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgSnf1" msprop:Generator_ColumnPropNameInRow="AvgSnf1" msprop:Generator_ColumnPropNameInTable="AvgSnf1Column" msprop:Generator_UserColumnName="AvgSnf1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AvgRate1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgRate1" msprop:Generator_ColumnPropNameInRow="AvgRate1" msprop:Generator_ColumnPropNameInTable="AvgRate1Column" msprop:Generator_UserColumnName="AvgRate1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Avgclr1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgclr1" msprop:Generator_ColumnPropNameInRow="Avgclr1" msprop:Generator_ColumnPropNameInTable="Avgclr1Column" msprop:Generator_UserColumnName="Avgclr1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Scans1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnScans1" msprop:Generator_ColumnPropNameInRow="Scans1" msprop:Generator_ColumnPropNameInTable="Scans1Column" msprop:Generator_UserColumnName="Scans1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SAmt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSAmt1" msprop:Generator_ColumnPropNameInRow="SAmt1" msprop:Generator_ColumnPropNameInTable="SAmt1Column" msprop:Generator_UserColumnName="SAmt1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Avgcrate1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgcrate1" msprop:Generator_ColumnPropNameInRow="Avgcrate1" msprop:Generator_ColumnPropNameInTable="Avgcrate1Column" msprop:Generator_UserColumnName="Avgcrate1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Sfatkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSfatkg1" msprop:Generator_ColumnPropNameInRow="Sfatkg1" msprop:Generator_ColumnPropNameInTable="Sfatkg1Column" msprop:Generator_UserColumnName="Sfatkg1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Ssnfkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSsnfkg1" msprop:Generator_ColumnPropNameInRow="Ssnfkg1" msprop:Generator_ColumnPropNameInTable="Ssnfkg1Column" msprop:Generator_UserColumnName="Ssnfkg1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Billadv1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBilladv1" msprop:Generator_ColumnPropNameInRow="Billadv1" msprop:Generator_ColumnPropNameInTable="Billadv1Column" msprop:Generator_UserColumnName="Billadv1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Ai1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAi1" msprop:Generator_ColumnPropNameInRow="Ai1" msprop:Generator_ColumnPropNameInTable="Ai1Column" msprop:Generator_UserColumnName="Ai1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="feed1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnfeed1" msprop:Generator_ColumnPropNameInRow="feed1" msprop:Generator_ColumnPropNameInTable="feed1Column" msprop:Generator_UserColumnName="feed1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="can1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncan1" msprop:Generator_ColumnPropNameInRow="can1" msprop:Generator_ColumnPropNameInTable="can1Column" msprop:Generator_UserColumnName="can1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="recovery1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnrecovery1" msprop:Generator_ColumnPropNameInRow="recovery1" msprop:Generator_ColumnPropNameInTable="recovery1Column" msprop:Generator_UserColumnName="recovery1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="others1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnothers1" msprop:Generator_ColumnPropNameInRow="others1" msprop:Generator_ColumnPropNameInTable="others1Column" msprop:Generator_UserColumnName="others1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="instamt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columninstamt1" msprop:Generator_ColumnPropNameInRow="instamt1" msprop:Generator_ColumnPropNameInTable="instamt1Column" msprop:Generator_UserColumnName="instamt1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Netpay" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNetpay" msprop:Generator_ColumnPropNameInRow="Netpay" msprop:Generator_ColumnPropNameInTable="NetpayColumn" msprop:Generator_UserColumnName="Netpay" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tppcode" msprop:Generator_ColumnVarNameInTable="columntppcode" msprop:Generator_ColumnPropNameInRow="tppcode" msprop:Generator_ColumnPropNameInTable="tppcodeColumn" msprop:Generator_UserColumnName="tppcode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SPlantTransAmount1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSPlantTransAmount1" msprop:Generator_ColumnPropNameInRow="SPlantTransAmount1" msprop:Generator_ColumnPropNameInTable="SPlantTransAmount1Column" msprop:Generator_UserColumnName="SPlantTransAmount1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GMilkkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGMilkkg1" msprop:Generator_ColumnPropNameInRow="GMilkkg1" msprop:Generator_ColumnPropNameInTable="GMilkkg1Column" msprop:Generator_UserColumnName="GMilkkg1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GFatkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGFatkg1" msprop:Generator_ColumnPropNameInRow="GFatkg1" msprop:Generator_ColumnPropNameInTable="GFatkg1Column" msprop:Generator_UserColumnName="GFatkg1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSnfkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSnfkg1" msprop:Generator_ColumnPropNameInRow="GSnfkg1" msprop:Generator_ColumnPropNameInTable="GSnfkg1Column" msprop:Generator_UserColumnName="GSnfkg1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ComAmt" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

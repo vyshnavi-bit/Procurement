@@ -1,0 +1,358 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+public partial class LoanReceiptReport : System.Web.UI.Page
+{
+    public static int roleid;
+    public string ccode;
+    public string pcode;
+    public string managmobNo;
+    public string pname;
+    public string cname;
+    DateTime dtm = new DateTime();
+    SqlConnection con = new SqlConnection();
+    DbHelper DB = new DbHelper();
+    BLLuser Bllusers = new BLLuser();
+    DataTable dt = new DataTable();
+    int i = 0;
+    int j = 0;
+    int K = 0;
+    int L = 0;
+    int M = 0;
+    int N = 0;
+    double SUMOPPRO = 0;
+    double SUMOPPRO1 = 0;
+    double ASSIGNVALUE;
+    int JK;
+    int I;
+    int JHG = 0;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            if ((Session["Name"] != null) && (Session["pass"] != null))
+            {
+                dtm = System.DateTime.Now;
+                ccode = Session["Company_code"].ToString();
+                pcode = Session["Plant_Code"].ToString();
+                //txt_FromDate.Text = dtm.ToString("dd/MM/yyyy");
+                Panel1.Visible = false;
+
+
+                dtm = System.DateTime.Now;
+                txt_FromDate.Text = dtm.ToString("dd/MM/yyyy");
+                txt_ToDate.Text = dtm.ToString("dd/MM/yyyy");
+
+
+                if (roleid < 3)
+                {
+                    loadsingleplant();
+                }
+                if ((roleid >= 3) && (roleid != 9))
+                {
+                    LoadPlantcode();
+                }
+                if (roleid == 9)
+                {
+
+                    Session["Plant_Code"] = "170".ToString();
+                    pcode = "170";
+                    loadspecialsingleplant();
+                }
+
+
+               
+                DateTime txtMyDate = DateTime.ParseExact(txt_FromDate.Text, "dd/MM/yyyy", null);
+                //DateTime dttt = DateTime.Parse(txt_FromDate.Text);
+
+                //DateTime cutime = DateTime.Parse(gettime);
+                //string sff = dttt.AddDays(1).ToString();
+
+                //GETDATE = txt_FromDate.Text;
+
+                DateTime date = txtMyDate.AddDays(-1);
+
+                string datee = date.ToString("MM/dd/yyyy");
+                // DateTime DDD = DateTime.ParseExact(date);
+               // Button2.Visible = false;
+            }
+            else
+            {
+
+
+
+            }
+
+        }
+
+
+        else
+        {
+            ccode = Session["Company_code"].ToString();
+            //  LoadPlantcode();
+            pcode = ddl_Plantcode.SelectedItem.Value;
+
+        }
+    }
+    private void loadsingleplant()
+    {
+        try
+        {
+            SqlDataReader dr = null;
+            ddl_Plantcode.Items.Clear();
+            ddl_Plantname.Items.Clear();
+            dr = Bllusers.LoadSinglePlantcode(ccode, pcode);
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    ddl_Plantcode.Items.Add(dr["Plant_Code"].ToString());
+                    ddl_Plantname.Items.Add(dr["Plant_Code"].ToString() + "_" + dr["Plant_Name"].ToString());
+
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            WebMsgBox.Show(ex.ToString());
+        }
+    }
+    private void loadspecialsingleplant()//form load method
+    {
+        try
+        {
+            SqlDataReader dr = null;
+            ddl_Plantcode.Items.Clear();
+            ddl_Plantname.Items.Clear();
+            dr = Bllusers.LoadSinglePlantcode(ccode, "170");
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    ddl_Plantcode.Items.Add(dr["Plant_Code"].ToString());
+                    ddl_Plantname.Items.Add(dr["Plant_Code"].ToString() + "_" + dr["Plant_Name"].ToString());
+
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            WebMsgBox.Show(ex.ToString());
+        }
+    }
+
+
+
+    private void LoadPlantcode()
+    {
+        try
+        {
+            SqlDataReader dr = null;
+            ddl_Plantcode.Items.Clear();
+            ddl_Plantname.Items.Clear();
+            dr = Bllusers.LoadPlantcode(ccode.ToString());
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    ddl_Plantcode.Items.Add(dr["Plant_Code"].ToString());
+                    ddl_Plantname.Items.Add(dr["Plant_Code"].ToString() + "_" + dr["Plant_Name"].ToString());
+
+
+
+                }
+            }
+            else
+            {
+                ddl_Plantcode.Items.Add("--Select PlantName--");
+                ddl_Plantname.Items.Add("--Select Plantcode--");
+            }
+        }
+        catch (Exception EE)
+        {
+            string message;
+            message = EE.ToString();
+            string script = "window.onload = function(){ alert('";
+            script += message;
+            script += "')};";
+            ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+
+
+        }
+    }
+    protected void ddl_Plantname_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ddl_Plantcode.SelectedIndex = ddl_Plantname.SelectedIndex;
+        pcode = ddl_Plantcode.SelectedItem.Value;
+    }
+    protected void Button5_Click(object sender, EventArgs e)
+    {
+        try
+        {
+
+            getgrid();
+        }
+        catch
+        {
+
+        }
+    }
+
+    public void getgrid()
+    {
+
+        DateTime dt1 = new DateTime();
+        DateTime dt2 = new DateTime();
+        dt1 = DateTime.ParseExact(txt_FromDate.Text, "dd/MM/yyyy", null);
+        dt2 = DateTime.ParseExact(txt_ToDate.Text, "dd/MM/yyyy", null);
+
+        string d1 = dt1.ToString("MM/dd/yyyy");
+        string d2 = dt2.ToString("MM/dd/yyyy");
+        string str = "";
+        con = DB.GetConnection();
+       
+            if(rdobtn.SelectedItem.Value == "1" )
+            {
+
+                 str = "select agentid,loan_Id,convert(varchar,loandate,103) as LoanDate,CONVERT(DECIMAL(18,2),loanamount) as LoanIssuedAmount,CONVERT(decimal(18,2),LoanDue_Balance) as LoanBalance,convert(varchar,LoanRecovery_Date,103) as RecoveryDate,CONVERT(decimal(18,2),LoanDueRecovery_Amount) as  RecoveryAmount,CONVERT(decimal(18,2),balance) as NetBalance  from(Select    Plant_code,Route_Id,Agent_Id as agentid,LoanRecovery_Date,loan_Id as loanid,LoanDue_Balance,LoanDueRecovery_Amount,LoanBalance   from LoanDue_Recovery  where Plant_code='" + pcode + "') as new  left join (select loan_Id,agent_Id,loanamount,loandate,balance   from LoanDetails where Plant_code='" + pcode + "') as ld on new.agentid=ld.agent_Id and new.loanid=ld.loan_Id    ORDER BY  LoanRecovery_Date  asc";
+
+            }
+
+             if(rdobtn.SelectedItem.Value == "2" )
+            {
+
+                str = "Select    Agent_Id as agentid,convert(varchar,LoanRecovery_Date,103) as RecoveryDate,loan_Id as loanid,CONVERT(decimal(18,2),LoanDue_Balance) as  DueBalance ,CONVERT(decimal(18,2),LoanDueRecovery_Amount)as RecoveryAmount,CONVERT(decimal(18,2),LoanBalance) as Loanbalalce,Remarks   from LoanDue_Recovery  where Plant_code='"+pcode+"' order by  LoanRecovery_Date DESC";
+
+            }
+        
+        
+
+       
+        SqlCommand cmd = new SqlCommand(str, con);
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        da.Fill(dt);
+       
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+   }
+
+    protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            if (rdobtn.SelectedItem.Value == "1")
+            {
+                if (e.Row.RowType == DataControlRowType.Header)
+                {
+
+
+                    GridViewRow HeaderRow = new GridViewRow(1, 0, DataControlRowType.Header, DataControlRowState.Insert);
+
+                    TableCell HeaderCell2 = new TableCell();
+                    HeaderCell2.Text = ddl_Plantname.Text + ": Receipt Details";
+                    HeaderCell2.ColumnSpan = 10;
+                    HeaderCell2.HorizontalAlign = HorizontalAlign.Center;
+                    HeaderRow.Cells.Add(HeaderCell2);
+
+
+
+                    GridView1.Controls[0].Controls.AddAt(0, HeaderRow);
+
+
+                }
+
+            }
+
+            if (rdobtn.SelectedItem.Value == "2")
+            {
+
+                if (e.Row.RowType == DataControlRowType.Header)
+                {
+
+
+
+                    GridViewRow HeaderRow = new GridViewRow(1, 0, DataControlRowType.Header, DataControlRowState.Insert);
+
+                    TableCell HeaderCell2 = new TableCell();
+                    HeaderCell2.Text = ddl_Plantname.Text + ": Receipt Entry Details ";
+                    HeaderCell2.ColumnSpan = 8;
+                    HeaderCell2.HorizontalAlign = HorizontalAlign.Center;
+                    HeaderRow.Cells.Add(HeaderCell2);
+
+
+
+                    GridView1.Controls[0].Controls.AddAt(0, HeaderRow);
+
+                }
+            }
+        }
+        catch
+        {
+
+
+
+        }
+    }
+    protected void Button6_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                if (rdobtn.SelectedItem.Value == "1")
+                {
+                    e.Row.Cells[1].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[2].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[3].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[5].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[6].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[7].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[8].HorizontalAlign = HorizontalAlign.Right;
+                    //  e.Row.Cells[9].HorizontalAlign = HorizontalAlign.Right;
+                }
+                else
+                {
+                    e.Row.Cells[1].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[2].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[3].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[5].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[6].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[7].HorizontalAlign = HorizontalAlign.Left;
+                   
+
+
+                }
+                //e.Row.Cells[10].HorizontalAlign = HorizontalAlign.Right;
+
+
+
+            }
+
+        }
+        catch
+        {
+
+
+        }
+    }
+}

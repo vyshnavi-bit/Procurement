@@ -1,0 +1,60 @@
+﻿/*             ------------------Home---------------- */
+   .homep
+{
+	font-family:   Verdana,Arial,Helvetica,sans-serif;
+    font-size: 9pt;
+    font-weight: normal;
+    font-style: normal;
+    text-align:justify;
+    word-spacing:5px;
+    padding:3px 25px;
+    color: Black;
+    
+}
+.firstline
+{
+	font-family:   Verdana,Arial,Helvetica,sans-serif;
+    font-size: 9pt;
+    font-weight: normal;
+    font-style: normal;
+    text-align:justify;
+    word-spacing:5px;
+    padding:3px 25px;
+    color: Black;
+	text-indent: 50px;
+}
+.header
+{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+.ula
+{
+	list-style-type:circle; color:Black;
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size: 9pt;
+    font-weight: normal;
+    font-style: normal;
+    text-align:justify;
+    word-spacing:5px;
+    color: Black;
+   
+}
+.subheading 
+{
+    color: #81a93e;
+    
+    font-family:"Lucida Sans", sans-serif;
+	font-weight:normal;
+	font-style:normal;
+    font-size: 12pt;
+    font-weight:bold;
+    
+   
+}
+.list
+{
+list-style-position:inside;
+}

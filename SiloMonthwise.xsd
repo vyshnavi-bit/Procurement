@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SiloMonthwise" targetNamespace="http://tempuri.org/SiloMonthwise.xsd" xmlns:mstns="http://tempuri.org/SiloMonthwise.xsd" xmlns="http://tempuri.org/SiloMonthwise.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AMPSConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AMPSConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AMPSConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText> select * from( SELECT  t1.pcode,t1.pr_MILKKG, t1.pr_FAT,t1.pr_SNF,t1.pr_FATKG,t1.pr_SNFKG,t1.pr_RATE,t1.pr_AMOUNT, t2.dp_MILKKG, t2.dp_FAT,t2.dp_SNF,t2.dp_FATKG,t2.dp_SNFKG,t2.dp_RATE,t2.dp_AMOUNT,t3.op_MILKKG,t3.op_FAT,t3.op_SNF,t3.op_FATKG,t3.op_SNFKG,t3.op_RATE,t3.op_AMOUNT,c.cl_MILKKG,c.cl_FAT,c.cl_SNF,c.cl_FATKG,c.cl_SNFKG,c.cl_RATE,c.cl_AMOUNT FROM ( SELECT Sum(Milk_kg) as pr_MILKKG,Avg(fat) as pr_FAT,AVG(snf) as pr_SNF,sum(fat_kg)as pr_FATKG,sum(snf_kg) as pr_SNFKG,sum(rate) as pr_RATE,sum(AMOUNT) as pr_AMOUNT,Plant_Code as pcode FROM Procurement group by Plant_Code)t1,(SELECT Sum(Milkkg) as dp_MILKKG,Avg(fat) as dp_FAT,AVG(snf) as dp_SNF,SUM(Fat_Kg) as dp_FATKG,sum(Snf_Kg) as dp_SNFKG, sum(RATE) as dp_RATE,sum(Amount) as dp_AMOUNT FROM DespatchNew )t2,(SELECT Sum(Milkkg) as op_MILKKG,Avg(fat) as op_FAT,AVG(snf) as op_SNF,SUM(Fat_Kg) as op_FATKG,sum(Snf_Kg) as op_SNFKG, sum(RATE) as op_RATE,sum(Amount) as op_AMOUNT FROM Stock_openingmilk )t3,(SELECT Sum(Milkkg) as cl_MILKKG,Avg(fat) as cl_FAT,AVG(snf) as cl_SNF,SUM(Fat_Kg) as cl_FATKG,sum(Snf_Kg) as cl_SNFKG, sum(RATE) as cl_RATE,sum(Amount) as cl_AMOUNT FROM Stock_Milk ) C) as ak   left join   (  SELECT  convert(decimal(18,2),(SUM(amount +comrate+cartageamount +splbonusamount)/SUM(milk_ltr))) as Rate,Plant_Code   FROM  Procurement      group by Plant_Code) as nn  on   ak.pcode=nn.Plant_Code
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="pcode" DataSetColumn="pcode" />
+              <Mapping SourceColumn="pr_MILKKG" DataSetColumn="pr_MILKKG" />
+              <Mapping SourceColumn="pr_FAT" DataSetColumn="pr_FAT" />
+              <Mapping SourceColumn="pr_SNF" DataSetColumn="pr_SNF" />
+              <Mapping SourceColumn="pr_FATKG" DataSetColumn="pr_FATKG" />
+              <Mapping SourceColumn="pr_SNFKG" DataSetColumn="pr_SNFKG" />
+              <Mapping SourceColumn="pr_RATE" DataSetColumn="pr_RATE" />
+              <Mapping SourceColumn="pr_AMOUNT" DataSetColumn="pr_AMOUNT" />
+              <Mapping SourceColumn="dp_MILKKG" DataSetColumn="dp_MILKKG" />
+              <Mapping SourceColumn="dp_FAT" DataSetColumn="dp_FAT" />
+              <Mapping SourceColumn="dp_SNF" DataSetColumn="dp_SNF" />
+              <Mapping SourceColumn="dp_FATKG" DataSetColumn="dp_FATKG" />
+              <Mapping SourceColumn="dp_SNFKG" DataSetColumn="dp_SNFKG" />
+              <Mapping SourceColumn="dp_RATE" DataSetColumn="dp_RATE" />
+              <Mapping SourceColumn="dp_AMOUNT" DataSetColumn="dp_AMOUNT" />
+              <Mapping SourceColumn="op_MILKKG" DataSetColumn="op_MILKKG" />
+              <Mapping SourceColumn="op_FAT" DataSetColumn="op_FAT" />
+              <Mapping SourceColumn="op_SNF" DataSetColumn="op_SNF" />
+              <Mapping SourceColumn="op_FATKG" DataSetColumn="op_FATKG" />
+              <Mapping SourceColumn="op_SNFKG" DataSetColumn="op_SNFKG" />
+              <Mapping SourceColumn="op_RATE" DataSetColumn="op_RATE" />
+              <Mapping SourceColumn="op_AMOUNT" DataSetColumn="op_AMOUNT" />
+              <Mapping SourceColumn="cl_MILKKG" DataSetColumn="cl_MILKKG" />
+              <Mapping SourceColumn="cl_FAT" DataSetColumn="cl_FAT" />
+              <Mapping SourceColumn="cl_SNF" DataSetColumn="cl_SNF" />
+              <Mapping SourceColumn="cl_FATKG" DataSetColumn="cl_FATKG" />
+              <Mapping SourceColumn="cl_SNFKG" DataSetColumn="cl_SNFKG" />
+              <Mapping SourceColumn="cl_RATE" DataSetColumn="cl_RATE" />
+              <Mapping SourceColumn="cl_AMOUNT" DataSetColumn="cl_AMOUNT" />
+              <Mapping SourceColumn="Rate" DataSetColumn="Rate" />
+              <Mapping SourceColumn="Plant_Code" DataSetColumn="Plant_Code" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SiloMonthwise" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="SiloMonthwise" msprop:Generator_DataSetName="SiloMonthwise">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="pcode" msprop:Generator_ColumnVarNameInTable="columnpcode" msprop:Generator_ColumnPropNameInRow="pcode" msprop:Generator_ColumnPropNameInTable="pcodeColumn" msprop:Generator_UserColumnName="pcode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pr_MILKKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpr_MILKKG" msprop:Generator_ColumnPropNameInRow="pr_MILKKG" msprop:Generator_ColumnPropNameInTable="pr_MILKKGColumn" msprop:Generator_UserColumnName="pr_MILKKG" type="xs:double" minOccurs="0" />
+              <xs:element name="pr_FAT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpr_FAT" msprop:Generator_ColumnPropNameInRow="pr_FAT" msprop:Generator_ColumnPropNameInTable="pr_FATColumn" msprop:Generator_UserColumnName="pr_FAT" type="xs:double" minOccurs="0" />
+              <xs:element name="pr_SNF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpr_SNF" msprop:Generator_ColumnPropNameInRow="pr_SNF" msprop:Generator_ColumnPropNameInTable="pr_SNFColumn" msprop:Generator_UserColumnName="pr_SNF" type="xs:double" minOccurs="0" />
+              <xs:element name="pr_FATKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpr_FATKG" msprop:Generator_ColumnPropNameInRow="pr_FATKG" msprop:Generator_ColumnPropNameInTable="pr_FATKGColumn" msprop:Generator_UserColumnName="pr_FATKG" type="xs:double" minOccurs="0" />
+              <xs:element name="pr_SNFKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpr_SNFKG" msprop:Generator_ColumnPropNameInRow="pr_SNFKG" msprop:Generator_ColumnPropNameInTable="pr_SNFKGColumn" msprop:Generator_UserColumnName="pr_SNFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="pr_RATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpr_RATE" msprop:Generator_ColumnPropNameInRow="pr_RATE" msprop:Generator_ColumnPropNameInTable="pr_RATEColumn" msprop:Generator_UserColumnName="pr_RATE" type="xs:double" minOccurs="0" />
+              <xs:element name="pr_AMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpr_AMOUNT" msprop:Generator_ColumnPropNameInRow="pr_AMOUNT" msprop:Generator_ColumnPropNameInTable="pr_AMOUNTColumn" msprop:Generator_UserColumnName="pr_AMOUNT" type="xs:double" minOccurs="0" />
+              <xs:element name="dp_MILKKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndp_MILKKG" msprop:Generator_ColumnPropNameInRow="dp_MILKKG" msprop:Generator_ColumnPropNameInTable="dp_MILKKGColumn" msprop:Generator_UserColumnName="dp_MILKKG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dp_FAT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndp_FAT" msprop:Generator_ColumnPropNameInRow="dp_FAT" msprop:Generator_ColumnPropNameInTable="dp_FATColumn" msprop:Generator_UserColumnName="dp_FAT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dp_SNF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndp_SNF" msprop:Generator_ColumnPropNameInRow="dp_SNF" msprop:Generator_ColumnPropNameInTable="dp_SNFColumn" msprop:Generator_UserColumnName="dp_SNF" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dp_FATKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndp_FATKG" msprop:Generator_ColumnPropNameInRow="dp_FATKG" msprop:Generator_ColumnPropNameInTable="dp_FATKGColumn" msprop:Generator_UserColumnName="dp_FATKG" type="xs:double" minOccurs="0" />
+              <xs:element name="dp_SNFKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndp_SNFKG" msprop:Generator_ColumnPropNameInRow="dp_SNFKG" msprop:Generator_ColumnPropNameInTable="dp_SNFKGColumn" msprop:Generator_UserColumnName="dp_SNFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="dp_RATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndp_RATE" msprop:Generator_ColumnPropNameInRow="dp_RATE" msprop:Generator_ColumnPropNameInTable="dp_RATEColumn" msprop:Generator_UserColumnName="dp_RATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dp_AMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndp_AMOUNT" msprop:Generator_ColumnPropNameInRow="dp_AMOUNT" msprop:Generator_ColumnPropNameInTable="dp_AMOUNTColumn" msprop:Generator_UserColumnName="dp_AMOUNT" type="xs:double" minOccurs="0" />
+              <xs:element name="op_MILKKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnop_MILKKG" msprop:Generator_ColumnPropNameInRow="op_MILKKG" msprop:Generator_ColumnPropNameInTable="op_MILKKGColumn" msprop:Generator_UserColumnName="op_MILKKG" type="xs:double" minOccurs="0" />
+              <xs:element name="op_FAT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnop_FAT" msprop:Generator_ColumnPropNameInRow="op_FAT" msprop:Generator_ColumnPropNameInTable="op_FATColumn" msprop:Generator_UserColumnName="op_FAT" type="xs:double" minOccurs="0" />
+              <xs:element name="op_SNF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnop_SNF" msprop:Generator_ColumnPropNameInRow="op_SNF" msprop:Generator_ColumnPropNameInTable="op_SNFColumn" msprop:Generator_UserColumnName="op_SNF" type="xs:double" minOccurs="0" />
+              <xs:element name="op_FATKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnop_FATKG" msprop:Generator_ColumnPropNameInRow="op_FATKG" msprop:Generator_ColumnPropNameInTable="op_FATKGColumn" msprop:Generator_UserColumnName="op_FATKG" type="xs:double" minOccurs="0" />
+              <xs:element name="op_SNFKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnop_SNFKG" msprop:Generator_ColumnPropNameInRow="op_SNFKG" msprop:Generator_ColumnPropNameInTable="op_SNFKGColumn" msprop:Generator_UserColumnName="op_SNFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="op_RATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnop_RATE" msprop:Generator_ColumnPropNameInRow="op_RATE" msprop:Generator_ColumnPropNameInTable="op_RATEColumn" msprop:Generator_UserColumnName="op_RATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="op_AMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnop_AMOUNT" msprop:Generator_ColumnPropNameInRow="op_AMOUNT" msprop:Generator_ColumnPropNameInTable="op_AMOUNTColumn" msprop:Generator_UserColumnName="op_AMOUNT" type="xs:double" minOccurs="0" />
+              <xs:element name="cl_MILKKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncl_MILKKG" msprop:Generator_ColumnPropNameInRow="cl_MILKKG" msprop:Generator_ColumnPropNameInTable="cl_MILKKGColumn" msprop:Generator_UserColumnName="cl_MILKKG" type="xs:double" minOccurs="0" />
+              <xs:element name="cl_FAT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncl_FAT" msprop:Generator_ColumnPropNameInRow="cl_FAT" msprop:Generator_ColumnPropNameInTable="cl_FATColumn" msprop:Generator_UserColumnName="cl_FAT" type="xs:double" minOccurs="0" />
+              <xs:element name="cl_SNF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncl_SNF" msprop:Generator_ColumnPropNameInRow="cl_SNF" msprop:Generator_ColumnPropNameInTable="cl_SNFColumn" msprop:Generator_UserColumnName="cl_SNF" type="xs:double" minOccurs="0" />
+              <xs:element name="cl_FATKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncl_FATKG" msprop:Generator_ColumnPropNameInRow="cl_FATKG" msprop:Generator_ColumnPropNameInTable="cl_FATKGColumn" msprop:Generator_UserColumnName="cl_FATKG" type="xs:double" minOccurs="0" />
+              <xs:element name="cl_SNFKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncl_SNFKG" msprop:Generator_ColumnPropNameInRow="cl_SNFKG" msprop:Generator_ColumnPropNameInTable="cl_SNFKGColumn" msprop:Generator_UserColumnName="cl_SNFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="cl_RATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncl_RATE" msprop:Generator_ColumnPropNameInRow="cl_RATE" msprop:Generator_ColumnPropNameInTable="cl_RATEColumn" msprop:Generator_UserColumnName="cl_RATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cl_AMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncl_AMOUNT" msprop:Generator_ColumnPropNameInRow="cl_AMOUNT" msprop:Generator_ColumnPropNameInTable="cl_AMOUNTColumn" msprop:Generator_UserColumnName="cl_AMOUNT" type="xs:double" minOccurs="0" />
+              <xs:element name="Rate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRate" msprop:Generator_ColumnPropNameInRow="Rate" msprop:Generator_ColumnPropNameInTable="RateColumn" msprop:Generator_UserColumnName="Rate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Plant_Code" msprop:Generator_ColumnVarNameInTable="columnPlant_Code" msprop:Generator_ColumnPropNameInRow="Plant_Code" msprop:Generator_ColumnPropNameInTable="Plant_CodeColumn" msprop:Generator_UserColumnName="Plant_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

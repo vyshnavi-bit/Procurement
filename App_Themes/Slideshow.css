@@ -1,0 +1,32 @@
+﻿/* styling for the slideshow on the homepage */
+ul.slideshow 
+{
+  width: 706px;
+  height: 316px;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;}
+  
+ul.slideshow li {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  right: 0;
+  list-style: none;}
+ 
+ul.slideshow li.show {
+  z-index: 500;}
+ 
+ul img 
+{
+	
+  border: none;
+  }
+ 
+
+
+ 
+
+

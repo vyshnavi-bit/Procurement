@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="REPORTSCOMPARE" targetNamespace="http://tempuri.org/REPORTSCOMPARE.xsd" xmlns:mstns="http://tempuri.org/REPORTSCOMPARE.xsd" xmlns="http://tempuri.org/REPORTSCOMPARE.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AMPSConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AMPSConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AMPSConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BillperiodcomparisonTableAdapter" GeneratorDataComponentClassName="BillperiodcomparisonTableAdapter" Name="Billperiodcomparison" UserDataComponentName="BillperiodcomparisonTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT   *    FROM (  select * from ( SELECT * FROM (SELECT  G1.ARid,CAST(SUM(G1.Smkg)  AS DECIMAL(18,2)) AS GSmkg,CAST(SUM(G1.Smltr)  AS DECIMAL(18,2)) AS GSmltr,CAST(AVG(G1.AvgFat) AS DECIMAL(18,1)) AS GAvgFat,CAST(AVG(G1.AvgSnf) AS DECIMAL(18,1)) AS GAvgSnf,CAST(AVG(G1.AvgRate) AS DECIMAL(18,1)) AS GAvgRate,CAST(AVG(G1.Avgclr) AS DECIMAL(18,1)) AS GAvgclr,CAST(SUM(G1.Scans) AS DECIMAL(18,2)) AS GScans,CAST(SUM(G1.SAmt) AS DECIMAL(18,2)) AS GSAmt,CAST(SUM(G1.ScommAmt) AS DECIMAL(18,2)) AS GScommAmt,isnull((CAST(SUM(G1.Scatamt) AS DECIMAL(18,2))),0) AS GScatamt,CAST(SUM(G1.Ssplbonamt) AS DECIMAL(18,2)) AS GSsplbonamt,CAST(AVG(G1.AvgcRate) AS DECIMAL(18,2)) AS GAvgcRate,CAST(SUM(G1.Sfatkg) AS DECIMAL(18,2)) AS GSfatkg,CAST(SUM(G1.Ssnfkg) AS DECIMAL(18,2)) AS GSsnfkg,CAST(SUM(G1.SBilladv) AS DECIMAL(18,2)) AS GSBilladv,CAST(SUM(G1.SAiamt) AS DECIMAL(18,2)) AS GSAiamt,CAST(SUM(G1.SFeedamt) AS DECIMAL(18,2)) AS GSFeedamt,CAST(SUM(G1.Scanamt) AS DECIMAL(18,2)) AS GScanamt,CAST(SUM(G1.SRecoveryamt) AS DECIMAL(18,2)) AS GSRecoveryamt,CAST(SUM(G1.Sothers) AS DECIMAL(18,2)) AS GSothers,isnull((CAST(SUM(G1.Sinstamt) AS DECIMAL(18,2))),0) AS GSinstamt,CAST(SUM(G1.Sbalance) AS DECIMAL(18,2)) AS GSbalance,CAST(SUM(G1.SLoanAmount) AS DECIMAL(18,2)) AS GSLoanAmount,CAST(SUM(G1.SNetAmt) AS DECIMAL(18,2)) AS GSNetAmt,CAST(SUM(G1.SRound)  AS DECIMAL(18,2)) AS GSround FROM (SELECT cart.ARid,ISNULL(prdelo.Smkg,0) AS Smkg,ISNULL(prdelo.Smltr,0) AS Smltr,ISNULL(prdelo.AvgFat ,0) AS AvgFat,ISNULL(prdelo.AvgSnf,0) AS AvgSnf,ISNULL(prdelo.AvgRate,0) AS AvgRate,ISNULL(prdelo.Avgclr,0) AS Avgclr,ISNULL(prdelo.Scans,0) AS Scans,ISNULL(prdelo.SAmt,0) AS SAmt,ISNULL(prdelo.ScommAmt,0) AS ScommAmt,ISNULL(CAST((ISNULL(prdelo.Smltr,0) * ISNULL(cart.CarAmt,0)) AS DECIMAL(18,2)),0) AS Scatamt, ISNULL(prdelo.Ssplbonamt,0) AS Ssplbonamt,ISNULL(prdelo.AvgcRate,0) AS AvgcRate,ISNULL(prdelo.Sfatkg,0) AS Sfatkg,ISNULL(prdelo.Ssnfkg,0) AS Ssnfkg,ISNULL(prdelo.Billadv,0) AS SBilladv,ISNULL(prdelo.Ai,0) AS SAiamt,ISNULL(prdelo.Feed,0) AS SFeedamt,ISNULL(prdelo.Can,0) AS Scanamt,ISNULL(prdelo.Recovery,0) AS SRecoveryamt,ISNULL(prdelo.others,0) AS Sothers,ISNULL(prdelo.instamt,0) AS Sinstamt,ISNULL(prdelo.balance,0) AS Sbalance,ISNULL(prdelo.LoanAmount,0) AS SLoanAmount,FLOOR ((ISNULL(prdelo.SAmt,0) + (ISNULL(prdelo.Smltr,0) * ISNULL(cart.CarAmt,0)) + ISNULL(prdelo.Ssplbonamt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0)))  AS SNetAmt,( ( (ISNULL(prdelo.SAmt,0) + (ISNULL(prdelo.Smltr,0) * ISNULL(cart.CarAmt,0)) + ISNULL(prdelo.Ssplbonamt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0)) )-( FLOOR( (ISNULL(prdelo.SAmt,0) + (ISNULL(prdelo.Smltr,0) * ISNULL(cart.CarAmt,0)) + ISNULL(prdelo.Ssplbonamt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))) )  ) AS SRound FROM (SELECT * FROM (SELECT * FROM (SELECT agent_id AS SproAid,CAST(SUM(Milk_kg) AS DECIMAL(18,2)) AS Smkg,CAST(SUM(Milk_ltr) AS DECIMAL(18,2)) AS Smltr,CAST(AVG(FAT) AS DECIMAL(18,2)) AS AvgFat,CAST(AVG(SNF) AS DECIMAL(18,2)) AS AvgSnf,CAST(AVG(Rate) AS DECIMAL(18,2)) AS AvgRate,CAST(AVG(Clr) AS DECIMAL(18,2)) AS Avgclr,CAST(SUM(NoofCans) AS DECIMAL(18,2)) AS Scans,CAST(SUM(Amount) AS DECIMAL(18,2)) AS SAmt,CAST(SUM(Comrate) AS DECIMAL(18,2)) AS ScommAmt,CAST(SUM(CartageAmount) AS DECIMAL(18,2)) AS Scatamt,CAST(SUM(SplBonusAmount) AS DECIMAL(18,2)) AS Ssplbonamt,CAST(AVG(ComRate) AS DECIMAL(18,2)) AS Avgcrate,CAST(SUM(fat_kg) AS DECIMAL(18,2)) AS Sfatkg,CAST(SUM(snf_kg) AS DECIMAL(18,2)) AS SSnfkg  FROM Procurement  GROUP BY agent_id ) AS Spro LEFT JOIN (SELECT  Agent_id AS DAid ,(CAST((Billadvance) AS DECIMAL(18,2))) AS Billadv,(CAST((Ai) AS DECIMAL(18,2))) AS Ai,(CAST((Feed) AS DECIMAL(18,2))) AS Feed,(CAST((can) AS DECIMAL(18,2))) AS can,(CAST((Recovery) AS DECIMAL(18,2))) AS Recovery,(CAST((others) AS DECIMAL(18,2))) AS others FROM Deduction_Details ) AS dedu ON Spro.SproAid=dedu.DAid) AS proded LEFT JOIN (SELECT Agent_id AS LoAid,CAST(SUM(inst_amount) AS DECIMAL(18,2)) AS instamt,CAST(SUM(balance) AS DECIMAL(18,2)) AS balance,CAST(SUM(LoanAmount) AS DECIMAL(18,2)) AS LoanAmount FROM LoanDetails  GROUP BY Agent_id) AS Lon ON proded.SproAid=Lon.LoAid) AS prdelo INNER JOIN (SELECT Agent_Id AS cartAid,(CAST((Cartage_Amt) AS DECIMAL(18,2)))AS CarAmt,Agent_Name,Bank_Id,Payment_mode,Agent_AccountNo,Route_id AS ARid  FROM  Agent_Master ) AS cart ON prdelo.SproAid=cart.cartAid) AS G1 GROUP BY  G1.ARid) AS f1 LEFT JOIN (SELECT Route_ID as rrid,Route_Name AS Rname FROM Route_Master ) AS rr1 ON f1.ARid=rr1.rrid ) as table1 left join( select (((DATEDIFF(d,'5-11-2015','5-20-2015')+ 1)*2)) as diffrentdate ,sum(SampleId) as totsample,Plant_Code,Route_id   from Procurement  group by Plant_Code,Route_id ) as  table2 on table1.rrid=table2.Route_id  ) AS present left join (   select * from ( SELECT * FROM (SELECT  PG1.PARid,CAST(SUM(PG1.PSmkg)  AS DECIMAL(18,2)) AS PGSmkg,CAST(SUM(PG1.PSmltr)  AS DECIMAL(18,2)) AS PGSmltr,CAST(AVG(PG1.PAvgFat) AS DECIMAL(18,1)) AS PGAvgFat,CAST(AVG(PG1.PAvgSnf) AS DECIMAL(18,1)) AS PGAvgSnf,CAST(AVG(PG1.PAvgRate) AS DECIMAL(18,1)) AS PGAvgRate,CAST(AVG(PG1.PAvgclr) AS DECIMAL(18,1)) AS PGAvgclr,CAST(SUM(PG1.PScans) AS DECIMAL(18,2)) AS PGScans,CAST(SUM(PG1.PSAmt) AS DECIMAL(18,2)) AS PGSAmt,CAST(SUM(PG1.PScommAmt) AS DECIMAL(18,2)) AS PGScommAmt,isnull((CAST(SUM(PG1.PScatamt) AS DECIMAL(18,2))),0) AS PGScatamt,CAST(SUM(PG1.PSsplbonamt) AS DECIMAL(18,2)) AS PGSsplbonamt,CAST(AVG(PG1.PAvgcRate) AS DECIMAL(18,2)) AS PGAvgcRate,CAST(SUM(PG1.PSfatkg) AS DECIMAL(18,2)) AS PGSfatkg,CAST(SUM(PG1.PSsnfkg) AS DECIMAL(18,2)) AS PGSsnfkg,CAST(SUM(PG1.PSBilladv) AS DECIMAL(18,2)) AS PGSBilladv,CAST(SUM(PG1.PSAiamt) AS DECIMAL(18,2)) AS PGSAiamt,CAST(SUM(PG1.SFeedamt) AS DECIMAL(18,2)) AS PGSFeedamt,CAST(SUM(PG1.PScanamt) AS DECIMAL(18,2)) AS PGScanamt,CAST(SUM(PG1.PSRecoveryamt) AS DECIMAL(18,2)) AS PGSRecoveryamt,CAST(SUM(PG1.Sothers) AS DECIMAL(18,2)) AS PGSothers,isnull((CAST(SUM(PG1.PSinstamt) AS DECIMAL(18,2))),0) AS PGSinstamt,CAST(SUM(PG1.PSbalance) AS DECIMAL(18,2)) AS PGSbalance,CAST(SUM(PG1.PSLoanAmount) AS DECIMAL(18,2)) AS PGSLoanAmount,CAST(SUM(PG1.PSNetAmt) AS DECIMAL(18,2)) AS PGSNetAmt,CAST(SUM(PG1.SRound)  AS DECIMAL(18,2)) AS PGSround FROM (SELECT cart.PARid,ISNULL(prdelo.PSmkg,0) AS PSmkg,ISNULL(prdelo.PSmltr,0) AS PSmltr,ISNULL(prdelo.PAvgFat ,0) AS PAvgFat,ISNULL(prdelo.PAvgSnf,0) AS PAvgSnf,ISNULL(prdelo.PAvgRate,0) AS PAvgRate,ISNULL(prdelo.PAvgclr,0) AS PAvgclr,ISNULL(prdelo.PScans,0) AS PScans,ISNULL(prdelo.PSAmt,0) AS PSAmt,ISNULL(prdelo.PScommAmt,0) AS PScommAmt,ISNULL(CAST((ISNULL(prdelo.PSmltr,0) * ISNULL(cart.CarAmt,0)) AS DECIMAL(18,2)),0) AS PScatamt, ISNULL(prdelo.PSsplbonamt,0) AS PSsplbonamt,ISNULL(prdelo.PAvgcRate,0) AS PAvgcRate,ISNULL(prdelo.PSfatkg,0) AS PSfatkg,ISNULL(prdelo.PSsnfkg,0) AS PSsnfkg,ISNULL(prdelo.PBilladv,0) AS PSBilladv,ISNULL(prdelo.PAi,0) AS PSAiamt,ISNULL(prdelo.PFeed,0) AS SFeedamt,ISNULL(prdelo.PCan,0) AS PScanamt,ISNULL(prdelo.Recovery,0) AS PSRecoveryamt,ISNULL(prdelo.others,0) AS Sothers,ISNULL(prdelo.instamt,0) AS PSinstamt,ISNULL(prdelo.balance,0) AS PSbalance,ISNULL(prdelo.LoanAmount,0) AS PSLoanAmount,FLOOR ((ISNULL(prdelo.PSAmt,0) + (ISNULL(prdelo.PSmltr,0) * ISNULL(cart.CarAmt,0)) + ISNULL(prdelo.PSsplbonamt,0) + ISNULL(prdelo.PScommAmt,0)) - (ISNULL(prdelo.PBilladv,0)+ISNULL(prdelo.PAi,0)+ISNULL(prdelo.PFeed,0)+ISNULL(prdelo.PCan,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0)))  AS PSNetAmt,( ( (ISNULL(prdelo.PSAmt,0) + (ISNULL(prdelo.PSmltr,0) * ISNULL(cart.CarAmt,0)) + ISNULL(prdelo.PSsplbonamt,0) + ISNULL(prdelo.PScommAmt,0)) - (ISNULL(prdelo.PBilladv,0)+ISNULL(prdelo.PAi,0)+ISNULL(prdelo.PFeed,0)+ISNULL(prdelo.PCan,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0)) )-( FLOOR( (ISNULL(prdelo.PSAmt,0) + (ISNULL(prdelo.PSmltr,0) * ISNULL(cart.CarAmt,0)) + ISNULL(prdelo.PSsplbonamt,0) + ISNULL(prdelo.PScommAmt,0)) - (ISNULL(prdelo.PBilladv,0)+ISNULL(prdelo.PAi,0)+ISNULL(prdelo.PFeed,0)+ISNULL(prdelo.PCan,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))) )  ) AS SRound FROM (SELECT * FROM (SELECT * FROM (SELECT agent_id AS PSproAid,CAST(SUM(Milk_kg) AS DECIMAL(18,2)) AS PSmkg,CAST(SUM(Milk_ltr) AS DECIMAL(18,2)) AS PSmltr,CAST(AVG(FAT) AS DECIMAL(18,2)) AS PAvgFat,CAST(AVG(SNF) AS DECIMAL(18,2)) AS PAvgSnf,CAST(AVG(Rate) AS DECIMAL(18,2)) AS PAvgRate,CAST(AVG(Clr) AS DECIMAL(18,2)) AS PAvgclr,CAST(SUM(NoofCans) AS DECIMAL(18,2)) AS PScans,CAST(SUM(Amount) AS DECIMAL(18,2)) AS PSAmt,CAST(SUM(Comrate) AS DECIMAL(18,2)) AS PScommAmt,CAST(SUM(CartageAmount) AS DECIMAL(18,2)) AS PScatamt,CAST(SUM(SplBonusAmount) AS DECIMAL(18,2)) AS PSsplbonamt,CAST(AVG(ComRate) AS DECIMAL(18,2)) AS PAvgcrate,CAST(SUM(fat_kg) AS DECIMAL(18,2)) AS PSfatkg,CAST(SUM(snf_kg) AS DECIMAL(18,2)) AS PSSnfkg  FROM Procurement  GROUP BY agent_id ) AS Spro LEFT JOIN (SELECT  Agent_id AS PDAid ,(CAST((Billadvance) AS DECIMAL(18,2))) AS PBilladv,(CAST((Ai) AS DECIMAL(18,2))) AS PAi,(CAST((Feed) AS DECIMAL(18,2))) AS PFeed,(CAST((can) AS DECIMAL(18,2))) AS Pcan,(CAST((Recovery) AS DECIMAL(18,2))) AS Recovery,(CAST((others) AS DECIMAL(18,2))) AS others FROM Deduction_Details ) AS dedu ON Spro.PSproAid=dedu.PDAid) AS proded LEFT JOIN (SELECT Agent_id AS LoAid,CAST(SUM(inst_amount) AS DECIMAL(18,2)) AS instamt,CAST(SUM(balance) AS DECIMAL(18,2)) AS balance,CAST(SUM(LoanAmount) AS DECIMAL(18,2)) AS LoanAmount FROM LoanDetails  GROUP BY Agent_id) AS Lon ON proded.PSproAid=Lon.LoAid) AS prdelo INNER JOIN (SELECT Agent_Id AS cartAid,(CAST((Cartage_Amt) AS DECIMAL(18,2)))AS CarAmt,Agent_Name,Bank_Id,Payment_mode,Agent_AccountNo,Route_id AS PARid  FROM  Agent_Master ) AS cart ON prdelo.PSproAid=cart.cartAid) AS PG1 GROUP BY  PG1.PARid) AS f1 LEFT JOIN (SELECT Route_ID as Prrid,Route_Name AS PRname FROM Route_Master ) AS rr1 ON f1.PARid=rr1.Prrid ) as table1 left join( select (((DATEDIFF(d,'5-11-2015','5-20-2015')+ 1)*2)) as Pdiffrentdate ,sum(SampleId) as Ptotsample,Plant_Code AS PPlant_Code,Route_id  AS PRoute_id  from Procurement   group by Plant_Code,Route_id) as  table2 on table1.Prrid=table2.PRoute_id   )  as previous   on present.Plant_Code=previous.PPlant_Code and present.rrid=previous.Prrid
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ARid" DataSetColumn="ARid" />
+              <Mapping SourceColumn="GSmkg" DataSetColumn="GSmkg" />
+              <Mapping SourceColumn="GSmltr" DataSetColumn="GSmltr" />
+              <Mapping SourceColumn="GAvgFat" DataSetColumn="GAvgFat" />
+              <Mapping SourceColumn="GAvgSnf" DataSetColumn="GAvgSnf" />
+              <Mapping SourceColumn="GAvgRate" DataSetColumn="GAvgRate" />
+              <Mapping SourceColumn="GAvgclr" DataSetColumn="GAvgclr" />
+              <Mapping SourceColumn="GScans" DataSetColumn="GScans" />
+              <Mapping SourceColumn="GSAmt" DataSetColumn="GSAmt" />
+              <Mapping SourceColumn="GScommAmt" DataSetColumn="GScommAmt" />
+              <Mapping SourceColumn="GScatamt" DataSetColumn="GScatamt" />
+              <Mapping SourceColumn="GSsplbonamt" DataSetColumn="GSsplbonamt" />
+              <Mapping SourceColumn="GAvgcRate" DataSetColumn="GAvgcRate" />
+              <Mapping SourceColumn="GSfatkg" DataSetColumn="GSfatkg" />
+              <Mapping SourceColumn="GSsnfkg" DataSetColumn="GSsnfkg" />
+              <Mapping SourceColumn="GSBilladv" DataSetColumn="GSBilladv" />
+              <Mapping SourceColumn="GSAiamt" DataSetColumn="GSAiamt" />
+              <Mapping SourceColumn="GSFeedamt" DataSetColumn="GSFeedamt" />
+              <Mapping SourceColumn="GScanamt" DataSetColumn="GScanamt" />
+              <Mapping SourceColumn="GSRecoveryamt" DataSetColumn="GSRecoveryamt" />
+              <Mapping SourceColumn="GSothers" DataSetColumn="GSothers" />
+              <Mapping SourceColumn="GSinstamt" DataSetColumn="GSinstamt" />
+              <Mapping SourceColumn="GSbalance" DataSetColumn="GSbalance" />
+              <Mapping SourceColumn="GSLoanAmount" DataSetColumn="GSLoanAmount" />
+              <Mapping SourceColumn="GSNetAmt" DataSetColumn="GSNetAmt" />
+              <Mapping SourceColumn="GSround" DataSetColumn="GSround" />
+              <Mapping SourceColumn="rrid" DataSetColumn="rrid" />
+              <Mapping SourceColumn="Rname" DataSetColumn="Rname" />
+              <Mapping SourceColumn="diffrentdate" DataSetColumn="diffrentdate" />
+              <Mapping SourceColumn="totsample" DataSetColumn="totsample" />
+              <Mapping SourceColumn="Plant_Code" DataSetColumn="Plant_Code" />
+              <Mapping SourceColumn="Route_id" DataSetColumn="Route_id" />
+              <Mapping SourceColumn="PARid" DataSetColumn="PARid" />
+              <Mapping SourceColumn="PGSmkg" DataSetColumn="PGSmkg" />
+              <Mapping SourceColumn="PGSmltr" DataSetColumn="PGSmltr" />
+              <Mapping SourceColumn="PGAvgFat" DataSetColumn="PGAvgFat" />
+              <Mapping SourceColumn="PGAvgSnf" DataSetColumn="PGAvgSnf" />
+              <Mapping SourceColumn="PGAvgRate" DataSetColumn="PGAvgRate" />
+              <Mapping SourceColumn="PGAvgclr" DataSetColumn="PGAvgclr" />
+              <Mapping SourceColumn="PGScans" DataSetColumn="PGScans" />
+              <Mapping SourceColumn="PGSAmt" DataSetColumn="PGSAmt" />
+              <Mapping SourceColumn="PGScommAmt" DataSetColumn="PGScommAmt" />
+              <Mapping SourceColumn="PGScatamt" DataSetColumn="PGScatamt" />
+              <Mapping SourceColumn="PGSsplbonamt" DataSetColumn="PGSsplbonamt" />
+              <Mapping SourceColumn="PGAvgcRate" DataSetColumn="PGAvgcRate" />
+              <Mapping SourceColumn="PGSfatkg" DataSetColumn="PGSfatkg" />
+              <Mapping SourceColumn="PGSsnfkg" DataSetColumn="PGSsnfkg" />
+              <Mapping SourceColumn="PGSBilladv" DataSetColumn="PGSBilladv" />
+              <Mapping SourceColumn="PGSAiamt" DataSetColumn="PGSAiamt" />
+              <Mapping SourceColumn="PGSFeedamt" DataSetColumn="PGSFeedamt" />
+              <Mapping SourceColumn="PGScanamt" DataSetColumn="PGScanamt" />
+              <Mapping SourceColumn="PGSRecoveryamt" DataSetColumn="PGSRecoveryamt" />
+              <Mapping SourceColumn="PGSothers" DataSetColumn="PGSothers" />
+              <Mapping SourceColumn="PGSinstamt" DataSetColumn="PGSinstamt" />
+              <Mapping SourceColumn="PGSbalance" DataSetColumn="PGSbalance" />
+              <Mapping SourceColumn="PGSLoanAmount" DataSetColumn="PGSLoanAmount" />
+              <Mapping SourceColumn="PGSNetAmt" DataSetColumn="PGSNetAmt" />
+              <Mapping SourceColumn="PGSround" DataSetColumn="PGSround" />
+              <Mapping SourceColumn="Prrid" DataSetColumn="Prrid" />
+              <Mapping SourceColumn="PRname" DataSetColumn="PRname" />
+              <Mapping SourceColumn="Pdiffrentdate" DataSetColumn="Pdiffrentdate" />
+              <Mapping SourceColumn="Ptotsample" DataSetColumn="Ptotsample" />
+              <Mapping SourceColumn="PPlant_Code" DataSetColumn="PPlant_Code" />
+              <Mapping SourceColumn="PRoute_id" DataSetColumn="PRoute_id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BillComparisonTableAdapter" GeneratorDataComponentClassName="BillComparisonTableAdapter" Name="BillComparison" UserDataComponentName="BillComparisonTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>    select *  from (select * from(select * from(SELECT *  FROM (select * from (select * from(select Route_id,Plant_code,SUM(Smkg) AS GSmkg,SUM(Smltr) AS GSmltr,SUM(SAmt) AS GSAmt,CAST((SUM(SAmt)/SUM(Smltr)) AS DECIMAL(18,2)) AS GMrate,SUM(SInsentAmt) AS GSInsentAmt,SUM(Scaramt) AS GScaramt,SUM(SSplBonus) AS GSSplBonus,SUM(SAmt)+SUM(TotAdditions) AS GTotAdditions,CAST(((SUM(SAmt)+SUM(SInsentAmt)+SUM(Scaramt)+SUM(SSplBonus))/SUM(Smltr)) AS DECIMAL(18,2)) AS GArate,SUM(ClaimAount) AS GClaimAount,SUM(Sinstamt) AS GSinstamt,SUM(Billadv) AS GBilladv,SUM(Ai) AS GAi,SUM(Feed) AS GFeed,SUM(can) AS Gcan,SUM(Roundoff) AS GRoundoff,SUM(FLOOR(NetAmount)) AS GNetAmount,CAST(((SUM(Sfatkg)*100)/SUM(Smkg)) AS DECIMAL(18,2)) AS GAfat,CAST(((SUM(SSnfkg)*100)/SUM(Smkg)) AS DECIMAL(18,2)) AS GAsnf,SUM(Sfatkg) AS GSfatkg,SUM(SSnfkg) AS GSSnfkg,CAST(((SUM(SAmt)+SUM(SInsentAmt)+SUM(Scaramt)+SUM(SSplBonus))/SUM(Sfatkg)) AS  DECIMAL(18,2)) AS GkgFatrate  from Paymentdata    GROUP BY Route_id,Plant_code) as t1  left join (SELECT  Plant_code AS Pcode,SUM(Smkg) AS GSmkg1,SUM(Smltr) AS GSmltr1,SUM(SAmt) AS GSAmt1,CAST((SUM(SAmt)/SUM(Smltr)) AS DECIMAL(18,2)) AS GMrate1,SUM(SInsentAmt) AS GSInsentAmt1,SUM(Scaramt) AS GScaramt1,SUM(SSplBonus) AS GSSplBonus1,SUM(SAmt)+SUM(TotAdditions) AS GTotAdditions1,CAST(((SUM(SAmt)+SUM(SInsentAmt)+SUM(Scaramt)+SUM(SSplBonus))/SUM(Smltr)) AS DECIMAL(18,2)) AS GArate1,SUM(ClaimAount) AS GClaimAount1,SUM(Sinstamt) AS GSinstamt1,SUM(Billadv) AS GBilladv1,SUM(Ai) AS GAi1,SUM(Feed) AS GFeed1,SUM(can) AS Gcan1,SUM(Roundoff) AS GRoundoff1,SUM(FLOOR(NetAmount)) AS GNetAmount1,CAST(((SUM(Sfatkg)*100)/SUM(Smkg)) AS DECIMAL(18,2)) AS GAfat1,CAST(((SUM(SSnfkg)*100)/SUM(Smkg)) AS DECIMAL(18,2)) AS GAsnf1,SUM(Sfatkg) AS GSfatkg1,SUM(SSnfkg) AS GSSnfkg1,CAST(((SUM(SAmt)+SUM(SInsentAmt)+SUM(Scaramt)+SUM(SSplBonus))/SUM(Sfatkg)) AS  DECIMAL(18,2)) AS GkgFatrate1,(((DATEDIFF(d,Frm_date,To_date)+ 1))) as diffrentdate  FROM Paymentdata Where Plant_code='155' AND Frm_date='5-1-2015' AND To_date='5-10-2015' GROUP BY Plant_code,Frm_date,To_date) as t2 on t1.Plant_code=t2.Pcode) as t3  left join (SELECT DISTINCT(Route_id) as  RRoute_id,Route_name FROM Paymentdata Where Plant_code='155') as t4  on t3.Route_id=t4.RRoute_id ) AS presenttable   left join (select count(tid) as sampleno,plant_code as plantcode from Procurement where Plant_Code='155' and prdate between '5-1-2015' and '5-10-2015' group by  Plant_Code)  as sample1 on presenttable.Plant_code=sample1.plantcode) as presentcollection)as presentjointrans  left join(select  sum(ActualAmount) as presentactualamount,Plant_Code as presentplantcode from Truck_Present  group by Plant_Code )  as trans on presentjointrans.plantcode=trans.presentplantcode   ) as totpresent left join (select* from(SELECT *  FROM (select * from (select * from(select Route_id,Plant_code,SUM(Smkg) AS PGSmkg,SUM(Smltr) AS PGSmltr,SUM(SAmt) AS PGSAmt,CAST((SUM(SAmt)/SUM(Smltr)) AS DECIMAL(18,2)) AS PGMrate,SUM(SInsentAmt) AS PGSInsentAmt,SUM(Scaramt) AS PGScaramt,SUM(SSplBonus) AS PGSSplBonus,SUM(SAmt)+SUM(TotAdditions) AS PGTotAdditions,CAST(((SUM(SAmt)+SUM(SInsentAmt)+SUM(Scaramt)+SUM(SSplBonus))/SUM(Smltr)) AS DECIMAL(18,2)) AS PGArate,SUM(ClaimAount) AS PGClaimAount,SUM(Sinstamt) AS PGSinstamt,SUM(Billadv) AS PGBilladv,SUM(Ai) AS PGAi,SUM(Feed) AS PGFeed,SUM(can) AS PGcan,SUM(Roundoff) AS PGRoundoff,SUM(FLOOR(NetAmount)) AS PGNetAmount,CAST(((SUM(Sfatkg)*100)/SUM(Smkg)) AS DECIMAL(18,2)) AS PGAfat,CAST(((SUM(SSnfkg)*100)/SUM(Smkg)) AS DECIMAL(18,2)) AS PGAsnf,SUM(Sfatkg) AS PGSfatkg,SUM(SSnfkg) AS PGSSnfkg,CAST(((SUM(SAmt)+SUM(SInsentAmt)+SUM(Scaramt)+SUM(SSplBonus))/SUM(Sfatkg)) AS  DECIMAL(18,2)) AS PGkgFatrate  from Paymentdata     Where Plant_code='155' AND Frm_date='5-1-2015' AND To_date='5-10-2015' GROUP BY Route_id,Plant_code) as t1  left join (SELECT  Plant_code AS Pcode,SUM(Smkg) AS PGSmkg1,SUM(Smltr) AS PGSmltr1,SUM(SAmt) AS PGSAmt1,CAST((SUM(SAmt)/SUM(Smltr)) AS DECIMAL(18,2)) AS PGMrate1,SUM(SInsentAmt) AS PGSInsentAmt1,SUM(Scaramt) AS PGScaramt1,SUM(SSplBonus) AS PGSSplBonus1,SUM(SAmt)+SUM(TotAdditions) AS PGTotAdditions1,CAST(((SUM(SAmt)+SUM(SInsentAmt)+SUM(Scaramt)+SUM(SSplBonus))/SUM(Smltr)) AS DECIMAL(18,2)) AS PGArate1,SUM(ClaimAount) AS PGClaimAount1,SUM(Sinstamt) AS PGSinstamt1,SUM(Billadv) AS PGBilladv1,SUM(Ai) AS PGAi1,SUM(Feed) AS PGFeed1,SUM(can) AS PGcan1,SUM(Roundoff) AS PGRoundoff1,SUM(FLOOR(NetAmount)) AS PGNetAmount1,CAST(((SUM(Sfatkg)*100)/SUM(Smkg)) AS DECIMAL(18,2)) AS PGAfat1,CAST(((SUM(SSnfkg)*100)/SUM(Smkg)) AS DECIMAL(18,2)) AS PGAsnf1,SUM(Sfatkg) AS PGSfatkg1,SUM(SSnfkg) AS PGSSnfkg1,CAST(((SUM(SAmt)+SUM(SInsentAmt)+SUM(Scaramt)+SUM(SSplBonus))/SUM(Sfatkg)) AS  DECIMAL(18,2)) AS PGkgFatrate1,(((DATEDIFF(d,Frm_date,To_date)+ 1))) as Pdiffrentdate  FROM Paymentdata  GROUP BY Plant_code,Frm_date,To_date) as t2 on t1.Plant_code=t2.Pcode) as t3  left join (SELECT DISTINCT(Route_id) as PRoute_id ,Route_name as PRoute_name  FROM Paymentdata ) as t4  on t3.Route_id=t4.PRoute_id  ) as previoustable  left join (select count(tid) as psampleno,plant_code as ppplant_code from Procurement  group by  Plant_Code)  as sample2 on previoustable.plant_code=sample2. ppplant_code) as previousjointrans   left join(select  sum(ActualAmount) as previousactualamount,Plant_Code as ppcode from Truck_Present  group by Plant_Code )  as trans1 on previousjointrans.ppplant_code=trans1.ppcode) as totprevious on totpresent.plantcode=totprevious.ppcode and totpresent.Route_id=totprevious.Route_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Route_id" DataSetColumn="Route_id" />
+              <Mapping SourceColumn="Plant_code" DataSetColumn="Plant_code" />
+              <Mapping SourceColumn="GSmkg" DataSetColumn="GSmkg" />
+              <Mapping SourceColumn="GSmltr" DataSetColumn="GSmltr" />
+              <Mapping SourceColumn="GSAmt" DataSetColumn="GSAmt" />
+              <Mapping SourceColumn="GMrate" DataSetColumn="GMrate" />
+              <Mapping SourceColumn="GSInsentAmt" DataSetColumn="GSInsentAmt" />
+              <Mapping SourceColumn="GScaramt" DataSetColumn="GScaramt" />
+              <Mapping SourceColumn="GSSplBonus" DataSetColumn="GSSplBonus" />
+              <Mapping SourceColumn="GTotAdditions" DataSetColumn="GTotAdditions" />
+              <Mapping SourceColumn="GArate" DataSetColumn="GArate" />
+              <Mapping SourceColumn="GClaimAount" DataSetColumn="GClaimAount" />
+              <Mapping SourceColumn="GSinstamt" DataSetColumn="GSinstamt" />
+              <Mapping SourceColumn="GBilladv" DataSetColumn="GBilladv" />
+              <Mapping SourceColumn="GAi" DataSetColumn="GAi" />
+              <Mapping SourceColumn="GFeed" DataSetColumn="GFeed" />
+              <Mapping SourceColumn="Gcan" DataSetColumn="Gcan" />
+              <Mapping SourceColumn="GRoundoff" DataSetColumn="GRoundoff" />
+              <Mapping SourceColumn="GNetAmount" DataSetColumn="GNetAmount" />
+              <Mapping SourceColumn="GAfat" DataSetColumn="GAfat" />
+              <Mapping SourceColumn="GAsnf" DataSetColumn="GAsnf" />
+              <Mapping SourceColumn="GSfatkg" DataSetColumn="GSfatkg" />
+              <Mapping SourceColumn="GSSnfkg" DataSetColumn="GSSnfkg" />
+              <Mapping SourceColumn="GkgFatrate" DataSetColumn="GkgFatrate" />
+              <Mapping SourceColumn="Pcode" DataSetColumn="Pcode" />
+              <Mapping SourceColumn="GSmkg1" DataSetColumn="GSmkg1" />
+              <Mapping SourceColumn="GSmltr1" DataSetColumn="GSmltr1" />
+              <Mapping SourceColumn="GSAmt1" DataSetColumn="GSAmt1" />
+              <Mapping SourceColumn="GMrate1" DataSetColumn="GMrate1" />
+              <Mapping SourceColumn="GSInsentAmt1" DataSetColumn="GSInsentAmt1" />
+              <Mapping SourceColumn="GScaramt1" DataSetColumn="GScaramt1" />
+              <Mapping SourceColumn="GSSplBonus1" DataSetColumn="GSSplBonus1" />
+              <Mapping SourceColumn="GTotAdditions1" DataSetColumn="GTotAdditions1" />
+              <Mapping SourceColumn="GArate1" DataSetColumn="GArate1" />
+              <Mapping SourceColumn="GClaimAount1" DataSetColumn="GClaimAount1" />
+              <Mapping SourceColumn="GSinstamt1" DataSetColumn="GSinstamt1" />
+              <Mapping SourceColumn="GBilladv1" DataSetColumn="GBilladv1" />
+              <Mapping SourceColumn="GAi1" DataSetColumn="GAi1" />
+              <Mapping SourceColumn="GFeed1" DataSetColumn="GFeed1" />
+              <Mapping SourceColumn="Gcan1" DataSetColumn="Gcan1" />
+              <Mapping SourceColumn="GRoundoff1" DataSetColumn="GRoundoff1" />
+              <Mapping SourceColumn="GNetAmount1" DataSetColumn="GNetAmount1" />
+              <Mapping SourceColumn="GAfat1" DataSetColumn="GAfat1" />
+              <Mapping SourceColumn="GAsnf1" DataSetColumn="GAsnf1" />
+              <Mapping SourceColumn="GSfatkg1" DataSetColumn="GSfatkg1" />
+              <Mapping SourceColumn="GSSnfkg1" DataSetColumn="GSSnfkg1" />
+              <Mapping SourceColumn="GkgFatrate1" DataSetColumn="GkgFatrate1" />
+              <Mapping SourceColumn="diffrentdate" DataSetColumn="diffrentdate" />
+              <Mapping SourceColumn="RRoute_id" DataSetColumn="RRoute_id" />
+              <Mapping SourceColumn="Route_name" DataSetColumn="Route_name" />
+              <Mapping SourceColumn="Route_id1" DataSetColumn="Route_id1" />
+              <Mapping SourceColumn="Plant_code1" DataSetColumn="Plant_code1" />
+              <Mapping SourceColumn="PGSmkg" DataSetColumn="PGSmkg" />
+              <Mapping SourceColumn="PGSmltr" DataSetColumn="PGSmltr" />
+              <Mapping SourceColumn="PGSAmt" DataSetColumn="PGSAmt" />
+              <Mapping SourceColumn="PGMrate" DataSetColumn="PGMrate" />
+              <Mapping SourceColumn="PGSInsentAmt" DataSetColumn="PGSInsentAmt" />
+              <Mapping SourceColumn="PGScaramt" DataSetColumn="PGScaramt" />
+              <Mapping SourceColumn="PGSSplBonus" DataSetColumn="PGSSplBonus" />
+              <Mapping SourceColumn="PGTotAdditions" DataSetColumn="PGTotAdditions" />
+              <Mapping SourceColumn="PGArate" DataSetColumn="PGArate" />
+              <Mapping SourceColumn="PGClaimAount" DataSetColumn="PGClaimAount" />
+              <Mapping SourceColumn="PGSinstamt" DataSetColumn="PGSinstamt" />
+              <Mapping SourceColumn="PGBilladv" DataSetColumn="PGBilladv" />
+              <Mapping SourceColumn="PGAi" DataSetColumn="PGAi" />
+              <Mapping SourceColumn="PGFeed" DataSetColumn="PGFeed" />
+              <Mapping SourceColumn="PGcan" DataSetColumn="PGcan" />
+              <Mapping SourceColumn="PGRoundoff" DataSetColumn="PGRoundoff" />
+              <Mapping SourceColumn="PGNetAmount" DataSetColumn="PGNetAmount" />
+              <Mapping SourceColumn="PGAfat" DataSetColumn="PGAfat" />
+              <Mapping SourceColumn="PGAsnf" DataSetColumn="PGAsnf" />
+              <Mapping SourceColumn="PGSfatkg" DataSetColumn="PGSfatkg" />
+              <Mapping SourceColumn="PGSSnfkg" DataSetColumn="PGSSnfkg" />
+              <Mapping SourceColumn="PGkgFatrate" DataSetColumn="PGkgFatrate" />
+              <Mapping SourceColumn="Pcode1" DataSetColumn="Pcode1" />
+              <Mapping SourceColumn="PGSmkg1" DataSetColumn="PGSmkg1" />
+              <Mapping SourceColumn="PGSmltr1" DataSetColumn="PGSmltr1" />
+              <Mapping SourceColumn="PGSAmt1" DataSetColumn="PGSAmt1" />
+              <Mapping SourceColumn="PGMrate1" DataSetColumn="PGMrate1" />
+              <Mapping SourceColumn="PGSInsentAmt1" DataSetColumn="PGSInsentAmt1" />
+              <Mapping SourceColumn="PGScaramt1" DataSetColumn="PGScaramt1" />
+              <Mapping SourceColumn="PGSSplBonus1" DataSetColumn="PGSSplBonus1" />
+              <Mapping SourceColumn="PGTotAdditions1" DataSetColumn="PGTotAdditions1" />
+              <Mapping SourceColumn="PGArate1" DataSetColumn="PGArate1" />
+              <Mapping SourceColumn="PGClaimAount1" DataSetColumn="PGClaimAount1" />
+              <Mapping SourceColumn="PGSinstamt1" DataSetColumn="PGSinstamt1" />
+              <Mapping SourceColumn="PGBilladv1" DataSetColumn="PGBilladv1" />
+              <Mapping SourceColumn="PGAi1" DataSetColumn="PGAi1" />
+              <Mapping SourceColumn="PGFeed1" DataSetColumn="PGFeed1" />
+              <Mapping SourceColumn="PGcan1" DataSetColumn="PGcan1" />
+              <Mapping SourceColumn="PGRoundoff1" DataSetColumn="PGRoundoff1" />
+              <Mapping SourceColumn="PGNetAmount1" DataSetColumn="PGNetAmount1" />
+              <Mapping SourceColumn="PGAfat1" DataSetColumn="PGAfat1" />
+              <Mapping SourceColumn="PGAsnf1" DataSetColumn="PGAsnf1" />
+              <Mapping SourceColumn="PGSfatkg1" DataSetColumn="PGSfatkg1" />
+              <Mapping SourceColumn="PGSSnfkg1" DataSetColumn="PGSSnfkg1" />
+              <Mapping SourceColumn="PGkgFatrate1" DataSetColumn="PGkgFatrate1" />
+              <Mapping SourceColumn="Pdiffrentdate" DataSetColumn="Pdiffrentdate" />
+              <Mapping SourceColumn="PRoute_id" DataSetColumn="PRoute_id" />
+              <Mapping SourceColumn="PRoute_name" DataSetColumn="PRoute_name" />
+              <Mapping SourceColumn="sampleno" DataSetColumn="sampleno" />
+              <Mapping SourceColumn="plantcode" DataSetColumn="plantcode" />
+              <Mapping SourceColumn="psampleno" DataSetColumn="psampleno" />
+              <Mapping SourceColumn="ppplant_code" DataSetColumn="ppplant_code" />
+              <Mapping SourceColumn="presentplantcode" DataSetColumn="presentplantcode" />
+              <Mapping SourceColumn="ppcode" DataSetColumn="ppcode" />
+              <Mapping SourceColumn="presentactualamount" DataSetColumn="presentactualamount" />
+              <Mapping SourceColumn="previousactualamount" DataSetColumn="previousactualamount" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="REPORTSCOMPARE" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="REPORTSCOMPARE" msprop:Generator_UserDSName="REPORTSCOMPARE">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Billperiodcomparison" msprop:Generator_TableClassName="BillperiodcomparisonDataTable" msprop:Generator_TableVarName="tableBillperiodcomparison" msprop:Generator_TablePropName="Billperiodcomparison" msprop:Generator_RowDeletingName="BillperiodcomparisonRowDeleting" msprop:Generator_UserTableName="Billperiodcomparison" msprop:Generator_RowChangingName="BillperiodcomparisonRowChanging" msprop:Generator_RowEvHandlerName="BillperiodcomparisonRowChangeEventHandler" msprop:Generator_RowDeletedName="BillperiodcomparisonRowDeleted" msprop:Generator_RowEvArgName="BillperiodcomparisonRowChangeEvent" msprop:Generator_RowChangedName="BillperiodcomparisonRowChanged" msprop:Generator_RowClassName="BillperiodcomparisonRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ARid" msprop:Generator_ColumnVarNameInTable="columnARid" msprop:Generator_ColumnPropNameInRow="ARid" msprop:Generator_ColumnPropNameInTable="ARidColumn" msprop:Generator_UserColumnName="ARid" type="xs:int" minOccurs="0" />
+              <xs:element name="GSmkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmkg" msprop:Generator_ColumnPropNameInRow="GSmkg" msprop:Generator_ColumnPropNameInTable="GSmkgColumn" msprop:Generator_UserColumnName="GSmkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSmltr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmltr" msprop:Generator_ColumnPropNameInRow="GSmltr" msprop:Generator_ColumnPropNameInTable="GSmltrColumn" msprop:Generator_UserColumnName="GSmltr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgFat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgFat" msprop:Generator_ColumnPropNameInRow="GAvgFat" msprop:Generator_ColumnPropNameInTable="GAvgFatColumn" msprop:Generator_UserColumnName="GAvgFat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgSnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgSnf" msprop:Generator_ColumnPropNameInRow="GAvgSnf" msprop:Generator_ColumnPropNameInTable="GAvgSnfColumn" msprop:Generator_UserColumnName="GAvgSnf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgRate" msprop:Generator_ColumnPropNameInRow="GAvgRate" msprop:Generator_ColumnPropNameInTable="GAvgRateColumn" msprop:Generator_UserColumnName="GAvgRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgclr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgclr" msprop:Generator_ColumnPropNameInRow="GAvgclr" msprop:Generator_ColumnPropNameInTable="GAvgclrColumn" msprop:Generator_UserColumnName="GAvgclr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScans" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScans" msprop:Generator_ColumnPropNameInRow="GScans" msprop:Generator_ColumnPropNameInTable="GScansColumn" msprop:Generator_UserColumnName="GScans" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSAmt" msprop:Generator_ColumnPropNameInRow="GSAmt" msprop:Generator_ColumnPropNameInTable="GSAmtColumn" msprop:Generator_UserColumnName="GSAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScommAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScommAmt" msprop:Generator_ColumnPropNameInRow="GScommAmt" msprop:Generator_ColumnPropNameInTable="GScommAmtColumn" msprop:Generator_UserColumnName="GScommAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScatamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScatamt" msprop:Generator_ColumnPropNameInRow="GScatamt" msprop:Generator_ColumnPropNameInTable="GScatamtColumn" msprop:Generator_UserColumnName="GScatamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSsplbonamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSsplbonamt" msprop:Generator_ColumnPropNameInRow="GSsplbonamt" msprop:Generator_ColumnPropNameInTable="GSsplbonamtColumn" msprop:Generator_UserColumnName="GSsplbonamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgcRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgcRate" msprop:Generator_ColumnPropNameInRow="GAvgcRate" msprop:Generator_ColumnPropNameInTable="GAvgcRateColumn" msprop:Generator_UserColumnName="GAvgcRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSfatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSfatkg" msprop:Generator_ColumnPropNameInRow="GSfatkg" msprop:Generator_ColumnPropNameInTable="GSfatkgColumn" msprop:Generator_UserColumnName="GSfatkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSsnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSsnfkg" msprop:Generator_ColumnPropNameInRow="GSsnfkg" msprop:Generator_ColumnPropNameInTable="GSsnfkgColumn" msprop:Generator_UserColumnName="GSsnfkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSBilladv" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSBilladv" msprop:Generator_ColumnPropNameInRow="GSBilladv" msprop:Generator_ColumnPropNameInTable="GSBilladvColumn" msprop:Generator_UserColumnName="GSBilladv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSAiamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSAiamt" msprop:Generator_ColumnPropNameInRow="GSAiamt" msprop:Generator_ColumnPropNameInTable="GSAiamtColumn" msprop:Generator_UserColumnName="GSAiamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSFeedamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSFeedamt" msprop:Generator_ColumnPropNameInRow="GSFeedamt" msprop:Generator_ColumnPropNameInTable="GSFeedamtColumn" msprop:Generator_UserColumnName="GSFeedamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScanamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScanamt" msprop:Generator_ColumnPropNameInRow="GScanamt" msprop:Generator_ColumnPropNameInTable="GScanamtColumn" msprop:Generator_UserColumnName="GScanamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSRecoveryamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSRecoveryamt" msprop:Generator_ColumnPropNameInRow="GSRecoveryamt" msprop:Generator_ColumnPropNameInTable="GSRecoveryamtColumn" msprop:Generator_UserColumnName="GSRecoveryamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSothers" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSothers" msprop:Generator_ColumnPropNameInRow="GSothers" msprop:Generator_ColumnPropNameInTable="GSothersColumn" msprop:Generator_UserColumnName="GSothers" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSinstamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSinstamt" msprop:Generator_ColumnPropNameInRow="GSinstamt" msprop:Generator_ColumnPropNameInTable="GSinstamtColumn" msprop:Generator_UserColumnName="GSinstamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSbalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSbalance" msprop:Generator_ColumnPropNameInRow="GSbalance" msprop:Generator_ColumnPropNameInTable="GSbalanceColumn" msprop:Generator_UserColumnName="GSbalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSLoanAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSLoanAmount" msprop:Generator_ColumnPropNameInRow="GSLoanAmount" msprop:Generator_ColumnPropNameInTable="GSLoanAmountColumn" msprop:Generator_UserColumnName="GSLoanAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSNetAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSNetAmt" msprop:Generator_ColumnPropNameInRow="GSNetAmt" msprop:Generator_ColumnPropNameInTable="GSNetAmtColumn" msprop:Generator_UserColumnName="GSNetAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSround" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSround" msprop:Generator_ColumnPropNameInRow="GSround" msprop:Generator_ColumnPropNameInTable="GSroundColumn" msprop:Generator_UserColumnName="GSround" type="xs:decimal" minOccurs="0" />
+              <xs:element name="rrid" msprop:Generator_ColumnVarNameInTable="columnrrid" msprop:Generator_ColumnPropNameInRow="rrid" msprop:Generator_ColumnPropNameInTable="rridColumn" msprop:Generator_UserColumnName="rrid" type="xs:int" minOccurs="0" />
+              <xs:element name="Rname" msprop:Generator_ColumnVarNameInTable="columnRname" msprop:Generator_ColumnPropNameInRow="Rname" msprop:Generator_ColumnPropNameInTable="RnameColumn" msprop:Generator_UserColumnName="Rname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="diffrentdate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndiffrentdate" msprop:Generator_ColumnPropNameInRow="diffrentdate" msprop:Generator_ColumnPropNameInTable="diffrentdateColumn" msprop:Generator_UserColumnName="diffrentdate" type="xs:int" minOccurs="0" />
+              <xs:element name="totsample" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columntotsample" msprop:Generator_ColumnPropNameInRow="totsample" msprop:Generator_ColumnPropNameInTable="totsampleColumn" msprop:Generator_UserColumnName="totsample" type="xs:int" minOccurs="0" />
+              <xs:element name="Plant_Code" msprop:Generator_ColumnVarNameInTable="columnPlant_Code" msprop:Generator_ColumnPropNameInRow="Plant_Code" msprop:Generator_ColumnPropNameInTable="Plant_CodeColumn" msprop:Generator_UserColumnName="Plant_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Route_id" msprop:Generator_ColumnVarNameInTable="columnRoute_id" msprop:Generator_ColumnPropNameInRow="Route_id" msprop:Generator_ColumnPropNameInTable="Route_idColumn" msprop:Generator_UserColumnName="Route_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PARid" msprop:Generator_ColumnVarNameInTable="columnPARid" msprop:Generator_ColumnPropNameInRow="PARid" msprop:Generator_ColumnPropNameInTable="PARidColumn" msprop:Generator_UserColumnName="PARid" type="xs:int" minOccurs="0" />
+              <xs:element name="PGSmkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSmkg" msprop:Generator_ColumnPropNameInRow="PGSmkg" msprop:Generator_ColumnPropNameInTable="PGSmkgColumn" msprop:Generator_UserColumnName="PGSmkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSmltr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSmltr" msprop:Generator_ColumnPropNameInRow="PGSmltr" msprop:Generator_ColumnPropNameInTable="PGSmltrColumn" msprop:Generator_UserColumnName="PGSmltr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGAvgFat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAvgFat" msprop:Generator_ColumnPropNameInRow="PGAvgFat" msprop:Generator_ColumnPropNameInTable="PGAvgFatColumn" msprop:Generator_UserColumnName="PGAvgFat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGAvgSnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAvgSnf" msprop:Generator_ColumnPropNameInRow="PGAvgSnf" msprop:Generator_ColumnPropNameInTable="PGAvgSnfColumn" msprop:Generator_UserColumnName="PGAvgSnf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGAvgRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAvgRate" msprop:Generator_ColumnPropNameInRow="PGAvgRate" msprop:Generator_ColumnPropNameInTable="PGAvgRateColumn" msprop:Generator_UserColumnName="PGAvgRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGAvgclr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAvgclr" msprop:Generator_ColumnPropNameInRow="PGAvgclr" msprop:Generator_ColumnPropNameInTable="PGAvgclrColumn" msprop:Generator_UserColumnName="PGAvgclr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGScans" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGScans" msprop:Generator_ColumnPropNameInRow="PGScans" msprop:Generator_ColumnPropNameInTable="PGScansColumn" msprop:Generator_UserColumnName="PGScans" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSAmt" msprop:Generator_ColumnPropNameInRow="PGSAmt" msprop:Generator_ColumnPropNameInTable="PGSAmtColumn" msprop:Generator_UserColumnName="PGSAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGScommAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGScommAmt" msprop:Generator_ColumnPropNameInRow="PGScommAmt" msprop:Generator_ColumnPropNameInTable="PGScommAmtColumn" msprop:Generator_UserColumnName="PGScommAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGScatamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGScatamt" msprop:Generator_ColumnPropNameInRow="PGScatamt" msprop:Generator_ColumnPropNameInTable="PGScatamtColumn" msprop:Generator_UserColumnName="PGScatamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSsplbonamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSsplbonamt" msprop:Generator_ColumnPropNameInRow="PGSsplbonamt" msprop:Generator_ColumnPropNameInTable="PGSsplbonamtColumn" msprop:Generator_UserColumnName="PGSsplbonamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGAvgcRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAvgcRate" msprop:Generator_ColumnPropNameInRow="PGAvgcRate" msprop:Generator_ColumnPropNameInTable="PGAvgcRateColumn" msprop:Generator_UserColumnName="PGAvgcRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSfatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSfatkg" msprop:Generator_ColumnPropNameInRow="PGSfatkg" msprop:Generator_ColumnPropNameInTable="PGSfatkgColumn" msprop:Generator_UserColumnName="PGSfatkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSsnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSsnfkg" msprop:Generator_ColumnPropNameInRow="PGSsnfkg" msprop:Generator_ColumnPropNameInTable="PGSsnfkgColumn" msprop:Generator_UserColumnName="PGSsnfkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSBilladv" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSBilladv" msprop:Generator_ColumnPropNameInRow="PGSBilladv" msprop:Generator_ColumnPropNameInTable="PGSBilladvColumn" msprop:Generator_UserColumnName="PGSBilladv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSAiamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSAiamt" msprop:Generator_ColumnPropNameInRow="PGSAiamt" msprop:Generator_ColumnPropNameInTable="PGSAiamtColumn" msprop:Generator_UserColumnName="PGSAiamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSFeedamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSFeedamt" msprop:Generator_ColumnPropNameInRow="PGSFeedamt" msprop:Generator_ColumnPropNameInTable="PGSFeedamtColumn" msprop:Generator_UserColumnName="PGSFeedamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGScanamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGScanamt" msprop:Generator_ColumnPropNameInRow="PGScanamt" msprop:Generator_ColumnPropNameInTable="PGScanamtColumn" msprop:Generator_UserColumnName="PGScanamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSRecoveryamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSRecoveryamt" msprop:Generator_ColumnPropNameInRow="PGSRecoveryamt" msprop:Generator_ColumnPropNameInTable="PGSRecoveryamtColumn" msprop:Generator_UserColumnName="PGSRecoveryamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSothers" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSothers" msprop:Generator_ColumnPropNameInRow="PGSothers" msprop:Generator_ColumnPropNameInTable="PGSothersColumn" msprop:Generator_UserColumnName="PGSothers" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSinstamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSinstamt" msprop:Generator_ColumnPropNameInRow="PGSinstamt" msprop:Generator_ColumnPropNameInTable="PGSinstamtColumn" msprop:Generator_UserColumnName="PGSinstamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSbalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSbalance" msprop:Generator_ColumnPropNameInRow="PGSbalance" msprop:Generator_ColumnPropNameInTable="PGSbalanceColumn" msprop:Generator_UserColumnName="PGSbalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSLoanAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSLoanAmount" msprop:Generator_ColumnPropNameInRow="PGSLoanAmount" msprop:Generator_ColumnPropNameInTable="PGSLoanAmountColumn" msprop:Generator_UserColumnName="PGSLoanAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSNetAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSNetAmt" msprop:Generator_ColumnPropNameInRow="PGSNetAmt" msprop:Generator_ColumnPropNameInTable="PGSNetAmtColumn" msprop:Generator_UserColumnName="PGSNetAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSround" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSround" msprop:Generator_ColumnPropNameInRow="PGSround" msprop:Generator_ColumnPropNameInTable="PGSroundColumn" msprop:Generator_UserColumnName="PGSround" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Prrid" msprop:Generator_ColumnVarNameInTable="columnPrrid" msprop:Generator_ColumnPropNameInRow="Prrid" msprop:Generator_ColumnPropNameInTable="PrridColumn" msprop:Generator_UserColumnName="Prrid" type="xs:int" minOccurs="0" />
+              <xs:element name="PRname" msprop:Generator_ColumnVarNameInTable="columnPRname" msprop:Generator_ColumnPropNameInRow="PRname" msprop:Generator_ColumnPropNameInTable="PRnameColumn" msprop:Generator_UserColumnName="PRname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Pdiffrentdate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPdiffrentdate" msprop:Generator_ColumnPropNameInRow="Pdiffrentdate" msprop:Generator_ColumnPropNameInTable="PdiffrentdateColumn" msprop:Generator_UserColumnName="Pdiffrentdate" type="xs:int" minOccurs="0" />
+              <xs:element name="Ptotsample" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPtotsample" msprop:Generator_ColumnPropNameInRow="Ptotsample" msprop:Generator_ColumnPropNameInTable="PtotsampleColumn" msprop:Generator_UserColumnName="Ptotsample" type="xs:int" minOccurs="0" />
+              <xs:element name="PPlant_Code" msprop:Generator_ColumnVarNameInTable="columnPPlant_Code" msprop:Generator_ColumnPropNameInRow="PPlant_Code" msprop:Generator_ColumnPropNameInTable="PPlant_CodeColumn" msprop:Generator_UserColumnName="PPlant_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRoute_id" msprop:Generator_ColumnVarNameInTable="columnPRoute_id" msprop:Generator_ColumnPropNameInRow="PRoute_id" msprop:Generator_ColumnPropNameInTable="PRoute_idColumn" msprop:Generator_UserColumnName="PRoute_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BillComparison" msprop:Generator_TableClassName="BillComparisonDataTable" msprop:Generator_TableVarName="tableBillComparison" msprop:Generator_TablePropName="BillComparison" msprop:Generator_RowDeletingName="BillComparisonRowDeleting" msprop:Generator_UserTableName="BillComparison" msprop:Generator_RowChangingName="BillComparisonRowChanging" msprop:Generator_RowEvHandlerName="BillComparisonRowChangeEventHandler" msprop:Generator_RowDeletedName="BillComparisonRowDeleted" msprop:Generator_RowEvArgName="BillComparisonRowChangeEvent" msprop:Generator_RowChangedName="BillComparisonRowChanged" msprop:Generator_RowClassName="BillComparisonRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Route_id" msprop:Generator_ColumnVarNameInTable="columnRoute_id" msprop:Generator_ColumnPropNameInRow="Route_id" msprop:Generator_ColumnPropNameInTable="Route_idColumn" msprop:Generator_UserColumnName="Route_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Plant_code" msprop:Generator_ColumnVarNameInTable="columnPlant_code" msprop:Generator_ColumnPropNameInRow="Plant_code" msprop:Generator_ColumnPropNameInTable="Plant_codeColumn" msprop:Generator_UserColumnName="Plant_code" type="xs:int" minOccurs="0" />
+              <xs:element name="GSmkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmkg" msprop:Generator_ColumnPropNameInRow="GSmkg" msprop:Generator_ColumnPropNameInTable="GSmkgColumn" msprop:Generator_UserColumnName="GSmkg" type="xs:double" minOccurs="0" />
+              <xs:element name="GSmltr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmltr" msprop:Generator_ColumnPropNameInRow="GSmltr" msprop:Generator_ColumnPropNameInTable="GSmltrColumn" msprop:Generator_UserColumnName="GSmltr" type="xs:double" minOccurs="0" />
+              <xs:element name="GSAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSAmt" msprop:Generator_ColumnPropNameInRow="GSAmt" msprop:Generator_ColumnPropNameInTable="GSAmtColumn" msprop:Generator_UserColumnName="GSAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="GMrate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGMrate" msprop:Generator_ColumnPropNameInRow="GMrate" msprop:Generator_ColumnPropNameInTable="GMrateColumn" msprop:Generator_UserColumnName="GMrate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSInsentAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSInsentAmt" msprop:Generator_ColumnPropNameInRow="GSInsentAmt" msprop:Generator_ColumnPropNameInTable="GSInsentAmtColumn" msprop:Generator_UserColumnName="GSInsentAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="GScaramt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScaramt" msprop:Generator_ColumnPropNameInRow="GScaramt" msprop:Generator_ColumnPropNameInTable="GScaramtColumn" msprop:Generator_UserColumnName="GScaramt" type="xs:double" minOccurs="0" />
+              <xs:element name="GSSplBonus" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSSplBonus" msprop:Generator_ColumnPropNameInRow="GSSplBonus" msprop:Generator_ColumnPropNameInTable="GSSplBonusColumn" msprop:Generator_UserColumnName="GSSplBonus" type="xs:double" minOccurs="0" />
+              <xs:element name="GTotAdditions" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGTotAdditions" msprop:Generator_ColumnPropNameInRow="GTotAdditions" msprop:Generator_ColumnPropNameInTable="GTotAdditionsColumn" msprop:Generator_UserColumnName="GTotAdditions" type="xs:double" minOccurs="0" />
+              <xs:element name="GArate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGArate" msprop:Generator_ColumnPropNameInRow="GArate" msprop:Generator_ColumnPropNameInTable="GArateColumn" msprop:Generator_UserColumnName="GArate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GClaimAount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGClaimAount" msprop:Generator_ColumnPropNameInRow="GClaimAount" msprop:Generator_ColumnPropNameInTable="GClaimAountColumn" msprop:Generator_UserColumnName="GClaimAount" type="xs:double" minOccurs="0" />
+              <xs:element name="GSinstamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSinstamt" msprop:Generator_ColumnPropNameInRow="GSinstamt" msprop:Generator_ColumnPropNameInTable="GSinstamtColumn" msprop:Generator_UserColumnName="GSinstamt" type="xs:double" minOccurs="0" />
+              <xs:element name="GBilladv" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGBilladv" msprop:Generator_ColumnPropNameInRow="GBilladv" msprop:Generator_ColumnPropNameInTable="GBilladvColumn" msprop:Generator_UserColumnName="GBilladv" type="xs:double" minOccurs="0" />
+              <xs:element name="GAi" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAi" msprop:Generator_ColumnPropNameInRow="GAi" msprop:Generator_ColumnPropNameInTable="GAiColumn" msprop:Generator_UserColumnName="GAi" type="xs:double" minOccurs="0" />
+              <xs:element name="GFeed" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGFeed" msprop:Generator_ColumnPropNameInRow="GFeed" msprop:Generator_ColumnPropNameInTable="GFeedColumn" msprop:Generator_UserColumnName="GFeed" type="xs:double" minOccurs="0" />
+              <xs:element name="Gcan" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGcan" msprop:Generator_ColumnPropNameInRow="Gcan" msprop:Generator_ColumnPropNameInTable="GcanColumn" msprop:Generator_UserColumnName="Gcan" type="xs:double" minOccurs="0" />
+              <xs:element name="GRoundoff" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGRoundoff" msprop:Generator_ColumnPropNameInRow="GRoundoff" msprop:Generator_ColumnPropNameInTable="GRoundoffColumn" msprop:Generator_UserColumnName="GRoundoff" type="xs:double" minOccurs="0" />
+              <xs:element name="GNetAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGNetAmount" msprop:Generator_ColumnPropNameInRow="GNetAmount" msprop:Generator_ColumnPropNameInTable="GNetAmountColumn" msprop:Generator_UserColumnName="GNetAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="GAfat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAfat" msprop:Generator_ColumnPropNameInRow="GAfat" msprop:Generator_ColumnPropNameInTable="GAfatColumn" msprop:Generator_UserColumnName="GAfat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAsnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAsnf" msprop:Generator_ColumnPropNameInRow="GAsnf" msprop:Generator_ColumnPropNameInTable="GAsnfColumn" msprop:Generator_UserColumnName="GAsnf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSfatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSfatkg" msprop:Generator_ColumnPropNameInRow="GSfatkg" msprop:Generator_ColumnPropNameInTable="GSfatkgColumn" msprop:Generator_UserColumnName="GSfatkg" type="xs:double" minOccurs="0" />
+              <xs:element name="GSSnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSSnfkg" msprop:Generator_ColumnPropNameInRow="GSSnfkg" msprop:Generator_ColumnPropNameInTable="GSSnfkgColumn" msprop:Generator_UserColumnName="GSSnfkg" type="xs:double" minOccurs="0" />
+              <xs:element name="GkgFatrate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGkgFatrate" msprop:Generator_ColumnPropNameInRow="GkgFatrate" msprop:Generator_ColumnPropNameInTable="GkgFatrateColumn" msprop:Generator_UserColumnName="GkgFatrate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Pcode" msprop:Generator_ColumnVarNameInTable="columnPcode" msprop:Generator_ColumnPropNameInRow="Pcode" msprop:Generator_ColumnPropNameInTable="PcodeColumn" msprop:Generator_UserColumnName="Pcode" type="xs:int" minOccurs="0" />
+              <xs:element name="GSmkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmkg1" msprop:Generator_ColumnPropNameInRow="GSmkg1" msprop:Generator_ColumnPropNameInTable="GSmkg1Column" msprop:Generator_UserColumnName="GSmkg1" type="xs:double" minOccurs="0" />
+              <xs:element name="GSmltr1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmltr1" msprop:Generator_ColumnPropNameInRow="GSmltr1" msprop:Generator_ColumnPropNameInTable="GSmltr1Column" msprop:Generator_UserColumnName="GSmltr1" type="xs:double" minOccurs="0" />
+              <xs:element name="GSAmt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSAmt1" msprop:Generator_ColumnPropNameInRow="GSAmt1" msprop:Generator_ColumnPropNameInTable="GSAmt1Column" msprop:Generator_UserColumnName="GSAmt1" type="xs:double" minOccurs="0" />
+              <xs:element name="GMrate1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGMrate1" msprop:Generator_ColumnPropNameInRow="GMrate1" msprop:Generator_ColumnPropNameInTable="GMrate1Column" msprop:Generator_UserColumnName="GMrate1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSInsentAmt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSInsentAmt1" msprop:Generator_ColumnPropNameInRow="GSInsentAmt1" msprop:Generator_ColumnPropNameInTable="GSInsentAmt1Column" msprop:Generator_UserColumnName="GSInsentAmt1" type="xs:double" minOccurs="0" />
+              <xs:element name="GScaramt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScaramt1" msprop:Generator_ColumnPropNameInRow="GScaramt1" msprop:Generator_ColumnPropNameInTable="GScaramt1Column" msprop:Generator_UserColumnName="GScaramt1" type="xs:double" minOccurs="0" />
+              <xs:element name="GSSplBonus1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSSplBonus1" msprop:Generator_ColumnPropNameInRow="GSSplBonus1" msprop:Generator_ColumnPropNameInTable="GSSplBonus1Column" msprop:Generator_UserColumnName="GSSplBonus1" type="xs:double" minOccurs="0" />
+              <xs:element name="GTotAdditions1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGTotAdditions1" msprop:Generator_ColumnPropNameInRow="GTotAdditions1" msprop:Generator_ColumnPropNameInTable="GTotAdditions1Column" msprop:Generator_UserColumnName="GTotAdditions1" type="xs:double" minOccurs="0" />
+              <xs:element name="GArate1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGArate1" msprop:Generator_ColumnPropNameInRow="GArate1" msprop:Generator_ColumnPropNameInTable="GArate1Column" msprop:Generator_UserColumnName="GArate1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GClaimAount1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGClaimAount1" msprop:Generator_ColumnPropNameInRow="GClaimAount1" msprop:Generator_ColumnPropNameInTable="GClaimAount1Column" msprop:Generator_UserColumnName="GClaimAount1" type="xs:double" minOccurs="0" />
+              <xs:element name="GSinstamt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSinstamt1" msprop:Generator_ColumnPropNameInRow="GSinstamt1" msprop:Generator_ColumnPropNameInTable="GSinstamt1Column" msprop:Generator_UserColumnName="GSinstamt1" type="xs:double" minOccurs="0" />
+              <xs:element name="GBilladv1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGBilladv1" msprop:Generator_ColumnPropNameInRow="GBilladv1" msprop:Generator_ColumnPropNameInTable="GBilladv1Column" msprop:Generator_UserColumnName="GBilladv1" type="xs:double" minOccurs="0" />
+              <xs:element name="GAi1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAi1" msprop:Generator_ColumnPropNameInRow="GAi1" msprop:Generator_ColumnPropNameInTable="GAi1Column" msprop:Generator_UserColumnName="GAi1" type="xs:double" minOccurs="0" />
+              <xs:element name="GFeed1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGFeed1" msprop:Generator_ColumnPropNameInRow="GFeed1" msprop:Generator_ColumnPropNameInTable="GFeed1Column" msprop:Generator_UserColumnName="GFeed1" type="xs:double" minOccurs="0" />
+              <xs:element name="Gcan1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGcan1" msprop:Generator_ColumnPropNameInRow="Gcan1" msprop:Generator_ColumnPropNameInTable="Gcan1Column" msprop:Generator_UserColumnName="Gcan1" type="xs:double" minOccurs="0" />
+              <xs:element name="GRoundoff1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGRoundoff1" msprop:Generator_ColumnPropNameInRow="GRoundoff1" msprop:Generator_ColumnPropNameInTable="GRoundoff1Column" msprop:Generator_UserColumnName="GRoundoff1" type="xs:double" minOccurs="0" />
+              <xs:element name="GNetAmount1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGNetAmount1" msprop:Generator_ColumnPropNameInRow="GNetAmount1" msprop:Generator_ColumnPropNameInTable="GNetAmount1Column" msprop:Generator_UserColumnName="GNetAmount1" type="xs:double" minOccurs="0" />
+              <xs:element name="GAfat1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAfat1" msprop:Generator_ColumnPropNameInRow="GAfat1" msprop:Generator_ColumnPropNameInTable="GAfat1Column" msprop:Generator_UserColumnName="GAfat1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAsnf1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAsnf1" msprop:Generator_ColumnPropNameInRow="GAsnf1" msprop:Generator_ColumnPropNameInTable="GAsnf1Column" msprop:Generator_UserColumnName="GAsnf1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSfatkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSfatkg1" msprop:Generator_ColumnPropNameInRow="GSfatkg1" msprop:Generator_ColumnPropNameInTable="GSfatkg1Column" msprop:Generator_UserColumnName="GSfatkg1" type="xs:double" minOccurs="0" />
+              <xs:element name="GSSnfkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSSnfkg1" msprop:Generator_ColumnPropNameInRow="GSSnfkg1" msprop:Generator_ColumnPropNameInTable="GSSnfkg1Column" msprop:Generator_UserColumnName="GSSnfkg1" type="xs:double" minOccurs="0" />
+              <xs:element name="GkgFatrate1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGkgFatrate1" msprop:Generator_ColumnPropNameInRow="GkgFatrate1" msprop:Generator_ColumnPropNameInTable="GkgFatrate1Column" msprop:Generator_UserColumnName="GkgFatrate1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="diffrentdate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndiffrentdate" msprop:Generator_ColumnPropNameInRow="diffrentdate" msprop:Generator_ColumnPropNameInTable="diffrentdateColumn" msprop:Generator_UserColumnName="diffrentdate" type="xs:int" minOccurs="0" />
+              <xs:element name="RRoute_id" msprop:Generator_ColumnVarNameInTable="columnRRoute_id" msprop:Generator_ColumnPropNameInRow="RRoute_id" msprop:Generator_ColumnPropNameInTable="RRoute_idColumn" msprop:Generator_UserColumnName="RRoute_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Route_name" msprop:Generator_ColumnVarNameInTable="columnRoute_name" msprop:Generator_ColumnPropNameInRow="Route_name" msprop:Generator_ColumnPropNameInTable="Route_nameColumn" msprop:Generator_UserColumnName="Route_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Route_id1" msprop:Generator_ColumnVarNameInTable="columnRoute_id1" msprop:Generator_ColumnPropNameInRow="Route_id1" msprop:Generator_ColumnPropNameInTable="Route_id1Column" msprop:Generator_UserColumnName="Route_id1" type="xs:int" minOccurs="0" />
+              <xs:element name="Plant_code1" msprop:Generator_ColumnVarNameInTable="columnPlant_code1" msprop:Generator_ColumnPropNameInRow="Plant_code1" msprop:Generator_ColumnPropNameInTable="Plant_code1Column" msprop:Generator_UserColumnName="Plant_code1" type="xs:int" minOccurs="0" />
+              <xs:element name="PGSmkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSmkg" msprop:Generator_ColumnPropNameInRow="PGSmkg" msprop:Generator_ColumnPropNameInTable="PGSmkgColumn" msprop:Generator_UserColumnName="PGSmkg" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSmltr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSmltr" msprop:Generator_ColumnPropNameInRow="PGSmltr" msprop:Generator_ColumnPropNameInTable="PGSmltrColumn" msprop:Generator_UserColumnName="PGSmltr" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSAmt" msprop:Generator_ColumnPropNameInRow="PGSAmt" msprop:Generator_ColumnPropNameInTable="PGSAmtColumn" msprop:Generator_UserColumnName="PGSAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="PGMrate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGMrate" msprop:Generator_ColumnPropNameInRow="PGMrate" msprop:Generator_ColumnPropNameInTable="PGMrateColumn" msprop:Generator_UserColumnName="PGMrate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSInsentAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSInsentAmt" msprop:Generator_ColumnPropNameInRow="PGSInsentAmt" msprop:Generator_ColumnPropNameInTable="PGSInsentAmtColumn" msprop:Generator_UserColumnName="PGSInsentAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="PGScaramt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGScaramt" msprop:Generator_ColumnPropNameInRow="PGScaramt" msprop:Generator_ColumnPropNameInTable="PGScaramtColumn" msprop:Generator_UserColumnName="PGScaramt" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSSplBonus" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSSplBonus" msprop:Generator_ColumnPropNameInRow="PGSSplBonus" msprop:Generator_ColumnPropNameInTable="PGSSplBonusColumn" msprop:Generator_UserColumnName="PGSSplBonus" type="xs:double" minOccurs="0" />
+              <xs:element name="PGTotAdditions" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGTotAdditions" msprop:Generator_ColumnPropNameInRow="PGTotAdditions" msprop:Generator_ColumnPropNameInTable="PGTotAdditionsColumn" msprop:Generator_UserColumnName="PGTotAdditions" type="xs:double" minOccurs="0" />
+              <xs:element name="PGArate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGArate" msprop:Generator_ColumnPropNameInRow="PGArate" msprop:Generator_ColumnPropNameInTable="PGArateColumn" msprop:Generator_UserColumnName="PGArate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGClaimAount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGClaimAount" msprop:Generator_ColumnPropNameInRow="PGClaimAount" msprop:Generator_ColumnPropNameInTable="PGClaimAountColumn" msprop:Generator_UserColumnName="PGClaimAount" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSinstamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSinstamt" msprop:Generator_ColumnPropNameInRow="PGSinstamt" msprop:Generator_ColumnPropNameInTable="PGSinstamtColumn" msprop:Generator_UserColumnName="PGSinstamt" type="xs:double" minOccurs="0" />
+              <xs:element name="PGBilladv" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGBilladv" msprop:Generator_ColumnPropNameInRow="PGBilladv" msprop:Generator_ColumnPropNameInTable="PGBilladvColumn" msprop:Generator_UserColumnName="PGBilladv" type="xs:double" minOccurs="0" />
+              <xs:element name="PGAi" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAi" msprop:Generator_ColumnPropNameInRow="PGAi" msprop:Generator_ColumnPropNameInTable="PGAiColumn" msprop:Generator_UserColumnName="PGAi" type="xs:double" minOccurs="0" />
+              <xs:element name="PGFeed" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGFeed" msprop:Generator_ColumnPropNameInRow="PGFeed" msprop:Generator_ColumnPropNameInTable="PGFeedColumn" msprop:Generator_UserColumnName="PGFeed" type="xs:double" minOccurs="0" />
+              <xs:element name="PGcan" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGcan" msprop:Generator_ColumnPropNameInRow="PGcan" msprop:Generator_ColumnPropNameInTable="PGcanColumn" msprop:Generator_UserColumnName="PGcan" type="xs:double" minOccurs="0" />
+              <xs:element name="PGRoundoff" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGRoundoff" msprop:Generator_ColumnPropNameInRow="PGRoundoff" msprop:Generator_ColumnPropNameInTable="PGRoundoffColumn" msprop:Generator_UserColumnName="PGRoundoff" type="xs:double" minOccurs="0" />
+              <xs:element name="PGNetAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGNetAmount" msprop:Generator_ColumnPropNameInRow="PGNetAmount" msprop:Generator_ColumnPropNameInTable="PGNetAmountColumn" msprop:Generator_UserColumnName="PGNetAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="PGAfat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAfat" msprop:Generator_ColumnPropNameInRow="PGAfat" msprop:Generator_ColumnPropNameInTable="PGAfatColumn" msprop:Generator_UserColumnName="PGAfat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGAsnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAsnf" msprop:Generator_ColumnPropNameInRow="PGAsnf" msprop:Generator_ColumnPropNameInTable="PGAsnfColumn" msprop:Generator_UserColumnName="PGAsnf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSfatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSfatkg" msprop:Generator_ColumnPropNameInRow="PGSfatkg" msprop:Generator_ColumnPropNameInTable="PGSfatkgColumn" msprop:Generator_UserColumnName="PGSfatkg" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSSnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSSnfkg" msprop:Generator_ColumnPropNameInRow="PGSSnfkg" msprop:Generator_ColumnPropNameInTable="PGSSnfkgColumn" msprop:Generator_UserColumnName="PGSSnfkg" type="xs:double" minOccurs="0" />
+              <xs:element name="PGkgFatrate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGkgFatrate" msprop:Generator_ColumnPropNameInRow="PGkgFatrate" msprop:Generator_ColumnPropNameInTable="PGkgFatrateColumn" msprop:Generator_UserColumnName="PGkgFatrate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Pcode1" msprop:Generator_ColumnVarNameInTable="columnPcode1" msprop:Generator_ColumnPropNameInRow="Pcode1" msprop:Generator_ColumnPropNameInTable="Pcode1Column" msprop:Generator_UserColumnName="Pcode1" type="xs:int" minOccurs="0" />
+              <xs:element name="PGSmkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSmkg1" msprop:Generator_ColumnPropNameInRow="PGSmkg1" msprop:Generator_ColumnPropNameInTable="PGSmkg1Column" msprop:Generator_UserColumnName="PGSmkg1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSmltr1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSmltr1" msprop:Generator_ColumnPropNameInRow="PGSmltr1" msprop:Generator_ColumnPropNameInTable="PGSmltr1Column" msprop:Generator_UserColumnName="PGSmltr1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSAmt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSAmt1" msprop:Generator_ColumnPropNameInRow="PGSAmt1" msprop:Generator_ColumnPropNameInTable="PGSAmt1Column" msprop:Generator_UserColumnName="PGSAmt1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGMrate1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGMrate1" msprop:Generator_ColumnPropNameInRow="PGMrate1" msprop:Generator_ColumnPropNameInTable="PGMrate1Column" msprop:Generator_UserColumnName="PGMrate1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSInsentAmt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSInsentAmt1" msprop:Generator_ColumnPropNameInRow="PGSInsentAmt1" msprop:Generator_ColumnPropNameInTable="PGSInsentAmt1Column" msprop:Generator_UserColumnName="PGSInsentAmt1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGScaramt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGScaramt1" msprop:Generator_ColumnPropNameInRow="PGScaramt1" msprop:Generator_ColumnPropNameInTable="PGScaramt1Column" msprop:Generator_UserColumnName="PGScaramt1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSSplBonus1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSSplBonus1" msprop:Generator_ColumnPropNameInRow="PGSSplBonus1" msprop:Generator_ColumnPropNameInTable="PGSSplBonus1Column" msprop:Generator_UserColumnName="PGSSplBonus1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGTotAdditions1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGTotAdditions1" msprop:Generator_ColumnPropNameInRow="PGTotAdditions1" msprop:Generator_ColumnPropNameInTable="PGTotAdditions1Column" msprop:Generator_UserColumnName="PGTotAdditions1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGArate1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGArate1" msprop:Generator_ColumnPropNameInRow="PGArate1" msprop:Generator_ColumnPropNameInTable="PGArate1Column" msprop:Generator_UserColumnName="PGArate1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGClaimAount1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGClaimAount1" msprop:Generator_ColumnPropNameInRow="PGClaimAount1" msprop:Generator_ColumnPropNameInTable="PGClaimAount1Column" msprop:Generator_UserColumnName="PGClaimAount1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSinstamt1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSinstamt1" msprop:Generator_ColumnPropNameInRow="PGSinstamt1" msprop:Generator_ColumnPropNameInTable="PGSinstamt1Column" msprop:Generator_UserColumnName="PGSinstamt1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGBilladv1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGBilladv1" msprop:Generator_ColumnPropNameInRow="PGBilladv1" msprop:Generator_ColumnPropNameInTable="PGBilladv1Column" msprop:Generator_UserColumnName="PGBilladv1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGAi1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAi1" msprop:Generator_ColumnPropNameInRow="PGAi1" msprop:Generator_ColumnPropNameInTable="PGAi1Column" msprop:Generator_UserColumnName="PGAi1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGFeed1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGFeed1" msprop:Generator_ColumnPropNameInRow="PGFeed1" msprop:Generator_ColumnPropNameInTable="PGFeed1Column" msprop:Generator_UserColumnName="PGFeed1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGcan1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGcan1" msprop:Generator_ColumnPropNameInRow="PGcan1" msprop:Generator_ColumnPropNameInTable="PGcan1Column" msprop:Generator_UserColumnName="PGcan1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGRoundoff1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGRoundoff1" msprop:Generator_ColumnPropNameInRow="PGRoundoff1" msprop:Generator_ColumnPropNameInTable="PGRoundoff1Column" msprop:Generator_UserColumnName="PGRoundoff1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGNetAmount1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGNetAmount1" msprop:Generator_ColumnPropNameInRow="PGNetAmount1" msprop:Generator_ColumnPropNameInTable="PGNetAmount1Column" msprop:Generator_UserColumnName="PGNetAmount1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGAfat1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAfat1" msprop:Generator_ColumnPropNameInRow="PGAfat1" msprop:Generator_ColumnPropNameInTable="PGAfat1Column" msprop:Generator_UserColumnName="PGAfat1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGAsnf1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGAsnf1" msprop:Generator_ColumnPropNameInRow="PGAsnf1" msprop:Generator_ColumnPropNameInTable="PGAsnf1Column" msprop:Generator_UserColumnName="PGAsnf1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PGSfatkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSfatkg1" msprop:Generator_ColumnPropNameInRow="PGSfatkg1" msprop:Generator_ColumnPropNameInTable="PGSfatkg1Column" msprop:Generator_UserColumnName="PGSfatkg1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGSSnfkg1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGSSnfkg1" msprop:Generator_ColumnPropNameInRow="PGSSnfkg1" msprop:Generator_ColumnPropNameInTable="PGSSnfkg1Column" msprop:Generator_UserColumnName="PGSSnfkg1" type="xs:double" minOccurs="0" />
+              <xs:element name="PGkgFatrate1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPGkgFatrate1" msprop:Generator_ColumnPropNameInRow="PGkgFatrate1" msprop:Generator_ColumnPropNameInTable="PGkgFatrate1Column" msprop:Generator_UserColumnName="PGkgFatrate1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Pdiffrentdate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPdiffrentdate" msprop:Generator_ColumnPropNameInRow="Pdiffrentdate" msprop:Generator_ColumnPropNameInTable="PdiffrentdateColumn" msprop:Generator_UserColumnName="Pdiffrentdate" type="xs:int" minOccurs="0" />
+              <xs:element name="PRoute_id" msprop:Generator_ColumnVarNameInTable="columnPRoute_id" msprop:Generator_ColumnPropNameInRow="PRoute_id" msprop:Generator_ColumnPropNameInTable="PRoute_idColumn" msprop:Generator_UserColumnName="PRoute_id" type="xs:int" minOccurs="0" />
+              <xs:element name="PRoute_name" msprop:Generator_ColumnVarNameInTable="columnPRoute_name" msprop:Generator_ColumnPropNameInRow="PRoute_name" msprop:Generator_ColumnPropNameInTable="PRoute_nameColumn" msprop:Generator_UserColumnName="PRoute_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sampleno" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsampleno" msprop:Generator_ColumnPropNameInRow="sampleno" msprop:Generator_ColumnPropNameInTable="samplenoColumn" msprop:Generator_UserColumnName="sampleno" type="xs:int" minOccurs="0" />
+              <xs:element name="plantcode" msprop:Generator_ColumnVarNameInTable="columnplantcode" msprop:Generator_ColumnPropNameInRow="plantcode" msprop:Generator_ColumnPropNameInTable="plantcodeColumn" msprop:Generator_UserColumnName="plantcode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="psampleno" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpsampleno" msprop:Generator_ColumnPropNameInRow="psampleno" msprop:Generator_ColumnPropNameInTable="psamplenoColumn" msprop:Generator_UserColumnName="psampleno" type="xs:int" minOccurs="0" />
+              <xs:element name="ppplant_code" msprop:Generator_ColumnVarNameInTable="columnppplant_code" msprop:Generator_ColumnPropNameInRow="ppplant_code" msprop:Generator_ColumnPropNameInTable="ppplant_codeColumn" msprop:Generator_UserColumnName="ppplant_code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="presentplantcode" msprop:Generator_ColumnVarNameInTable="columnpresentplantcode" msprop:Generator_ColumnPropNameInRow="presentplantcode" msprop:Generator_ColumnPropNameInTable="presentplantcodeColumn" msprop:Generator_UserColumnName="presentplantcode" type="xs:int" minOccurs="0" />
+              <xs:element name="ppcode" msprop:Generator_ColumnVarNameInTable="columnppcode" msprop:Generator_ColumnPropNameInRow="ppcode" msprop:Generator_ColumnPropNameInTable="ppcodeColumn" msprop:Generator_UserColumnName="ppcode" type="xs:int" minOccurs="0" />
+              <xs:element name="presentactualamount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpresentactualamount" msprop:Generator_ColumnPropNameInRow="presentactualamount" msprop:Generator_ColumnPropNameInTable="presentactualamountColumn" msprop:Generator_UserColumnName="presentactualamount" type="xs:double" minOccurs="0" />
+              <xs:element name="previousactualamount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpreviousactualamount" msprop:Generator_ColumnPropNameInRow="previousactualamount" msprop:Generator_ColumnPropNameInTable="previousactualamountColumn" msprop:Generator_UserColumnName="previousactualamount" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

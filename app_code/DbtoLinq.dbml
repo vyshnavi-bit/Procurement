@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="AMPS" Class="DbtoLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=onlinemilktest.in;Initial Catalog=AMPS;User ID=bala" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="AMPSConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.WeightDemoTable" Member="WeightDemoTables">
+    <Type Name="WeightDemoTable">
+      <Column Name="Agent_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Agent_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="milk_Kg" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Centre_ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Session" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="No_Of_Cans" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="milk_Ltr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="fat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="snf" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="sample_No" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="fat_Kg" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="snf_Kg" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="clr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="net_amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="net_rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="milk_Nature" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rate_chart" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="com_Amnt" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="bon_Amnt" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

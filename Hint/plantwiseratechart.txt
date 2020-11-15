@@ -1,0 +1,123 @@
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="RatechartPlantwise.aspx.cs" Inherits="RatechartPlantwise" Title="Untitled Page" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<form id="we" runat="server"></form>
+<div>
+
+<asp:panel ID="pnl_plantname" runat="server" BorderWidth="1">
+<asp:Table ID="tbl_plantname" runat="server" BorderWidth="0">
+<asp:TableRow ID="tblr_plantname" runat="server" BorderWidth="0">
+<asp:TableCell ID="tblc_plantname" runat="server" BorderWidth="0">
+<asp:CheckBox ID="Mchk_Menu1" runat="server" Text="PlantName" Font-Size="Small" 
+        AutoPostBack="true" oncheckedchanged="Mchk_Menu1_CheckedChanged"  />
+</asp:TableCell>
+
+<asp:TableCell ID="tblc_ddlratechart" runat="server" BorderWidth="0">RateChartName
+</asp:TableCell>
+
+</asp:TableRow>
+<asp:TableRow ID="tblr_plantnames" runat="server" BorderWidth="0">
+<asp:TableCell ID="tblc_plantnames" runat="server" BorderWidth="0"><asp:CheckBoxList ID="CheckBoxList1" runat="server" BorderWidth="1" 
+        Font-Size="Smaller" onselectedindexchanged="CheckBoxList1_SelectedIndexChanged"></asp:CheckBoxList>        
+</asp:TableCell>
+<asp:TableCell ID="tblc_RatechartName" runat="server" BorderWidth="0">
+<asp:DropDownList ID="ddl_Ratechart" runat="server" AutoPostBack="true"></asp:DropDownList>
+</asp:TableCell>
+</asp:TableRow>
+
+
+
+</asp:Table>
+<asp:Button ID="btn_PlantSave" Text="SAVE" Height="25px" BackColor="#6F696F" 
+        ForeColor="White"  runat="server"  
+        OnClientClick="return Confirm(Are You Sure Save the PlantwiseRatechart)" 
+        onclick="btn_PlantSave_Click"/>
+</asp:panel>
+
+</div>
+
+</asp:Content>
+
+=============
+
+
+using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+
+public partial class RatechartPlantwise : System.Web.UI.Page
+{
+    DataSet ds = new DataSet();
+    BLLPlantName BllPlant = new BLLPlantName();
+    BLLRateChart BLLrate = new BLLRateChart();
+    public int chlistcount = 0;
+
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+            //int companycode = Convert.ToInt32(Session["Company_code"]);
+            //int plantcode = Convert.ToInt32(Session["Plant_Code"]);
+            LoadPlantName();
+            Mchk_Menu1.Checked = true;
+            MenuPlantName();
+        }
+
+    }
+    private void LoadPlantName()
+    {
+        ds = BllPlant.LoadPlantNameChkLst();
+        CheckBoxList1.DataSource = ds;
+        CheckBoxList1.DataTextField = "Plant_Name";
+        CheckBoxList1.DataValueField = "Plant_Code";
+        CheckBoxList1.DataBind();
+        chlistcount = CheckBoxList1.Items.Count;
+    }
+    private void LoadDdlRatechart()
+    {
+      ds=BLLrate.Loadratechart1(
+    }
+
+    protected void btn_PlantSave_Click(object sender, EventArgs e)
+    {
+      
+    }
+    protected void Mchk_Menu1_CheckedChanged(object sender, EventArgs e)
+    {
+        MenuPlantName();
+    }
+    private void MenuPlantName()
+    {
+        if (Mchk_Menu1.Checked == true)
+        {
+            for (int i = 0; i <= CheckBoxList1.Items.Count - 1; i++)
+            {
+                CheckBoxList1.Items[i].Selected =true;
+            }
+        }
+        else
+        {
+            for (int i = 0; i <= CheckBoxList1.Items.Count - 1; i++)
+            {
+                CheckBoxList1.Items[i].Selected =false;
+            }
+        }
+    }
+    protected void CheckBoxList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    
+}

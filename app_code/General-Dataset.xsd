@@ -1,0 +1,829 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="General_Dataset" targetNamespace="http://tempuri.org/General_Dataset.xsd" xmlns:mstns="http://tempuri.org/General_Dataset.xsd" xmlns="http://tempuri.org/General_Dataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AMPSConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AMPSConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AMPSConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RoutewiswPaymentabstarctTableAdapter" GeneratorDataComponentClassName="RoutewiswPaymentabstarctTableAdapter" Name="RoutewiswPaymentabstarct" UserDataComponentName="RoutewiswPaymentabstarctTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM 
+(SELECT cart.ARid AS Rid,cart.cartAid AS Aid,cart.Agent_Name,
+ISNULL(prdelo.Smkg,0) AS Smkg,
+ISNULL(prdelo.Smltr,0) AS Smltr,
+ISNULL(prdelo.AvgFat ,0) AS AvgFat,
+ISNULL(prdelo.AvgSnf,0) AS AvgSnf,
+ISNULL(prdelo.AvgRate,0) AS AvgRate,
+ISNULL(prdelo.Avgclr,0) AS Avgclr,
+ISNULL(prdelo.Scans,0) AS Scans,
+ISNULL(prdelo.SAmt,0) AS SAmt,
+ISNULL(prdelo.ScommAmt,0) AS ScommAmt,
+ISNULL(prdelo.Scatamt,0) AS Scatamt,
+ISNULL(prdelo.Ssplbonamt,0) AS Ssplbonamt,
+ISNULL(prdelo.AvgcRate,0) AS AvgcRate,
+ISNULL(prdelo.Sfatkg,0) AS Sfatkg,
+ISNULL(prdelo.Ssnfkg,0) AS Ssnfkg,
+ISNULL(prdelo.Billadv,0) AS SBilladv,
+ISNULL(prdelo.Ai,0) AS SAiamt,
+ISNULL(prdelo.Feed,0) AS SFeedamt,
+ISNULL(prdelo.Can,0) AS Scanamt,
+ISNULL(prdelo.Recovery,0) AS SRecoveryamt,
+ISNULL(prdelo.others,0) AS Sothers,
+ISNULL(prdelo.instamt,0) AS Sinstamt,
+ISNULL(prdelo.balance,0) AS Sbalance,
+ISNULL(prdelo.LoanAmount,0) AS SLoanAmount,
+ISNULL(prdelo.LoanAmount,0) AS Sclaim,
+((ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))) AS SRNetAmt,
+FLOOR ((ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))) AS SNetAmt,
+( ( (ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0)) )-
+( FLOOR( (ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))) )  ) AS SRound,
+cart.Bank_Id,cart.Payment_mode,cart.Agent_AccountNo
+
+FROM
+(SELECT * FROM
+(SELECT * FROM
+(SELECT agent_id AS SproAid,CAST(SUM(Milk_kg) AS DECIMAL(18,2)) AS Smkg,CAST(SUM(Milk_ltr) AS DECIMAL(18,2)) AS Smltr,CAST(AVG(FAT) AS DECIMAL(18,2)) AS AvgFat,CAST(AVG(SNF) AS DECIMAL(18,2)) AS AvgSnf,CAST(AVG(Rate) AS DECIMAL(18,2)) AS AvgRate,CAST(AVG(Clr) AS DECIMAL(18,2)) AS Avgclr,CAST(SUM(NoofCans) AS DECIMAL(18,2)) AS Scans,CAST(SUM(Amount) AS DECIMAL(18,2)) AS SAmt,CAST(SUM(Comrate) AS DECIMAL(18,2)) AS ScommAmt,CAST(SUM(ComRate) AS DECIMAL(18,2)) AS Scatamt,CAST(SUM(ComRate) AS DECIMAL(18,2)) AS Ssplbonamt,CAST(AVG(ComRate) AS DECIMAL(18,2)) AS Avgcrate,CAST(SUM(fat_kg) AS DECIMAL(18,2)) AS Sfatkg,CAST(SUM(snf_kg) AS DECIMAL(18,2)) AS SSnfkg  FROM Procurement WHERE prdate BETWEEN '03/1/2014' AND '03/7/2014' AND Company_Code='1' AND Plant_Code='156' GROUP BY agent_id ) AS Spro
+LEFT JOIN
+(SELECT  Agent_id AS DAid ,(CAST((Billadvance) AS DECIMAL(18,2))) AS Billadv,(CAST((Ai) AS DECIMAL(18,2))) AS Ai,(CAST((Feed) AS DECIMAL(18,2))) AS Feed,(CAST((can) AS DECIMAL(18,2))) AS can,(CAST((Recovery) AS DECIMAL(18,2))) AS Recovery,(CAST((others) AS DECIMAL(18,2))) AS others FROM Deduction_Details WHERE deductiondate BETWEEN '03/1/2014' AND '3/7/2014' AND Company_Code='1' AND Plant_Code='156') AS dedu ON Spro.SproAid=dedu.DAid) AS proded
+LEFT JOIN
+(SELECT Agent_id AS LoAid,CAST(SUM(inst_amount) AS DECIMAL(18,2)) AS instamt,CAST(SUM(balance) AS DECIMAL(18,2)) AS balance,CAST(SUM(LoanAmount) AS DECIMAL(18,2)) AS LoanAmount FROM LoanDetails WHERE Company_Code='1' AND Plant_Code='156' AND Balance&gt;0 GROUP BY Agent_id) AS Lon ON proded.SproAid=Lon.LoAid) AS prdelo
+INNER JOIN
+(SELECT Agent_Id AS cartAid,(CAST((Cartage_Amt) AS DECIMAL(18,2)))AS CarAmt,Agent_Name,Bank_Id,Payment_mode,Agent_AccountNo,Route_id AS ARid  FROM  Agent_Master WHERE Type=0 AND Company_Code='1' AND Plant_Code='156') AS cart ON prdelo.SproAid=cart.cartAid) AS Routewiseagent
+
+LEFT JOIN
+
+(SELECT  G1.ARid,
+CAST(SUM(G1.Smkg)  AS DECIMAL(18,2)) AS GSmkg,
+CAST(SUM(G1.Smltr)  AS DECIMAL(18,2)) AS GSmltr,
+CAST(AVG(G1.AvgFat) AS DECIMAL(18,1)) AS GAvgFat,
+CAST(AVG(G1.AvgSnf) AS DECIMAL(18,1)) AS GAvgSnf,
+CAST(AVG(G1.AvgRate) AS DECIMAL(18,1)) AS GAvgRate,
+CAST(AVG(G1.Avgclr) AS DECIMAL(18,1)) AS GAvgclr,
+CAST(SUM(G1.Scans) AS DECIMAL(18,2)) AS GScans,
+CAST(SUM(G1.SAmt) AS DECIMAL(18,2)) AS GSAmt,
+CAST(SUM(G1.ScommAmt) AS DECIMAL(18,2)) AS GScommAmt,
+CAST(SUM(G1.Scatamt) AS DECIMAL(18,2)) AS GScatamt,
+CAST(SUM(G1.Ssplbonamt) AS DECIMAL(18,2)) AS GSsplbonamt,
+CAST(AVG(G1.AvgcRate) AS DECIMAL(18,2)) AS GAvgcRate,
+CAST(SUM(G1.Sfatkg) AS DECIMAL(18,2)) AS GSfatkg,
+CAST(SUM(G1.Ssnfkg) AS DECIMAL(18,2)) AS GSsnfkg,
+CAST(SUM(G1.SBilladv) AS DECIMAL(18,2)) AS GSBilladv,
+CAST(SUM(G1.SAiamt) AS DECIMAL(18,2)) AS GSAiamt,
+CAST(SUM(G1.SFeedamt) AS DECIMAL(18,2)) AS GSFeedamt,
+CAST(SUM(G1.Scanamt) AS DECIMAL(18,2)) AS GScanamt,
+CAST(SUM(G1.SRecoveryamt) AS DECIMAL(18,2)) AS GSRecoveryamt,
+CAST(SUM(G1.Sothers) AS DECIMAL(18,2)) AS GSothers,
+CAST(SUM(G1.Sinstamt) AS DECIMAL(18,2)) AS GSinstamt,
+CAST(SUM(G1.Sbalance) AS DECIMAL(18,2)) AS GSbalance,
+CAST(SUM(G1.SLoanAmount) AS DECIMAL(18,2)) AS GSLoanAmount,
+CAST(SUM(G1.SNetAmt) AS DECIMAL(18,2)) AS GSNetAmt,
+CAST(SUM(G1.SRound)  AS DECIMAL(18,2)) AS GSround,
+CAST(SUM(G1.SRound) AS DECIMAL(18,2)) AS GSClaim  FROM
+(SELECT cart.ARid,
+ISNULL(prdelo.Smkg,0) AS Smkg,
+ISNULL(prdelo.Smltr,0) AS Smltr,
+ISNULL(prdelo.AvgFat ,0) AS AvgFat,
+ISNULL(prdelo.AvgSnf,0) AS AvgSnf,
+ISNULL(prdelo.AvgRate,0) AS AvgRate,
+ISNULL(prdelo.Avgclr,0) AS Avgclr,
+ISNULL(prdelo.Scans,0) AS Scans,
+ISNULL(prdelo.SAmt,0) AS SAmt,
+ISNULL(prdelo.ScommAmt,0) AS ScommAmt,
+ISNULL(prdelo.Scatamt,0) AS Scatamt,
+ISNULL(prdelo.Ssplbonamt,0) AS Ssplbonamt,
+ISNULL(prdelo.AvgcRate,0) AS AvgcRate,
+ISNULL(prdelo.Sfatkg,0) AS Sfatkg,
+ISNULL(prdelo.Ssnfkg,0) AS Ssnfkg,
+ISNULL(prdelo.Billadv,0) AS SBilladv,
+ISNULL(prdelo.Ai,0) AS SAiamt,
+ISNULL(prdelo.Feed,0) AS SFeedamt,
+ISNULL(prdelo.Can,0) AS Scanamt,
+ISNULL(prdelo.Recovery,0) AS SRecoveryamt,
+ISNULL(prdelo.others,0) AS Sothers,
+ISNULL(prdelo.instamt,0) AS Sinstamt,
+ISNULL(prdelo.balance,0) AS Sbalance,
+ISNULL(prdelo.LoanAmount,0) AS SLoanAmount,
+FLOOR (ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))  AS SNetAmt,
+( ( (ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0)) )-
+( FLOOR( (ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0)) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))) )  ) AS SRound
+FROM
+(SELECT * FROM
+(SELECT * FROM
+(SELECT agent_id AS SproAid,CAST(SUM(Milk_kg) AS DECIMAL(18,2)) AS Smkg,CAST(SUM(Milk_ltr) AS DECIMAL(18,2)) AS Smltr,CAST(AVG(FAT) AS DECIMAL(18,2)) AS AvgFat,CAST(AVG(SNF) AS DECIMAL(18,2)) AS AvgSnf,CAST(AVG(Rate) AS DECIMAL(18,2)) AS AvgRate,CAST(AVG(Clr) AS DECIMAL(18,2)) AS Avgclr,CAST(SUM(NoofCans) AS DECIMAL(18,2)) AS Scans,CAST(SUM(Amount) AS DECIMAL(18,2)) AS SAmt,CAST(SUM(Comrate) AS DECIMAL(18,2)) AS ScommAmt,CAST(SUM(ComRate) AS DECIMAL(18,2)) AS Scatamt,CAST(SUM(ComRate) AS DECIMAL(18,2)) AS Ssplbonamt,CAST(AVG(ComRate) AS DECIMAL(18,2)) AS Avgcrate,CAST(SUM(fat_kg) AS DECIMAL(18,2)) AS Sfatkg,CAST(SUM(snf_kg) AS DECIMAL(18,2)) AS SSnfkg  FROM Procurement GROUP BY agent_id  ) AS Spro
+LEFT JOIN
+(SELECT  Agent_id AS DAid ,(CAST((Billadvance) AS DECIMAL(18,2))) AS Billadv,(CAST((Ai) AS DECIMAL(18,2))) AS Ai,(CAST((Feed) AS DECIMAL(18,2))) AS Feed,(CAST((can) AS DECIMAL(18,2))) AS can,(CAST((Recovery) AS DECIMAL(18,2))) AS Recovery,(CAST((others) AS DECIMAL(18,2))) AS others FROM Deduction_Details ) AS dedu ON Spro.SproAid=dedu.DAid) AS proded
+LEFT JOIN
+(SELECT Agent_id AS LoAid,CAST(SUM(inst_amount) AS DECIMAL(18,2)) AS instamt,CAST(SUM(balance) AS DECIMAL(18,2)) AS balance,CAST(SUM(LoanAmount) AS DECIMAL(18,2)) AS LoanAmount FROM LoanDetails WHERE  Balance&gt;0 GROUP BY Agent_id) AS Lon ON proded.SproAid=Lon.LoAid) AS prdelo
+INNER JOIN
+(SELECT Agent_Id AS cartAid,(CAST((Cartage_Amt) AS DECIMAL(18,2)))AS CarAmt,Agent_Name,Bank_Id,Payment_mode,Agent_AccountNo,Route_id AS ARid  FROM  Agent_Master WHERE Type=0  ) AS cart ON prdelo.SproAid=cart.cartAid) AS G1 GROUP BY  G1.ARid) AS Route ON Routewiseagent.Rid=Route.ARid ORDER BY Routewiseagent.Rid ,Routewiseagent.Aid
+
+
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Rid" DataSetColumn="Rid" />
+              <Mapping SourceColumn="Aid" DataSetColumn="Aid" />
+              <Mapping SourceColumn="Smkg" DataSetColumn="Smkg" />
+              <Mapping SourceColumn="Smltr" DataSetColumn="Smltr" />
+              <Mapping SourceColumn="AvgFat" DataSetColumn="AvgFat" />
+              <Mapping SourceColumn="AvgSnf" DataSetColumn="AvgSnf" />
+              <Mapping SourceColumn="AvgRate" DataSetColumn="AvgRate" />
+              <Mapping SourceColumn="Avgclr" DataSetColumn="Avgclr" />
+              <Mapping SourceColumn="Scans" DataSetColumn="Scans" />
+              <Mapping SourceColumn="SAmt" DataSetColumn="SAmt" />
+              <Mapping SourceColumn="ScommAmt" DataSetColumn="ScommAmt" />
+              <Mapping SourceColumn="Scatamt" DataSetColumn="Scatamt" />
+              <Mapping SourceColumn="Ssplbonamt" DataSetColumn="Ssplbonamt" />
+              <Mapping SourceColumn="AvgcRate" DataSetColumn="AvgcRate" />
+              <Mapping SourceColumn="Sfatkg" DataSetColumn="Sfatkg" />
+              <Mapping SourceColumn="Ssnfkg" DataSetColumn="Ssnfkg" />
+              <Mapping SourceColumn="SBilladv" DataSetColumn="SBilladv" />
+              <Mapping SourceColumn="SAiamt" DataSetColumn="SAiamt" />
+              <Mapping SourceColumn="SFeedamt" DataSetColumn="SFeedamt" />
+              <Mapping SourceColumn="Scanamt" DataSetColumn="Scanamt" />
+              <Mapping SourceColumn="SRecoveryamt" DataSetColumn="SRecoveryamt" />
+              <Mapping SourceColumn="Sothers" DataSetColumn="Sothers" />
+              <Mapping SourceColumn="Sinstamt" DataSetColumn="Sinstamt" />
+              <Mapping SourceColumn="Sbalance" DataSetColumn="Sbalance" />
+              <Mapping SourceColumn="SLoanAmount" DataSetColumn="SLoanAmount" />
+              <Mapping SourceColumn="SRNetAmt" DataSetColumn="SRNetAmt" />
+              <Mapping SourceColumn="SNetAmt" DataSetColumn="SNetAmt" />
+              <Mapping SourceColumn="SRound" DataSetColumn="SRound" />
+              <Mapping SourceColumn="Bank_Id" DataSetColumn="Bank_Id" />
+              <Mapping SourceColumn="Payment_mode" DataSetColumn="Payment_mode" />
+              <Mapping SourceColumn="Agent_AccountNo" DataSetColumn="Agent_AccountNo" />
+              <Mapping SourceColumn="ARid" DataSetColumn="ARid" />
+              <Mapping SourceColumn="GSmkg" DataSetColumn="GSmkg" />
+              <Mapping SourceColumn="GSmltr" DataSetColumn="GSmltr" />
+              <Mapping SourceColumn="GAvgFat" DataSetColumn="GAvgFat" />
+              <Mapping SourceColumn="GAvgSnf" DataSetColumn="GAvgSnf" />
+              <Mapping SourceColumn="GAvgRate" DataSetColumn="GAvgRate" />
+              <Mapping SourceColumn="GAvgclr" DataSetColumn="GAvgclr" />
+              <Mapping SourceColumn="GScans" DataSetColumn="GScans" />
+              <Mapping SourceColumn="GSAmt" DataSetColumn="GSAmt" />
+              <Mapping SourceColumn="GScommAmt" DataSetColumn="GScommAmt" />
+              <Mapping SourceColumn="GScatamt" DataSetColumn="GScatamt" />
+              <Mapping SourceColumn="GSsplbonamt" DataSetColumn="GSsplbonamt" />
+              <Mapping SourceColumn="GAvgcRate" DataSetColumn="GAvgcRate" />
+              <Mapping SourceColumn="GSfatkg" DataSetColumn="GSfatkg" />
+              <Mapping SourceColumn="GSsnfkg" DataSetColumn="GSsnfkg" />
+              <Mapping SourceColumn="GSBilladv" DataSetColumn="GSBilladv" />
+              <Mapping SourceColumn="GSAiamt" DataSetColumn="GSAiamt" />
+              <Mapping SourceColumn="GSFeedamt" DataSetColumn="GSFeedamt" />
+              <Mapping SourceColumn="GScanamt" DataSetColumn="GScanamt" />
+              <Mapping SourceColumn="GSRecoveryamt" DataSetColumn="GSRecoveryamt" />
+              <Mapping SourceColumn="GSothers" DataSetColumn="GSothers" />
+              <Mapping SourceColumn="GSinstamt" DataSetColumn="GSinstamt" />
+              <Mapping SourceColumn="GSbalance" DataSetColumn="GSbalance" />
+              <Mapping SourceColumn="GSLoanAmount" DataSetColumn="GSLoanAmount" />
+              <Mapping SourceColumn="GSNetAmt" DataSetColumn="GSNetAmt" />
+              <Mapping SourceColumn="GSround" DataSetColumn="GSround" />
+              <Mapping SourceColumn="Sclaim" DataSetColumn="Sclaim" />
+              <Mapping SourceColumn="GSClaim" DataSetColumn="GSClaim" />
+              <Mapping SourceColumn="Agent_Name" DataSetColumn="Agent_Name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NewOverAllTableAdapter" GeneratorDataComponentClassName="NewOverAllTableAdapter" Name="NewOverAll" UserDataComponentName="NewOverAllTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM
+(SELECT * FROM
+(SELECT * FROM 
+(SELECT G1.pcode AS pcode1,CAST(SUM(G1.Smkg)  AS DECIMAL(18,2)) AS GSmkg,  CAST(SUM(G1.Smltr)  AS DECIMAL(18,2)) AS GSmltr,  CAST(AVG(G1.AvgFat) AS DECIMAL(18,1)) AS GAvgFat,  CAST(AVG(G1.AvgSnf) AS DECIMAL(18,1)) AS GAvgSnf,  CAST(AVG(G1.AvgRate) AS DECIMAL(18,1)) AS GAvgRate,  CAST(AVG(G1.Avgclr) AS DECIMAL(18,1)) AS GAvgclr,  CAST(SUM(G1.Scans) AS DECIMAL(18,2)) AS GScans,  CAST(SUM(G1.SAmt) AS DECIMAL(18,2)) AS GSAmt,  CAST(SUM(G1.ScommAmt) AS DECIMAL(18,2)) AS GScommAmt,  CAST(SUM(G1.Scatamt) AS DECIMAL(18,2)) AS GScatamt,  CAST(SUM(G1.Ssplbonamt) AS DECIMAL(18,2)) AS GSsplbonamt,  CAST(AVG(G1.AvgcRate) AS DECIMAL(18,2)) AS GAvgcRate,  CAST(SUM(G1.Sfatkg) AS DECIMAL(18,2)) AS GSfatkg,  CAST(SUM(G1.Ssnfkg) AS DECIMAL(18,2)) AS GSsnfkg,  CAST(SUM(G1.SBilladv) AS DECIMAL(18,2)) AS GSBilladv,  CAST(SUM(G1.SAiamt) AS DECIMAL(18,2)) AS GSAiamt,  CAST(SUM(G1.SFeedamt) AS DECIMAL(18,2)) AS GSFeedamt,  CAST(SUM(G1.Scanamt) AS DECIMAL(18,2)) AS GScanamt,  CAST(SUM(G1.SRecoveryamt) AS DECIMAL(18,2)) AS GSRecoveryamt,  CAST(SUM(G1.Sothers) AS DECIMAL(18,2)) AS GSothers,  CAST(SUM(G1.Sinstamt) AS DECIMAL(18,2)) AS GSinstamt,  CAST(SUM(G1.Sbalance) AS DECIMAL(18,2)) AS GSbalance,  CAST(SUM(G1.SLoanAmount) AS DECIMAL(18,2)) AS GSLoanAmount,  CAST(SUM(G1.SNetAmt) AS DECIMAL(18,2)) AS GSNetAmt,  CAST(SUM(G1.SRound)  AS DECIMAL(18,2)) AS GSround ,CAST(SUM(G1.SClaim) AS DECIMAL(18,2)) AS GSClaim FROM    
+(SELECT cart.ARid AS Rid,
+cart.cartAid AS Aid,
+cart.Agent_Name,
+ISNULL(prdelo.Smkg,0) AS Smkg,
+ISNULL(prdelo.Smltr,0) AS Smltr,
+ISNULL(prdelo.AvgFat ,0) AS AvgFat,
+ISNULL(prdelo.AvgSnf,0) AS AvgSnf,
+ISNULL(prdelo.AvgRate,0) AS AvgRate,
+ISNULL(prdelo.Avgclr,0) AS Avgclr,
+ISNULL(prdelo.Scans,0) AS Scans,
+ISNULL(prdelo.SAmt,0) AS SAmt,
+ISNULL(prdelo.ScommAmt,0) AS ScommAmt,
+ISNULL(CAST((ISNULL(prdelo.Smltr,0) * ISNULL(cart.CarAmt,0)) AS DECIMAL(18,2)),0) AS Scatamt,
+ISNULL(prdelo.Ssplbonamt,0) AS Ssplbonamt, ISNULL(prdelo.AvgcRate,0) AS AvgcRate,
+ISNULL(prdelo.Sfatkg,0) AS Sfatkg,
+ISNULL(prdelo.Ssnfkg,0) AS Ssnfkg,
+ISNULL(prdelo.Billadv,0) AS SBilladv,
+ISNULL(prdelo.Ai,0) AS SAiamt,
+ISNULL(prdelo.Feed,0) AS SFeedamt,
+ISNULL(prdelo.Can,0) AS Scanamt,
+ISNULL(prdelo.Recovery,0) AS SRecoveryamt,
+ISNULL(prdelo.others,0) AS Sothers,
+ISNULL(prdelo.instamt,0) AS Sinstamt,
+ISNULL(prdelo.balance,0) AS Sbalance,
+ISNULL(prdelo.LoanAmount,0) AS SLoanAmount,
+ISNULL(prdelo.VouAmount,0) AS Sclaim,
+CAST( ((ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0) + ISNULL(prdelo.Ssplbonamt,0)+ ISNULL(prdelo.VouAmount,0) +(ISNULL(prdelo.Smltr,0) * ISNULL(cart.CarAmt,0))) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))) AS DECIMAL(18,2)) AS SRNetAmt,
+FLOOR ((ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0) + ISNULL(prdelo.Ssplbonamt,0)+ ISNULL(prdelo.VouAmount,0) + (ISNULL(prdelo.Smltr,0) * ISNULL(cart.CarAmt,0))) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))) AS SNetAmt,
+( ( (ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0) + ISNULL(prdelo.Ssplbonamt,0) + ISNULL(prdelo.VouAmount,0) +ISNULL(CAST((ISNULL(prdelo.Smltr,0) * ISNULL(cart.CarAmt,0)) AS DECIMAL(18,2)),0) ) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0)) )- ( FLOOR( (ISNULL(prdelo.SAmt,0) + ISNULL(prdelo.ScommAmt,0) + ISNULL(prdelo.Ssplbonamt,0) + ISNULL(CAST((ISNULL(prdelo.Smltr,0) * ISNULL(cart.CarAmt,0)) AS DECIMAL(18,2)),0) ) - (ISNULL(prdelo.Billadv,0)+ISNULL(prdelo.Ai,0)+ISNULL(prdelo.Feed,0)+ISNULL(prdelo.Can,0)+ISNULL(prdelo.Recovery,0)+ISNULL(prdelo.others,0)+ISNULL(prdelo.instamt,0))) )  ) AS SRound,
+cart.Bank_Id,cart.Payment_mode,cart.Agent_AccountNo,pcode FROM      
+(SELECT * FROM
+(SELECT * FROM 
+(SELECT * FROM 
+(SELECT agent_id AS SproAid,CAST(SUM(Milk_kg) AS DECIMAL(18,2)) AS Smkg,CAST(SUM(Milk_ltr) AS DECIMAL(18,2)) AS Smltr,CAST(AVG(FAT) AS DECIMAL(18,2)) AS AvgFat,CAST(AVG(SNF) AS DECIMAL(18,2)) AS AvgSnf,CAST(AVG(Rate) AS DECIMAL(18,2)) AS AvgRate,CAST(AVG(Clr) AS DECIMAL(18,2)) AS Avgclr,CAST(SUM(NoofCans) AS DECIMAL(18,2)) AS Scans,CAST(SUM(Amount) AS DECIMAL(18,2)) AS SAmt,CAST(SUM(Comrate) AS DECIMAL(18,2)) AS ScommAmt,CAST(SUM(ComRate) AS DECIMAL(18,2)) AS Scatamt,CAST(SUM(SplBonusAmount) AS DECIMAL(18,2)) AS Ssplbonamt,CAST(AVG(ComRate) AS DECIMAL(18,2)) AS Avgcrate,CAST(SUM(fat_kg) AS DECIMAL(18,2)) AS Sfatkg,CAST(SUM(snf_kg) AS DECIMAL(18,2)) AS SSnfkg  FROM Procurement   GROUP BY agent_id ) AS Spro 
+LEFT JOIN
+(SELECT  Agent_id AS DAid ,(CAST((Billadvance) AS DECIMAL(18,2))) AS Billadv,(CAST((Ai) AS DECIMAL(18,2))) AS Ai,(CAST((Feed) AS DECIMAL(18,2))) AS Feed,(CAST((can) AS DECIMAL(18,2))) AS can,(CAST((Recovery) AS DECIMAL(18,2))) AS Recovery,(CAST((others) AS DECIMAL(18,2))) AS others FROM Deduction_Details ) AS dedu ON Spro.SproAid=dedu.DAid) AS proded    
+LEFT JOIN 
+(select Agent_Id AS VouAid,CAST(SUM(Amount) AS DECIMAL(18,2))  AS VouAmount  from Voucher_Clear   GROUP BY Agent_Id) AS vou ON proded.SproAid=vou.VouAid) AS pdv
+LEFT JOIN
+ (SELECT ISNULL(LoAid,0) AS LoAid,ISNULL(balance,0) AS balance,ISNULL(LoanAmount,0) AS LoanAmount,(ISNULL(loanRecAmount1,0)+ ISNULL(loanDueRecAmount1,0)) AS instamt FROM
+(SELECT LoAid1 AS LoAid,balance1 AS balance,LoanAmount1 AS LoanAmount,loanRecAmount1 FROM
+(SELECT Agent_id AS LoAid1,CAST(SUM(balance) AS DECIMAL(18,2)) AS balance1,CAST(SUM(LoanAmount) AS DECIMAL(18,2)) AS LoanAmount1 FROM LoanDetails  GROUP BY Agent_id) AS Lonn
+LEFT JOIN
+(SELECT Agent_id AS LoRecAid,CAST(SUM(Paid_Amount) AS DECIMAL(18,2)) AS loanRecAmount1 FROM Loan_Recovery  GROUP BY Agent_id) AS LonRec ON Lonn.LoAid1=LonRec.LoRecAid ) AS LoF
+LEFT JOIN
+(SELECT Agent_Id AS LoDuAid,CAST(SUM(LoanDueRecovery_Amount) AS DECIMAL(18,2)) AS loanDueRecAmount1 FROM LoanDue_Recovery  GROUP BY Agent_id ) AS LonDRec ON LoF.LoAid=LonDRec.LoDuAid
+) AS Lon ON pdv.SproAid=Lon.LoAid ) AS prdelo
+ INNER JOIN 
+ (SELECT Agent_Id AS cartAid,(CAST((Cartage_Amt) AS DECIMAL(18,2)))AS CarAmt,Agent_Name,Bank_Id,Payment_mode,Agent_AccountNo,Route_id AS ARid,Plant_code AS pcode  FROM  Agent_Master WHERE Type=0 ) AS cart ON prdelo.SproAid=cart.cartAid ) AS G1 GROUP BY G1.pcode) AS pro
+LEFT JOIN 
+(SELECT t1.pcode AS pcod,
+ CAST((ISNULL(t1.pr_MILKKG,0)+ ISNULL(t3.op_MILKKG,0)) AS DECIMAL(18,2)) AS Amilkkg ,
+ CAST((ISNULL(t1.pr_FATKG,0)+ ISNULL(t3.op_FATKG,0)) AS DECIMAL(18,2) ) AS AFatkg, 
+ CAST((ISNULL(t1.pr_SNFKG,0)+ ISNULL(t3.op_SNFKG,0)) AS DECIMAL(18,2) ) AS ASnfkg,
+ CAST((ISNULL(t1.pr_FAT,0)+ ISNULL(t3.op_FAT,0)) AS DECIMAL(18,2) ) AS AFat,
+ CAST((ISNULL(t1.pr_SNF,0)+ ISNULL(t3.op_SNF,0)) AS DECIMAL(18,2) ) AS ASnf, 
+ CAST((ISNULL(t2.dp_MILKKG,0)+ ISNULL(C.cl_MILKKG,0)) AS DECIMAL(18,2)) AS Bmilkkg,
+ CAST((ISNULL(t2.dp_FATKG,0)+ ISNULL(C.cl_FATKG,0)) AS DECIMAL(18,2)) AS BFatkg,
+ CAST((ISNULL(t2.dp_SNFKG,0)+ ISNULL(C.cl_SNFKG,0)) AS DECIMAL(18,2)) AS BSnfkg,
+ CAST((ISNULL(t2.dp_FAT,0)+ ISNULL(C.cl_FAT,0)) AS DECIMAL(18,2)) AS BFat,
+ CAST((ISNULL(t2.dp_SNF,0)+ ISNULL(C.cl_SNF,0)) AS DECIMAL(18,2)) AS BSnf,
+ CAST((ISNULL(t2.dp_MILKKG,0)+ ISNULL(C.cl_MILKKG,0))-(ISNULL(t1.pr_MILKKG,0)+ ISNULL(t3.op_MILKKG,0)) AS DECIMAL(18,2)) AS Gainmilkkg,
+ CAST((ISNULL(t2.dp_FATKG,0)+ ISNULL(C.cl_FATKG,0))-(ISNULL(t1.pr_FATKG,0)+ ISNULL(t3.op_FATKG,0)) AS DECIMAL(18,2) ) AS GainFatkg,
+ CAST((ISNULL(t2.dp_SNFKG,0)+ ISNULL(C.cl_SNFKG,0))-(ISNULL(t1.pr_SNFKG,0)+ ISNULL(t3.op_SNFKG,0)) AS DECIMAL(18,2) ) AS GainSnfkg    
+ FROM 
+ ( SELECT  Plant_Code as pcode,Sum(Milk_kg) as pr_MILKKG,Avg(fat) as pr_FAT,AVG(snf) as pr_SNF,sum(fat_kg)as pr_FATKG,sum(snf_kg) as pr_SNFKG,sum(rate) as pr_RATE,sum(AMOUNT) as pr_AMOUNT FROM Procurement  Group By Plant_Code  )t1,
+ (SELECT Sum(Milkkg) as dp_MILKKG,Avg(fat) as dp_FAT,AVG(snf) as dp_SNF,SUM(Fat_Kg) as dp_FATKG,sum(Snf_Kg) as dp_SNFKG, sum(RATE) as dp_RATE,sum(Amount) as dp_AMOUNT FROM DespatchNew )t2,
+ (SELECT Sum(Milkkg) as op_MILKKG,Avg(fat) as op_FAT,AVG(snf) as op_SNF,SUM(Fat_Kg) as op_FATKG,sum(Snf_Kg) as op_SNFKG, sum(RATE) as op_RATE,sum(Amount) as op_AMOUNT FROM Stock_openingmilk )t3,
+ (SELECT Sum(Milkkg) as cl_MILKKG,Avg(fat) as cl_FAT,AVG(snf) as cl_SNF,SUM(Fat_Kg) as cl_FATKG,sum(Snf_Kg) as cl_SNFKG, sum(RATE) as cl_RATE,sum(Amount) as cl_AMOUNT FROM Stock_Milk ) C) AS LG ON pro.pcode1=LG.pcod) AS Ft3 
+ LEFT JOIN
+ (SELECT pcode,SUM(Smltr) AS Smltr1,SUM(TransAmountFix+TransAmount1) AS TransAMount FROM
+(SELECT Truck_id,Smltr,OndayTotDistance,ISNULL(Ltr_Cost,0) AS Ltr_Cost,ISNULL(fixed,0) AS fixed,ISNULL(Truck_Name,'') AS Truck_Name,CAST((ISNULL(Ltr_Cost,0)) AS DECIMAL(18,2)) AS TransAmountFix FROM
+(SELECT Truck_id,Smltr,OndayTotDistance FROM
+(SELECT SUM(ISNULL(Milk_Ltr,0)) AS Smltr ,Truck_Id FROM PROCUREMENT  GROUP BY Truck_Id  ) AS pro 
+LEFT JOIN 
+(SELECT Truck_Id AS tid,SUM(ISNULL(Tdistance,0)) AS OndayTotDistance  FROM TRUCK_PRESENT  GROUP BY Truck_Id) AS Trckpre ON pro.Truck_Id=Trckpre.tid) AS t1
+LEFT JOIN
+(SELECT Truck_id AS VDTrkid,Ltr_Cost,Truck_Name,fixed FROM Vehicle_Details  ) AS VD  ON t1.Truck_id=VD.VDTrkid) AS F1
+LEFT JOIN
+(SELECT Truck_id AS Truck_id1,Smltr AS Smltr1,OndayTotDistance AS OndayTotDistance1,ISNULL(Ltr_Cost,0) AS Ltr_Cost1,ISNULL(fixed,0) AS fixed1,ISNULL(Truck_Name,'') AS Truck_Name1,CAST((ISNULL(Ltr_Cost,0)*OndayTotDistance) AS DECIMAL(18,2)) AS TransAmount1,pcode,DDay FROM
+(SELECT Truck_id,Smltr,OndayTotDistance,Plant_Code AS pcode,(DDay+2) AS DDay FROM
+(SELECT SUM(ISNULL(Milk_Ltr,0)) AS Smltr ,Truck_Id,Plant_Code FROM PROCUREMENT  GROUP BY Truck_Id,Plant_Code  ) AS pro 
+LEFT JOIN 
+(SELECT Truck_Id AS tid,SUM(ISNULL(Tdistance,0)) AS OndayTotDistance,datediff(day, '7-21-2014','7-30-2014') as DDay  FROM TRUCK_PRESENT  GROUP BY Truck_Id) AS Trckpre ON pro.Truck_Id=Trckpre.tid) AS t1
+LEFT JOIN
+(SELECT Truck_id AS VDTrkid,Ltr_Cost,Truck_Name,fixed FROM Vehicle_Details  ) AS VD  ON t1.Truck_id=VD.VDTrkid) AS F2 ON F1.Truck_id=F2.Truck_id1 GROUP BY pcode ) AS Ft4 ON Ft3.pcode1=Ft4.pcode) AS Ft5
+LEFT JOIN 
+(SELECT DD+1 AS DDays FROM
+(SELECT Top 1  Truck_Id DD FROM Truck_Present )  AS D ) AS D1 ON Ft5.pcode1&gt;150
+
+
+
+
+ </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="pcode1" DataSetColumn="pcode1" />
+              <Mapping SourceColumn="GSmkg" DataSetColumn="GSmkg" />
+              <Mapping SourceColumn="GSmltr" DataSetColumn="GSmltr" />
+              <Mapping SourceColumn="GAvgFat" DataSetColumn="GAvgFat" />
+              <Mapping SourceColumn="GAvgSnf" DataSetColumn="GAvgSnf" />
+              <Mapping SourceColumn="GAvgRate" DataSetColumn="GAvgRate" />
+              <Mapping SourceColumn="GAvgclr" DataSetColumn="GAvgclr" />
+              <Mapping SourceColumn="GScans" DataSetColumn="GScans" />
+              <Mapping SourceColumn="GSAmt" DataSetColumn="GSAmt" />
+              <Mapping SourceColumn="GScommAmt" DataSetColumn="GScommAmt" />
+              <Mapping SourceColumn="GScatamt" DataSetColumn="GScatamt" />
+              <Mapping SourceColumn="GSsplbonamt" DataSetColumn="GSsplbonamt" />
+              <Mapping SourceColumn="GAvgcRate" DataSetColumn="GAvgcRate" />
+              <Mapping SourceColumn="GSfatkg" DataSetColumn="GSfatkg" />
+              <Mapping SourceColumn="GSsnfkg" DataSetColumn="GSsnfkg" />
+              <Mapping SourceColumn="GSBilladv" DataSetColumn="GSBilladv" />
+              <Mapping SourceColumn="GSAiamt" DataSetColumn="GSAiamt" />
+              <Mapping SourceColumn="GSFeedamt" DataSetColumn="GSFeedamt" />
+              <Mapping SourceColumn="GScanamt" DataSetColumn="GScanamt" />
+              <Mapping SourceColumn="GSRecoveryamt" DataSetColumn="GSRecoveryamt" />
+              <Mapping SourceColumn="GSothers" DataSetColumn="GSothers" />
+              <Mapping SourceColumn="GSinstamt" DataSetColumn="GSinstamt" />
+              <Mapping SourceColumn="GSbalance" DataSetColumn="GSbalance" />
+              <Mapping SourceColumn="GSLoanAmount" DataSetColumn="GSLoanAmount" />
+              <Mapping SourceColumn="GSNetAmt" DataSetColumn="GSNetAmt" />
+              <Mapping SourceColumn="GSround" DataSetColumn="GSround" />
+              <Mapping SourceColumn="GSClaim" DataSetColumn="GSClaim" />
+              <Mapping SourceColumn="pcod" DataSetColumn="pcod" />
+              <Mapping SourceColumn="Amilkkg" DataSetColumn="Amilkkg" />
+              <Mapping SourceColumn="AFatkg" DataSetColumn="AFatkg" />
+              <Mapping SourceColumn="ASnfkg" DataSetColumn="ASnfkg" />
+              <Mapping SourceColumn="AFat" DataSetColumn="AFat" />
+              <Mapping SourceColumn="ASnf" DataSetColumn="ASnf" />
+              <Mapping SourceColumn="Bmilkkg" DataSetColumn="Bmilkkg" />
+              <Mapping SourceColumn="BFatkg" DataSetColumn="BFatkg" />
+              <Mapping SourceColumn="BSnfkg" DataSetColumn="BSnfkg" />
+              <Mapping SourceColumn="BFat" DataSetColumn="BFat" />
+              <Mapping SourceColumn="BSnf" DataSetColumn="BSnf" />
+              <Mapping SourceColumn="Gainmilkkg" DataSetColumn="Gainmilkkg" />
+              <Mapping SourceColumn="GainFatkg" DataSetColumn="GainFatkg" />
+              <Mapping SourceColumn="GainSnfkg" DataSetColumn="GainSnfkg" />
+              <Mapping SourceColumn="pcode" DataSetColumn="pcode" />
+              <Mapping SourceColumn="Smltr1" DataSetColumn="Smltr1" />
+              <Mapping SourceColumn="TransAMount" DataSetColumn="TransAMount" />
+              <Mapping SourceColumn="DDays" DataSetColumn="DDays" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ROUTESUPERWISERTableAdapter" GeneratorDataComponentClassName="ROUTESUPERWISERTableAdapter" Name="ROUTESUPERWISER" UserDataComponentName="ROUTESUPERWISERTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>
+SELECT Distinct(SRid) AS Route_ID,Route_Name,SRid  AS  Supervisorcode,Route_Name AS SupervisorName,ROUND(Smltr,2,1) AS STotmltr,ROUND(Smltr/(t4.DDay+1),2,1) AS PerDayQty,ROUND(Sfkg,2,1) AS Sfkg,ROUND(SSkg,2,1) AS SSkg,ROUND((ISNULL(Sfkg,0)*100)/ISNULL(Smkg,0),1,1) AS Afat,ROUND((ISNULL(SSkg,0)*100)/ISNULL(Smkg,0),1,1) AS Asnf,ROUND(ISNULL(TotAmount,0)/ISNULL(Smltr,0),2,1) AS Arate,ROUND(Arate,2,0) AS Mrate,(t4.DDay+1) AS DDays,ISNULL(TotAmount,0) AS FTransAMount FROM
+(SELECT  SRid,SUM((ISNULL(Milk_ltr,0))) AS Smltr,SUM((ISNULL(Milk_kg,0))) AS Smkg,SUM(ISNULL(fat_kg,0)) AS Sfkg,SUM(ISNULL(snf_kg,0)) AS SSkg,SUM(ISNULL(Amount,0))/SUM(ISNULL(Milk_ltr,0)) AS Arate,(SUM(ISNULL(Amount,0))+SUM(ISNULL(SplBonAmt,0))+SUM(ISNULL(cartAmmt,0))+SUM(ISNULL(InsAmt,0))) AS TotAmount,SUM(ISNULL(Amount,0)) AS SMAmount FROM
+(SELECT Route_id, Milk_ltr,Milk_kg,Fat,Snf,fat_kg,snf_kg,Amount,Round(SplBonusAmount,2,1) AS SplBonAmt,Round(CartageAmount,2,1) AS cartAmmt,Round(ComRate,2,1) AS InsAmt FROM Procurement   ) AS t1
+LEFT JOIN 
+(SELECT Route_Name ,Route_Id AS SRid FROM Route_Master ) AS t2 ON t1.Route_id=t2.SRid GROUP BY SRid) AS t3
+INNER JOIN 
+(SELECT DATEDIFF(day,'9-1-2014','9-30-2014') AS DDay,Route_ID AS Rrid,CONVERT(Varchar(100), Route_ID)+'_'+Route_Name AS Route_Name  FROM Route_Master   ) AS t4 ON t3.SRid=t4.Rrid ORDER BY SRid
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Route_ID" DataSetColumn="Route_ID" />
+              <Mapping SourceColumn="Route_Name" DataSetColumn="Route_Name" />
+              <Mapping SourceColumn="STotmltr" DataSetColumn="STotmltr" />
+              <Mapping SourceColumn="PerDayQty" DataSetColumn="PerDayQty" />
+              <Mapping SourceColumn="Sfkg" DataSetColumn="Sfkg" />
+              <Mapping SourceColumn="SSkg" DataSetColumn="SSkg" />
+              <Mapping SourceColumn="Afat" DataSetColumn="Afat" />
+              <Mapping SourceColumn="Asnf" DataSetColumn="Asnf" />
+              <Mapping SourceColumn="Arate" DataSetColumn="Arate" />
+              <Mapping SourceColumn="Mrate" DataSetColumn="Mrate" />
+              <Mapping SourceColumn="DDays" DataSetColumn="DDays" />
+              <Mapping SourceColumn="Supervisorcode" DataSetColumn="Supervisorcode" />
+              <Mapping SourceColumn="SupervisorName" DataSetColumn="SupervisorName" />
+              <Mapping SourceColumn="FTransAMount" DataSetColumn="FTransAMount" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AdminDataTableTableAdapter" GeneratorDataComponentClassName="AdminDataTableTableAdapter" Name="AdminDataTable" UserDataComponentName="AdminDataTableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectName="AMPS.dbo.AdminDataTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [AdminDataTable] ([Company_Code], [Plant_Code], [Total_Mkgs], [Total_Mltrs], [PerDay_Mltrs], [Ltr_Cost], [kg_Fat], [Avg_Fat], [kg_Snf], [Avg_Snf], [Avg_Clr], [Tot_Cans], [TS], [Nill_Payments], [Milk_Amout], [Loan_Adv], [loan_perltrdedu], [Bill_Adv], [Ai_Adv], [Feed_Adv], [Can_Adv], [Recovery_Adv], [Others_Adv], [Net_Bill_Amount], [Transport_Amount], [Transport_Ltrcost], [ProcureVale_TSRate], [Transport_TSRate], [ChillingCost_PerLt], [ChillingCost_TSRate], [Total_TSRate], [kgmilk_Gain], [kgFat_Gain], [kgSnf_Gain], [Total_FatSnfGain], [Fat_GainpercentperLtr], [Snf_GainpercentperLtr], [Total_GainpercentperLtr], [AvgFat_GainFatpercent], [AvgSnf_GainSnfpercent], [Total_AvgGainSnfpercent], [Fat_Cost], [Snf_Cost], [Total_FSCost], [FatCost_Ltrs], [SnfCost_Ltrs], [Total_FSCost_Ltrs], [Fat_SnfPerTS], [Total_Cost], [Net_TSRate]) VALUES (@Company_Code, @Plant_Code, @Total_Mkgs, @Total_Mltrs, @PerDay_Mltrs, @Ltr_Cost, @kg_Fat, @Avg_Fat, @kg_Snf, @Avg_Snf, @Avg_Clr, @Tot_Cans, @TS, @Nill_Payments, @Milk_Amout, @Loan_Adv, @loan_perltrdedu, @Bill_Adv, @Ai_Adv, @Feed_Adv, @Can_Adv, @Recovery_Adv, @Others_Adv, @Net_Bill_Amount, @Transport_Amount, @Transport_Ltrcost, @ProcureVale_TSRate, @Transport_TSRate, @ChillingCost_PerLt, @ChillingCost_TSRate, @Total_TSRate, @kgmilk_Gain, @kgFat_Gain, @kgSnf_Gain, @Total_FatSnfGain, @Fat_GainpercentperLtr, @Snf_GainpercentperLtr, @Total_GainpercentperLtr, @AvgFat_GainFatpercent, @AvgSnf_GainSnfpercent, @Total_AvgGainSnfpercent, @Fat_Cost, @Snf_Cost, @Total_FSCost, @FatCost_Ltrs, @SnfCost_Ltrs, @Total_FSCost_Ltrs, @Fat_SnfPerTS, @Total_Cost, @Net_TSRate)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Company_Code" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Company_Code" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Plant_Code" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Plant_Code" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Total_Mkgs" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Total_Mkgs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Total_Mltrs" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Total_Mltrs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PerDay_Mltrs" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PerDay_Mltrs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Ltr_Cost" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Ltr_Cost" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@kg_Fat" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="kg_Fat" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Avg_Fat" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Avg_Fat" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@kg_Snf" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="kg_Snf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Avg_Snf" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Avg_Snf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Avg_Clr" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Avg_Clr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Tot_Cans" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Tot_Cans" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@TS" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="TS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Nill_Payments" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Nill_Payments" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Milk_Amout" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Milk_Amout" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Loan_Adv" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Loan_Adv" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@loan_perltrdedu" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="loan_perltrdedu" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Bill_Adv" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Bill_Adv" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Ai_Adv" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Ai_Adv" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Feed_Adv" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Feed_Adv" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Can_Adv" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Can_Adv" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Recovery_Adv" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Recovery_Adv" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Others_Adv" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Others_Adv" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Net_Bill_Amount" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Net_Bill_Amount" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Transport_Amount" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Transport_Amount" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Transport_Ltrcost" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Transport_Ltrcost" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ProcureVale_TSRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ProcureVale_TSRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Transport_TSRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Transport_TSRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ChillingCost_PerLt" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ChillingCost_PerLt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ChillingCost_TSRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ChillingCost_TSRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Total_TSRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Total_TSRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@kgmilk_Gain" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="kgmilk_Gain" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@kgFat_Gain" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="kgFat_Gain" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@kgSnf_Gain" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="kgSnf_Gain" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Total_FatSnfGain" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Total_FatSnfGain" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Fat_GainpercentperLtr" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Fat_GainpercentperLtr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Snf_GainpercentperLtr" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Snf_GainpercentperLtr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Total_GainpercentperLtr" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Total_GainpercentperLtr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@AvgFat_GainFatpercent" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="AvgFat_GainFatpercent" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@AvgSnf_GainSnfpercent" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="AvgSnf_GainSnfpercent" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Total_AvgGainSnfpercent" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Total_AvgGainSnfpercent" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Fat_Cost" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Fat_Cost" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Snf_Cost" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Snf_Cost" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Total_FSCost" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Total_FSCost" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@FatCost_Ltrs" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="FatCost_Ltrs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@SnfCost_Ltrs" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="SnfCost_Ltrs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Total_FSCost_Ltrs" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Total_FSCost_Ltrs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Fat_SnfPerTS" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Fat_SnfPerTS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Total_Cost" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Total_Cost" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Net_TSRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="Net_TSRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM AdminDataTable </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Tid" DataSetColumn="Tid" />
+              <Mapping SourceColumn="Company_Code" DataSetColumn="Company_Code" />
+              <Mapping SourceColumn="Plant_Code" DataSetColumn="Plant_Code" />
+              <Mapping SourceColumn="Total_Mkgs" DataSetColumn="Total_Mkgs" />
+              <Mapping SourceColumn="Total_Mltrs" DataSetColumn="Total_Mltrs" />
+              <Mapping SourceColumn="PerDay_Mltrs" DataSetColumn="PerDay_Mltrs" />
+              <Mapping SourceColumn="Ltr_Cost" DataSetColumn="Ltr_Cost" />
+              <Mapping SourceColumn="kg_Fat" DataSetColumn="kg_Fat" />
+              <Mapping SourceColumn="Avg_Fat" DataSetColumn="Avg_Fat" />
+              <Mapping SourceColumn="kg_Snf" DataSetColumn="kg_Snf" />
+              <Mapping SourceColumn="Avg_Snf" DataSetColumn="Avg_Snf" />
+              <Mapping SourceColumn="Avg_Clr" DataSetColumn="Avg_Clr" />
+              <Mapping SourceColumn="Tot_Cans" DataSetColumn="Tot_Cans" />
+              <Mapping SourceColumn="TS" DataSetColumn="TS" />
+              <Mapping SourceColumn="Nill_Payments" DataSetColumn="Nill_Payments" />
+              <Mapping SourceColumn="Milk_Amout" DataSetColumn="Milk_Amout" />
+              <Mapping SourceColumn="Loan_Adv" DataSetColumn="Loan_Adv" />
+              <Mapping SourceColumn="loan_perltrdedu" DataSetColumn="loan_perltrdedu" />
+              <Mapping SourceColumn="Bill_Adv" DataSetColumn="Bill_Adv" />
+              <Mapping SourceColumn="Ai_Adv" DataSetColumn="Ai_Adv" />
+              <Mapping SourceColumn="Feed_Adv" DataSetColumn="Feed_Adv" />
+              <Mapping SourceColumn="Can_Adv" DataSetColumn="Can_Adv" />
+              <Mapping SourceColumn="Recovery_Adv" DataSetColumn="Recovery_Adv" />
+              <Mapping SourceColumn="Others_Adv" DataSetColumn="Others_Adv" />
+              <Mapping SourceColumn="Net_Bill_Amount" DataSetColumn="Net_Bill_Amount" />
+              <Mapping SourceColumn="Transport_Amount" DataSetColumn="Transport_Amount" />
+              <Mapping SourceColumn="Transport_Ltrcost" DataSetColumn="Transport_Ltrcost" />
+              <Mapping SourceColumn="ProcureVale_TSRate" DataSetColumn="ProcureVale_TSRate" />
+              <Mapping SourceColumn="Transport_TSRate" DataSetColumn="Transport_TSRate" />
+              <Mapping SourceColumn="ChillingCost_PerLt" DataSetColumn="ChillingCost_PerLt" />
+              <Mapping SourceColumn="ChillingCost_TSRate" DataSetColumn="ChillingCost_TSRate" />
+              <Mapping SourceColumn="Total_TSRate" DataSetColumn="Total_TSRate" />
+              <Mapping SourceColumn="kgmilk_Gain" DataSetColumn="kgmilk_Gain" />
+              <Mapping SourceColumn="kgFat_Gain" DataSetColumn="kgFat_Gain" />
+              <Mapping SourceColumn="kgSnf_Gain" DataSetColumn="kgSnf_Gain" />
+              <Mapping SourceColumn="Total_FatSnfGain" DataSetColumn="Total_FatSnfGain" />
+              <Mapping SourceColumn="Fat_GainpercentperLtr" DataSetColumn="Fat_GainpercentperLtr" />
+              <Mapping SourceColumn="Snf_GainpercentperLtr" DataSetColumn="Snf_GainpercentperLtr" />
+              <Mapping SourceColumn="Total_GainpercentperLtr" DataSetColumn="Total_GainpercentperLtr" />
+              <Mapping SourceColumn="AvgFat_GainFatpercent" DataSetColumn="AvgFat_GainFatpercent" />
+              <Mapping SourceColumn="AvgSnf_GainSnfpercent" DataSetColumn="AvgSnf_GainSnfpercent" />
+              <Mapping SourceColumn="Total_AvgGainSnfpercent" DataSetColumn="Total_AvgGainSnfpercent" />
+              <Mapping SourceColumn="Fat_Cost" DataSetColumn="Fat_Cost" />
+              <Mapping SourceColumn="Snf_Cost" DataSetColumn="Snf_Cost" />
+              <Mapping SourceColumn="Total_FSCost" DataSetColumn="Total_FSCost" />
+              <Mapping SourceColumn="FatCost_Ltrs" DataSetColumn="FatCost_Ltrs" />
+              <Mapping SourceColumn="SnfCost_Ltrs" DataSetColumn="SnfCost_Ltrs" />
+              <Mapping SourceColumn="Total_FSCost_Ltrs" DataSetColumn="Total_FSCost_Ltrs" />
+              <Mapping SourceColumn="Fat_SnfPerTS" DataSetColumn="Fat_SnfPerTS" />
+              <Mapping SourceColumn="Total_Cost" DataSetColumn="Total_Cost" />
+              <Mapping SourceColumn="Net_TSRate" DataSetColumn="Net_TSRate" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProcurementimportTableAdapter" GeneratorDataComponentClassName="ProcurementimportTableAdapter" Name="Procurementimport" UserDataComponentName="ProcurementimportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectName="AMPS.dbo.Procurementimport" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select  Agent_id,convert(varchar,prdate,103) as Date,Sessions,SUM(Milk_kg-DIFFKG)as Milk_Kg,Milk_kg as Modifykg,sum(Fat - DIFFFAT) as Fat,Fat as ModifyFat,sum(Snf - DIFFSNF ) as snf,snf as Modify_snf,ROUND(DIFFKG,2) As  DIFFKG, ROUND(DIFFFAT,2) AS DIFFFAT,ROUND(DIFFSNF,2) AS DIFFSNF    from procurementimport     group by agent_id,Prdate,Sessions,Milk_kg,modify_Kg,Fat,modify_fat,Snf,modify_snf,DIFFKG,DIFFFAT,DIFFSNF,Remarkstatus  order by Agent_id,Prdate,Sessions</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Agent_id" DataSetColumn="Agent_id" />
+              <Mapping SourceColumn="Date" DataSetColumn="Date" />
+              <Mapping SourceColumn="Sessions" DataSetColumn="Sessions" />
+              <Mapping SourceColumn="Milk_Kg" DataSetColumn="Milk_Kg" />
+              <Mapping SourceColumn="Modifykg" DataSetColumn="Modifykg" />
+              <Mapping SourceColumn="Fat" DataSetColumn="Fat" />
+              <Mapping SourceColumn="ModifyFat" DataSetColumn="ModifyFat" />
+              <Mapping SourceColumn="snf" DataSetColumn="snf" />
+              <Mapping SourceColumn="Modify_snf" DataSetColumn="Modify_snf" />
+              <Mapping SourceColumn="DIFFKG" DataSetColumn="DIFFKG" />
+              <Mapping SourceColumn="DIFFFAT" DataSetColumn="DIFFFAT" />
+              <Mapping SourceColumn="DIFFSNF" DataSetColumn="DIFFSNF" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="General_Dataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="General_Dataset" msprop:Generator_UserDSName="General_Dataset">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RoutewiswPaymentabstarct" msprop:Generator_TableClassName="RoutewiswPaymentabstarctDataTable" msprop:Generator_TableVarName="tableRoutewiswPaymentabstarct" msprop:Generator_TablePropName="RoutewiswPaymentabstarct" msprop:Generator_RowDeletingName="RoutewiswPaymentabstarctRowDeleting" msprop:Generator_UserTableName="RoutewiswPaymentabstarct" msprop:Generator_RowChangingName="RoutewiswPaymentabstarctRowChanging" msprop:Generator_RowEvHandlerName="RoutewiswPaymentabstarctRowChangeEventHandler" msprop:Generator_RowDeletedName="RoutewiswPaymentabstarctRowDeleted" msprop:Generator_RowEvArgName="RoutewiswPaymentabstarctRowChangeEvent" msprop:Generator_RowChangedName="RoutewiswPaymentabstarctRowChanged" msprop:Generator_RowClassName="RoutewiswPaymentabstarctRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rid" msprop:Generator_ColumnVarNameInTable="columnRid" msprop:Generator_ColumnPropNameInRow="Rid" msprop:Generator_ColumnPropNameInTable="RidColumn" msprop:Generator_UserColumnName="Rid" type="xs:int" minOccurs="0" />
+              <xs:element name="Aid" msprop:Generator_ColumnVarNameInTable="columnAid" msprop:Generator_ColumnPropNameInRow="Aid" msprop:Generator_ColumnPropNameInTable="AidColumn" msprop:Generator_UserColumnName="Aid" type="xs:int" minOccurs="0" />
+              <xs:element name="Smkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSmkg" msprop:Generator_ColumnPropNameInRow="Smkg" msprop:Generator_ColumnPropNameInTable="SmkgColumn" msprop:Generator_UserColumnName="Smkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Smltr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSmltr" msprop:Generator_ColumnPropNameInRow="Smltr" msprop:Generator_ColumnPropNameInTable="SmltrColumn" msprop:Generator_UserColumnName="Smltr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AvgFat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgFat" msprop:Generator_ColumnPropNameInRow="AvgFat" msprop:Generator_ColumnPropNameInTable="AvgFatColumn" msprop:Generator_UserColumnName="AvgFat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AvgSnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgSnf" msprop:Generator_ColumnPropNameInRow="AvgSnf" msprop:Generator_ColumnPropNameInTable="AvgSnfColumn" msprop:Generator_UserColumnName="AvgSnf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AvgRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgRate" msprop:Generator_ColumnPropNameInRow="AvgRate" msprop:Generator_ColumnPropNameInTable="AvgRateColumn" msprop:Generator_UserColumnName="AvgRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Avgclr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgclr" msprop:Generator_ColumnPropNameInRow="Avgclr" msprop:Generator_ColumnPropNameInTable="AvgclrColumn" msprop:Generator_UserColumnName="Avgclr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Scans" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnScans" msprop:Generator_ColumnPropNameInRow="Scans" msprop:Generator_ColumnPropNameInTable="ScansColumn" msprop:Generator_UserColumnName="Scans" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSAmt" msprop:Generator_ColumnPropNameInRow="SAmt" msprop:Generator_ColumnPropNameInTable="SAmtColumn" msprop:Generator_UserColumnName="SAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ScommAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnScommAmt" msprop:Generator_ColumnPropNameInRow="ScommAmt" msprop:Generator_ColumnPropNameInTable="ScommAmtColumn" msprop:Generator_UserColumnName="ScommAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Scatamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnScatamt" msprop:Generator_ColumnPropNameInRow="Scatamt" msprop:Generator_ColumnPropNameInTable="ScatamtColumn" msprop:Generator_UserColumnName="Scatamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Ssplbonamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSsplbonamt" msprop:Generator_ColumnPropNameInRow="Ssplbonamt" msprop:Generator_ColumnPropNameInTable="SsplbonamtColumn" msprop:Generator_UserColumnName="Ssplbonamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AvgcRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvgcRate" msprop:Generator_ColumnPropNameInRow="AvgcRate" msprop:Generator_ColumnPropNameInTable="AvgcRateColumn" msprop:Generator_UserColumnName="AvgcRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Sfatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSfatkg" msprop:Generator_ColumnPropNameInRow="Sfatkg" msprop:Generator_ColumnPropNameInTable="SfatkgColumn" msprop:Generator_UserColumnName="Sfatkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Ssnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSsnfkg" msprop:Generator_ColumnPropNameInRow="Ssnfkg" msprop:Generator_ColumnPropNameInTable="SsnfkgColumn" msprop:Generator_UserColumnName="Ssnfkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SBilladv" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSBilladv" msprop:Generator_ColumnPropNameInRow="SBilladv" msprop:Generator_ColumnPropNameInTable="SBilladvColumn" msprop:Generator_UserColumnName="SBilladv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SAiamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSAiamt" msprop:Generator_ColumnPropNameInRow="SAiamt" msprop:Generator_ColumnPropNameInTable="SAiamtColumn" msprop:Generator_UserColumnName="SAiamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SFeedamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSFeedamt" msprop:Generator_ColumnPropNameInRow="SFeedamt" msprop:Generator_ColumnPropNameInTable="SFeedamtColumn" msprop:Generator_UserColumnName="SFeedamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Scanamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnScanamt" msprop:Generator_ColumnPropNameInRow="Scanamt" msprop:Generator_ColumnPropNameInTable="ScanamtColumn" msprop:Generator_UserColumnName="Scanamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SRecoveryamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSRecoveryamt" msprop:Generator_ColumnPropNameInRow="SRecoveryamt" msprop:Generator_ColumnPropNameInTable="SRecoveryamtColumn" msprop:Generator_UserColumnName="SRecoveryamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Sothers" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSothers" msprop:Generator_ColumnPropNameInRow="Sothers" msprop:Generator_ColumnPropNameInTable="SothersColumn" msprop:Generator_UserColumnName="Sothers" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Sinstamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSinstamt" msprop:Generator_ColumnPropNameInRow="Sinstamt" msprop:Generator_ColumnPropNameInTable="SinstamtColumn" msprop:Generator_UserColumnName="Sinstamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Sbalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSbalance" msprop:Generator_ColumnPropNameInRow="Sbalance" msprop:Generator_ColumnPropNameInTable="SbalanceColumn" msprop:Generator_UserColumnName="Sbalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLoanAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSLoanAmount" msprop:Generator_ColumnPropNameInRow="SLoanAmount" msprop:Generator_ColumnPropNameInTable="SLoanAmountColumn" msprop:Generator_UserColumnName="SLoanAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SRNetAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSRNetAmt" msprop:Generator_ColumnPropNameInRow="SRNetAmt" msprop:Generator_ColumnPropNameInTable="SRNetAmtColumn" msprop:Generator_UserColumnName="SRNetAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SNetAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSNetAmt" msprop:Generator_ColumnPropNameInRow="SNetAmt" msprop:Generator_ColumnPropNameInTable="SNetAmtColumn" msprop:Generator_UserColumnName="SNetAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SRound" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSRound" msprop:Generator_ColumnPropNameInRow="SRound" msprop:Generator_ColumnPropNameInTable="SRoundColumn" msprop:Generator_UserColumnName="SRound" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Bank_Id" msprop:Generator_ColumnVarNameInTable="columnBank_Id" msprop:Generator_ColumnPropNameInRow="Bank_Id" msprop:Generator_ColumnPropNameInTable="Bank_IdColumn" msprop:Generator_UserColumnName="Bank_Id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Payment_mode" msprop:Generator_ColumnVarNameInTable="columnPayment_mode" msprop:Generator_ColumnPropNameInRow="Payment_mode" msprop:Generator_ColumnPropNameInTable="Payment_modeColumn" msprop:Generator_UserColumnName="Payment_mode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Agent_AccountNo" msprop:Generator_ColumnVarNameInTable="columnAgent_AccountNo" msprop:Generator_ColumnPropNameInRow="Agent_AccountNo" msprop:Generator_ColumnPropNameInTable="Agent_AccountNoColumn" msprop:Generator_UserColumnName="Agent_AccountNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ARid" msprop:Generator_ColumnVarNameInTable="columnARid" msprop:Generator_ColumnPropNameInRow="ARid" msprop:Generator_ColumnPropNameInTable="ARidColumn" msprop:Generator_UserColumnName="ARid" type="xs:int" minOccurs="0" />
+              <xs:element name="GSmkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmkg" msprop:Generator_ColumnPropNameInRow="GSmkg" msprop:Generator_ColumnPropNameInTable="GSmkgColumn" msprop:Generator_UserColumnName="GSmkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSmltr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmltr" msprop:Generator_ColumnPropNameInRow="GSmltr" msprop:Generator_ColumnPropNameInTable="GSmltrColumn" msprop:Generator_UserColumnName="GSmltr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgFat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgFat" msprop:Generator_ColumnPropNameInRow="GAvgFat" msprop:Generator_ColumnPropNameInTable="GAvgFatColumn" msprop:Generator_UserColumnName="GAvgFat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgSnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgSnf" msprop:Generator_ColumnPropNameInRow="GAvgSnf" msprop:Generator_ColumnPropNameInTable="GAvgSnfColumn" msprop:Generator_UserColumnName="GAvgSnf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgRate" msprop:Generator_ColumnPropNameInRow="GAvgRate" msprop:Generator_ColumnPropNameInTable="GAvgRateColumn" msprop:Generator_UserColumnName="GAvgRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgclr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgclr" msprop:Generator_ColumnPropNameInRow="GAvgclr" msprop:Generator_ColumnPropNameInTable="GAvgclrColumn" msprop:Generator_UserColumnName="GAvgclr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScans" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScans" msprop:Generator_ColumnPropNameInRow="GScans" msprop:Generator_ColumnPropNameInTable="GScansColumn" msprop:Generator_UserColumnName="GScans" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSAmt" msprop:Generator_ColumnPropNameInRow="GSAmt" msprop:Generator_ColumnPropNameInTable="GSAmtColumn" msprop:Generator_UserColumnName="GSAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScommAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScommAmt" msprop:Generator_ColumnPropNameInRow="GScommAmt" msprop:Generator_ColumnPropNameInTable="GScommAmtColumn" msprop:Generator_UserColumnName="GScommAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScatamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScatamt" msprop:Generator_ColumnPropNameInRow="GScatamt" msprop:Generator_ColumnPropNameInTable="GScatamtColumn" msprop:Generator_UserColumnName="GScatamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSsplbonamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSsplbonamt" msprop:Generator_ColumnPropNameInRow="GSsplbonamt" msprop:Generator_ColumnPropNameInTable="GSsplbonamtColumn" msprop:Generator_UserColumnName="GSsplbonamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgcRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgcRate" msprop:Generator_ColumnPropNameInRow="GAvgcRate" msprop:Generator_ColumnPropNameInTable="GAvgcRateColumn" msprop:Generator_UserColumnName="GAvgcRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSfatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSfatkg" msprop:Generator_ColumnPropNameInRow="GSfatkg" msprop:Generator_ColumnPropNameInTable="GSfatkgColumn" msprop:Generator_UserColumnName="GSfatkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSsnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSsnfkg" msprop:Generator_ColumnPropNameInRow="GSsnfkg" msprop:Generator_ColumnPropNameInTable="GSsnfkgColumn" msprop:Generator_UserColumnName="GSsnfkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSBilladv" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSBilladv" msprop:Generator_ColumnPropNameInRow="GSBilladv" msprop:Generator_ColumnPropNameInTable="GSBilladvColumn" msprop:Generator_UserColumnName="GSBilladv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSAiamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSAiamt" msprop:Generator_ColumnPropNameInRow="GSAiamt" msprop:Generator_ColumnPropNameInTable="GSAiamtColumn" msprop:Generator_UserColumnName="GSAiamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSFeedamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSFeedamt" msprop:Generator_ColumnPropNameInRow="GSFeedamt" msprop:Generator_ColumnPropNameInTable="GSFeedamtColumn" msprop:Generator_UserColumnName="GSFeedamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScanamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScanamt" msprop:Generator_ColumnPropNameInRow="GScanamt" msprop:Generator_ColumnPropNameInTable="GScanamtColumn" msprop:Generator_UserColumnName="GScanamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSRecoveryamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSRecoveryamt" msprop:Generator_ColumnPropNameInRow="GSRecoveryamt" msprop:Generator_ColumnPropNameInTable="GSRecoveryamtColumn" msprop:Generator_UserColumnName="GSRecoveryamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSothers" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSothers" msprop:Generator_ColumnPropNameInRow="GSothers" msprop:Generator_ColumnPropNameInTable="GSothersColumn" msprop:Generator_UserColumnName="GSothers" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSinstamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSinstamt" msprop:Generator_ColumnPropNameInRow="GSinstamt" msprop:Generator_ColumnPropNameInTable="GSinstamtColumn" msprop:Generator_UserColumnName="GSinstamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSbalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSbalance" msprop:Generator_ColumnPropNameInRow="GSbalance" msprop:Generator_ColumnPropNameInTable="GSbalanceColumn" msprop:Generator_UserColumnName="GSbalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSLoanAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSLoanAmount" msprop:Generator_ColumnPropNameInRow="GSLoanAmount" msprop:Generator_ColumnPropNameInTable="GSLoanAmountColumn" msprop:Generator_UserColumnName="GSLoanAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSNetAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSNetAmt" msprop:Generator_ColumnPropNameInRow="GSNetAmt" msprop:Generator_ColumnPropNameInTable="GSNetAmtColumn" msprop:Generator_UserColumnName="GSNetAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSround" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSround" msprop:Generator_ColumnPropNameInRow="GSround" msprop:Generator_ColumnPropNameInTable="GSroundColumn" msprop:Generator_UserColumnName="GSround" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Sclaim" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSclaim" msprop:Generator_ColumnPropNameInRow="Sclaim" msprop:Generator_ColumnPropNameInTable="SclaimColumn" msprop:Generator_UserColumnName="Sclaim" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSClaim" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSClaim" msprop:Generator_ColumnPropNameInRow="GSClaim" msprop:Generator_ColumnPropNameInTable="GSClaimColumn" msprop:Generator_UserColumnName="GSClaim" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Agent_Name" msprop:Generator_ColumnVarNameInTable="columnAgent_Name" msprop:Generator_ColumnPropNameInRow="Agent_Name" msprop:Generator_ColumnPropNameInTable="Agent_NameColumn" msprop:Generator_UserColumnName="Agent_Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NewOverAll" msprop:Generator_TableClassName="NewOverAllDataTable" msprop:Generator_TableVarName="tableNewOverAll" msprop:Generator_TablePropName="NewOverAll" msprop:Generator_RowDeletingName="NewOverAllRowDeleting" msprop:Generator_UserTableName="NewOverAll" msprop:Generator_RowChangingName="NewOverAllRowChanging" msprop:Generator_RowEvHandlerName="NewOverAllRowChangeEventHandler" msprop:Generator_RowDeletedName="NewOverAllRowDeleted" msprop:Generator_RowEvArgName="NewOverAllRowChangeEvent" msprop:Generator_RowChangedName="NewOverAllRowChanged" msprop:Generator_RowClassName="NewOverAllRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="pcode1" msprop:Generator_ColumnVarNameInTable="columnpcode1" msprop:Generator_ColumnPropNameInRow="pcode1" msprop:Generator_ColumnPropNameInTable="pcode1Column" msprop:Generator_UserColumnName="pcode1" type="xs:int" minOccurs="0" />
+              <xs:element name="GSmkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmkg" msprop:Generator_ColumnPropNameInRow="GSmkg" msprop:Generator_ColumnPropNameInTable="GSmkgColumn" msprop:Generator_UserColumnName="GSmkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSmltr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSmltr" msprop:Generator_ColumnPropNameInRow="GSmltr" msprop:Generator_ColumnPropNameInTable="GSmltrColumn" msprop:Generator_UserColumnName="GSmltr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgFat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgFat" msprop:Generator_ColumnPropNameInRow="GAvgFat" msprop:Generator_ColumnPropNameInTable="GAvgFatColumn" msprop:Generator_UserColumnName="GAvgFat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgSnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgSnf" msprop:Generator_ColumnPropNameInRow="GAvgSnf" msprop:Generator_ColumnPropNameInTable="GAvgSnfColumn" msprop:Generator_UserColumnName="GAvgSnf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgRate" msprop:Generator_ColumnPropNameInRow="GAvgRate" msprop:Generator_ColumnPropNameInTable="GAvgRateColumn" msprop:Generator_UserColumnName="GAvgRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgclr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgclr" msprop:Generator_ColumnPropNameInRow="GAvgclr" msprop:Generator_ColumnPropNameInTable="GAvgclrColumn" msprop:Generator_UserColumnName="GAvgclr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScans" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScans" msprop:Generator_ColumnPropNameInRow="GScans" msprop:Generator_ColumnPropNameInTable="GScansColumn" msprop:Generator_UserColumnName="GScans" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSAmt" msprop:Generator_ColumnPropNameInRow="GSAmt" msprop:Generator_ColumnPropNameInTable="GSAmtColumn" msprop:Generator_UserColumnName="GSAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScommAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScommAmt" msprop:Generator_ColumnPropNameInRow="GScommAmt" msprop:Generator_ColumnPropNameInTable="GScommAmtColumn" msprop:Generator_UserColumnName="GScommAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScatamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScatamt" msprop:Generator_ColumnPropNameInRow="GScatamt" msprop:Generator_ColumnPropNameInTable="GScatamtColumn" msprop:Generator_UserColumnName="GScatamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSsplbonamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSsplbonamt" msprop:Generator_ColumnPropNameInRow="GSsplbonamt" msprop:Generator_ColumnPropNameInTable="GSsplbonamtColumn" msprop:Generator_UserColumnName="GSsplbonamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GAvgcRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGAvgcRate" msprop:Generator_ColumnPropNameInRow="GAvgcRate" msprop:Generator_ColumnPropNameInTable="GAvgcRateColumn" msprop:Generator_UserColumnName="GAvgcRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSfatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSfatkg" msprop:Generator_ColumnPropNameInRow="GSfatkg" msprop:Generator_ColumnPropNameInTable="GSfatkgColumn" msprop:Generator_UserColumnName="GSfatkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSsnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSsnfkg" msprop:Generator_ColumnPropNameInRow="GSsnfkg" msprop:Generator_ColumnPropNameInTable="GSsnfkgColumn" msprop:Generator_UserColumnName="GSsnfkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSBilladv" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSBilladv" msprop:Generator_ColumnPropNameInRow="GSBilladv" msprop:Generator_ColumnPropNameInTable="GSBilladvColumn" msprop:Generator_UserColumnName="GSBilladv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSAiamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSAiamt" msprop:Generator_ColumnPropNameInRow="GSAiamt" msprop:Generator_ColumnPropNameInTable="GSAiamtColumn" msprop:Generator_UserColumnName="GSAiamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSFeedamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSFeedamt" msprop:Generator_ColumnPropNameInRow="GSFeedamt" msprop:Generator_ColumnPropNameInTable="GSFeedamtColumn" msprop:Generator_UserColumnName="GSFeedamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GScanamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGScanamt" msprop:Generator_ColumnPropNameInRow="GScanamt" msprop:Generator_ColumnPropNameInTable="GScanamtColumn" msprop:Generator_UserColumnName="GScanamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSRecoveryamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSRecoveryamt" msprop:Generator_ColumnPropNameInRow="GSRecoveryamt" msprop:Generator_ColumnPropNameInTable="GSRecoveryamtColumn" msprop:Generator_UserColumnName="GSRecoveryamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSothers" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSothers" msprop:Generator_ColumnPropNameInRow="GSothers" msprop:Generator_ColumnPropNameInTable="GSothersColumn" msprop:Generator_UserColumnName="GSothers" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSinstamt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSinstamt" msprop:Generator_ColumnPropNameInRow="GSinstamt" msprop:Generator_ColumnPropNameInTable="GSinstamtColumn" msprop:Generator_UserColumnName="GSinstamt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSbalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSbalance" msprop:Generator_ColumnPropNameInRow="GSbalance" msprop:Generator_ColumnPropNameInTable="GSbalanceColumn" msprop:Generator_UserColumnName="GSbalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSLoanAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSLoanAmount" msprop:Generator_ColumnPropNameInRow="GSLoanAmount" msprop:Generator_ColumnPropNameInTable="GSLoanAmountColumn" msprop:Generator_UserColumnName="GSLoanAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSNetAmt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSNetAmt" msprop:Generator_ColumnPropNameInRow="GSNetAmt" msprop:Generator_ColumnPropNameInTable="GSNetAmtColumn" msprop:Generator_UserColumnName="GSNetAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSround" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSround" msprop:Generator_ColumnPropNameInRow="GSround" msprop:Generator_ColumnPropNameInTable="GSroundColumn" msprop:Generator_UserColumnName="GSround" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GSClaim" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGSClaim" msprop:Generator_ColumnPropNameInRow="GSClaim" msprop:Generator_ColumnPropNameInTable="GSClaimColumn" msprop:Generator_UserColumnName="GSClaim" type="xs:decimal" minOccurs="0" />
+              <xs:element name="pcod" msprop:Generator_ColumnVarNameInTable="columnpcod" msprop:Generator_ColumnPropNameInRow="pcod" msprop:Generator_ColumnPropNameInTable="pcodColumn" msprop:Generator_UserColumnName="pcod" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Amilkkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAmilkkg" msprop:Generator_ColumnPropNameInRow="Amilkkg" msprop:Generator_ColumnPropNameInTable="AmilkkgColumn" msprop:Generator_UserColumnName="Amilkkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AFatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAFatkg" msprop:Generator_ColumnPropNameInRow="AFatkg" msprop:Generator_ColumnPropNameInTable="AFatkgColumn" msprop:Generator_UserColumnName="AFatkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ASnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnASnfkg" msprop:Generator_ColumnPropNameInRow="ASnfkg" msprop:Generator_ColumnPropNameInTable="ASnfkgColumn" msprop:Generator_UserColumnName="ASnfkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AFat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAFat" msprop:Generator_ColumnPropNameInRow="AFat" msprop:Generator_ColumnPropNameInTable="AFatColumn" msprop:Generator_UserColumnName="AFat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ASnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnASnf" msprop:Generator_ColumnPropNameInRow="ASnf" msprop:Generator_ColumnPropNameInTable="ASnfColumn" msprop:Generator_UserColumnName="ASnf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Bmilkkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBmilkkg" msprop:Generator_ColumnPropNameInRow="Bmilkkg" msprop:Generator_ColumnPropNameInTable="BmilkkgColumn" msprop:Generator_UserColumnName="Bmilkkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBFatkg" msprop:Generator_ColumnPropNameInRow="BFatkg" msprop:Generator_ColumnPropNameInTable="BFatkgColumn" msprop:Generator_UserColumnName="BFatkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BSnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBSnfkg" msprop:Generator_ColumnPropNameInRow="BSnfkg" msprop:Generator_ColumnPropNameInTable="BSnfkgColumn" msprop:Generator_UserColumnName="BSnfkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBFat" msprop:Generator_ColumnPropNameInRow="BFat" msprop:Generator_ColumnPropNameInTable="BFatColumn" msprop:Generator_UserColumnName="BFat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BSnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBSnf" msprop:Generator_ColumnPropNameInRow="BSnf" msprop:Generator_ColumnPropNameInTable="BSnfColumn" msprop:Generator_UserColumnName="BSnf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Gainmilkkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGainmilkkg" msprop:Generator_ColumnPropNameInRow="Gainmilkkg" msprop:Generator_ColumnPropNameInTable="GainmilkkgColumn" msprop:Generator_UserColumnName="Gainmilkkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GainFatkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGainFatkg" msprop:Generator_ColumnPropNameInRow="GainFatkg" msprop:Generator_ColumnPropNameInTable="GainFatkgColumn" msprop:Generator_UserColumnName="GainFatkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GainSnfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGainSnfkg" msprop:Generator_ColumnPropNameInRow="GainSnfkg" msprop:Generator_ColumnPropNameInTable="GainSnfkgColumn" msprop:Generator_UserColumnName="GainSnfkg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="pcode" msprop:Generator_ColumnVarNameInTable="columnpcode" msprop:Generator_ColumnPropNameInRow="pcode" msprop:Generator_ColumnPropNameInTable="pcodeColumn" msprop:Generator_UserColumnName="pcode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Smltr1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSmltr1" msprop:Generator_ColumnPropNameInRow="Smltr1" msprop:Generator_ColumnPropNameInTable="Smltr1Column" msprop:Generator_UserColumnName="Smltr1" type="xs:double" minOccurs="0" />
+              <xs:element name="TransAMount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTransAMount" msprop:Generator_ColumnPropNameInRow="TransAMount" msprop:Generator_ColumnPropNameInTable="TransAMountColumn" msprop:Generator_UserColumnName="TransAMount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DDays" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDDays" msprop:Generator_ColumnPropNameInRow="DDays" msprop:Generator_ColumnPropNameInTable="DDaysColumn" msprop:Generator_UserColumnName="DDays" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ROUTESUPERWISER" msprop:Generator_TableClassName="ROUTESUPERWISERDataTable" msprop:Generator_TableVarName="tableROUTESUPERWISER" msprop:Generator_TablePropName="ROUTESUPERWISER" msprop:Generator_RowDeletingName="ROUTESUPERWISERRowDeleting" msprop:Generator_UserTableName="ROUTESUPERWISER" msprop:Generator_RowChangingName="ROUTESUPERWISERRowChanging" msprop:Generator_RowEvHandlerName="ROUTESUPERWISERRowChangeEventHandler" msprop:Generator_RowDeletedName="ROUTESUPERWISERRowDeleted" msprop:Generator_RowEvArgName="ROUTESUPERWISERRowChangeEvent" msprop:Generator_RowChangedName="ROUTESUPERWISERRowChanged" msprop:Generator_RowClassName="ROUTESUPERWISERRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Route_ID" msprop:Generator_ColumnVarNameInTable="columnRoute_ID" msprop:Generator_ColumnPropNameInRow="Route_ID" msprop:Generator_ColumnPropNameInTable="Route_IDColumn" msprop:Generator_UserColumnName="Route_ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Route_Name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRoute_Name" msprop:Generator_ColumnPropNameInRow="Route_Name" msprop:Generator_ColumnPropNameInTable="Route_NameColumn" msprop:Generator_UserColumnName="Route_Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="151" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="STotmltr" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSTotmltr" msprop:Generator_ColumnPropNameInRow="STotmltr" msprop:Generator_ColumnPropNameInTable="STotmltrColumn" msprop:Generator_UserColumnName="STotmltr" type="xs:double" minOccurs="0" />
+              <xs:element name="PerDayQty" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPerDayQty" msprop:Generator_ColumnPropNameInRow="PerDayQty" msprop:Generator_ColumnPropNameInTable="PerDayQtyColumn" msprop:Generator_UserColumnName="PerDayQty" type="xs:double" minOccurs="0" />
+              <xs:element name="Sfkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSfkg" msprop:Generator_ColumnPropNameInRow="Sfkg" msprop:Generator_ColumnPropNameInTable="SfkgColumn" msprop:Generator_UserColumnName="Sfkg" type="xs:double" minOccurs="0" />
+              <xs:element name="SSkg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSSkg" msprop:Generator_ColumnPropNameInRow="SSkg" msprop:Generator_ColumnPropNameInTable="SSkgColumn" msprop:Generator_UserColumnName="SSkg" type="xs:double" minOccurs="0" />
+              <xs:element name="Afat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAfat" msprop:Generator_ColumnPropNameInRow="Afat" msprop:Generator_ColumnPropNameInTable="AfatColumn" msprop:Generator_UserColumnName="Afat" type="xs:double" minOccurs="0" />
+              <xs:element name="Asnf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAsnf" msprop:Generator_ColumnPropNameInRow="Asnf" msprop:Generator_ColumnPropNameInTable="AsnfColumn" msprop:Generator_UserColumnName="Asnf" type="xs:double" minOccurs="0" />
+              <xs:element name="Arate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnArate" msprop:Generator_ColumnPropNameInRow="Arate" msprop:Generator_ColumnPropNameInTable="ArateColumn" msprop:Generator_UserColumnName="Arate" type="xs:double" minOccurs="0" />
+              <xs:element name="Mrate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMrate" msprop:Generator_ColumnPropNameInRow="Mrate" msprop:Generator_ColumnPropNameInTable="MrateColumn" msprop:Generator_UserColumnName="Mrate" type="xs:double" minOccurs="0" />
+              <xs:element name="DDays" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDDays" msprop:Generator_ColumnPropNameInRow="DDays" msprop:Generator_ColumnPropNameInTable="DDaysColumn" msprop:Generator_UserColumnName="DDays" type="xs:int" minOccurs="0" />
+              <xs:element name="Supervisorcode" msprop:Generator_ColumnVarNameInTable="columnSupervisorcode" msprop:Generator_ColumnPropNameInRow="Supervisorcode" msprop:Generator_ColumnPropNameInTable="SupervisorcodeColumn" msprop:Generator_UserColumnName="Supervisorcode" type="xs:int" minOccurs="0" />
+              <xs:element name="SupervisorName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSupervisorName" msprop:Generator_ColumnPropNameInRow="SupervisorName" msprop:Generator_ColumnPropNameInTable="SupervisorNameColumn" msprop:Generator_UserColumnName="SupervisorName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="151" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FTransAMount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFTransAMount" msprop:Generator_ColumnPropNameInRow="FTransAMount" msprop:Generator_ColumnPropNameInTable="FTransAMountColumn" msprop:Generator_UserColumnName="FTransAMount" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AdminDataTable" msprop:Generator_TableClassName="AdminDataTableDataTable" msprop:Generator_TableVarName="tableAdminDataTable" msprop:Generator_TablePropName="AdminDataTable" msprop:Generator_RowDeletingName="AdminDataTableRowDeleting" msprop:Generator_UserTableName="AdminDataTable" msprop:Generator_RowChangingName="AdminDataTableRowChanging" msprop:Generator_RowEvHandlerName="AdminDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="AdminDataTableRowDeleted" msprop:Generator_RowEvArgName="AdminDataTableRowChangeEvent" msprop:Generator_RowChangedName="AdminDataTableRowChanged" msprop:Generator_RowClassName="AdminDataTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Tid" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTid" msprop:Generator_ColumnPropNameInRow="Tid" msprop:Generator_ColumnPropNameInTable="TidColumn" msprop:Generator_UserColumnName="Tid" type="xs:int" />
+              <xs:element name="Company_Code" msprop:Generator_ColumnVarNameInTable="columnCompany_Code" msprop:Generator_ColumnPropNameInRow="Company_Code" msprop:Generator_ColumnPropNameInTable="Company_CodeColumn" msprop:Generator_UserColumnName="Company_Code" type="xs:int" minOccurs="0" />
+              <xs:element name="Plant_Code" msprop:Generator_ColumnVarNameInTable="columnPlant_Code" msprop:Generator_ColumnPropNameInRow="Plant_Code" msprop:Generator_ColumnPropNameInTable="Plant_CodeColumn" msprop:Generator_UserColumnName="Plant_Code" type="xs:int" minOccurs="0" />
+              <xs:element name="Total_Mkgs" msprop:Generator_ColumnVarNameInTable="columnTotal_Mkgs" msprop:Generator_ColumnPropNameInRow="Total_Mkgs" msprop:Generator_ColumnPropNameInTable="Total_MkgsColumn" msprop:Generator_UserColumnName="Total_Mkgs" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_Mltrs" msprop:Generator_ColumnVarNameInTable="columnTotal_Mltrs" msprop:Generator_ColumnPropNameInRow="Total_Mltrs" msprop:Generator_ColumnPropNameInTable="Total_MltrsColumn" msprop:Generator_UserColumnName="Total_Mltrs" type="xs:double" minOccurs="0" />
+              <xs:element name="PerDay_Mltrs" msprop:Generator_ColumnVarNameInTable="columnPerDay_Mltrs" msprop:Generator_ColumnPropNameInRow="PerDay_Mltrs" msprop:Generator_ColumnPropNameInTable="PerDay_MltrsColumn" msprop:Generator_UserColumnName="PerDay_Mltrs" type="xs:double" minOccurs="0" />
+              <xs:element name="Ltr_Cost" msprop:Generator_ColumnVarNameInTable="columnLtr_Cost" msprop:Generator_ColumnPropNameInRow="Ltr_Cost" msprop:Generator_ColumnPropNameInTable="Ltr_CostColumn" msprop:Generator_UserColumnName="Ltr_Cost" type="xs:double" minOccurs="0" />
+              <xs:element name="kg_Fat" msprop:Generator_ColumnVarNameInTable="columnkg_Fat" msprop:Generator_ColumnPropNameInRow="kg_Fat" msprop:Generator_ColumnPropNameInTable="kg_FatColumn" msprop:Generator_UserColumnName="kg_Fat" type="xs:double" minOccurs="0" />
+              <xs:element name="Avg_Fat" msprop:Generator_ColumnVarNameInTable="columnAvg_Fat" msprop:Generator_ColumnPropNameInRow="Avg_Fat" msprop:Generator_ColumnPropNameInTable="Avg_FatColumn" msprop:Generator_UserColumnName="Avg_Fat" type="xs:double" minOccurs="0" />
+              <xs:element name="kg_Snf" msprop:Generator_ColumnVarNameInTable="columnkg_Snf" msprop:Generator_ColumnPropNameInRow="kg_Snf" msprop:Generator_ColumnPropNameInTable="kg_SnfColumn" msprop:Generator_UserColumnName="kg_Snf" type="xs:double" minOccurs="0" />
+              <xs:element name="Avg_Snf" msprop:Generator_ColumnVarNameInTable="columnAvg_Snf" msprop:Generator_ColumnPropNameInRow="Avg_Snf" msprop:Generator_ColumnPropNameInTable="Avg_SnfColumn" msprop:Generator_UserColumnName="Avg_Snf" type="xs:double" minOccurs="0" />
+              <xs:element name="Avg_Clr" msprop:Generator_ColumnVarNameInTable="columnAvg_Clr" msprop:Generator_ColumnPropNameInRow="Avg_Clr" msprop:Generator_ColumnPropNameInTable="Avg_ClrColumn" msprop:Generator_UserColumnName="Avg_Clr" type="xs:double" minOccurs="0" />
+              <xs:element name="Tot_Cans" msprop:Generator_ColumnVarNameInTable="columnTot_Cans" msprop:Generator_ColumnPropNameInRow="Tot_Cans" msprop:Generator_ColumnPropNameInTable="Tot_CansColumn" msprop:Generator_UserColumnName="Tot_Cans" type="xs:double" minOccurs="0" />
+              <xs:element name="TS" msprop:Generator_ColumnVarNameInTable="columnTS" msprop:Generator_ColumnPropNameInRow="TS" msprop:Generator_ColumnPropNameInTable="TSColumn" msprop:Generator_UserColumnName="TS" type="xs:double" minOccurs="0" />
+              <xs:element name="Nill_Payments" msprop:Generator_ColumnVarNameInTable="columnNill_Payments" msprop:Generator_ColumnPropNameInRow="Nill_Payments" msprop:Generator_ColumnPropNameInTable="Nill_PaymentsColumn" msprop:Generator_UserColumnName="Nill_Payments" type="xs:double" minOccurs="0" />
+              <xs:element name="Milk_Amout" msprop:Generator_ColumnVarNameInTable="columnMilk_Amout" msprop:Generator_ColumnPropNameInRow="Milk_Amout" msprop:Generator_ColumnPropNameInTable="Milk_AmoutColumn" msprop:Generator_UserColumnName="Milk_Amout" type="xs:double" minOccurs="0" />
+              <xs:element name="Loan_Adv" msprop:Generator_ColumnVarNameInTable="columnLoan_Adv" msprop:Generator_ColumnPropNameInRow="Loan_Adv" msprop:Generator_ColumnPropNameInTable="Loan_AdvColumn" msprop:Generator_UserColumnName="Loan_Adv" type="xs:double" minOccurs="0" />
+              <xs:element name="loan_perltrdedu" msprop:Generator_ColumnVarNameInTable="columnloan_perltrdedu" msprop:Generator_ColumnPropNameInRow="loan_perltrdedu" msprop:Generator_ColumnPropNameInTable="loan_perltrdeduColumn" msprop:Generator_UserColumnName="loan_perltrdedu" type="xs:double" minOccurs="0" />
+              <xs:element name="Bill_Adv" msprop:Generator_ColumnVarNameInTable="columnBill_Adv" msprop:Generator_ColumnPropNameInRow="Bill_Adv" msprop:Generator_ColumnPropNameInTable="Bill_AdvColumn" msprop:Generator_UserColumnName="Bill_Adv" type="xs:double" minOccurs="0" />
+              <xs:element name="Ai_Adv" msprop:Generator_ColumnVarNameInTable="columnAi_Adv" msprop:Generator_ColumnPropNameInRow="Ai_Adv" msprop:Generator_ColumnPropNameInTable="Ai_AdvColumn" msprop:Generator_UserColumnName="Ai_Adv" type="xs:double" minOccurs="0" />
+              <xs:element name="Feed_Adv" msprop:Generator_ColumnVarNameInTable="columnFeed_Adv" msprop:Generator_ColumnPropNameInRow="Feed_Adv" msprop:Generator_ColumnPropNameInTable="Feed_AdvColumn" msprop:Generator_UserColumnName="Feed_Adv" type="xs:double" minOccurs="0" />
+              <xs:element name="Can_Adv" msprop:Generator_ColumnVarNameInTable="columnCan_Adv" msprop:Generator_ColumnPropNameInRow="Can_Adv" msprop:Generator_ColumnPropNameInTable="Can_AdvColumn" msprop:Generator_UserColumnName="Can_Adv" type="xs:double" minOccurs="0" />
+              <xs:element name="Recovery_Adv" msprop:Generator_ColumnVarNameInTable="columnRecovery_Adv" msprop:Generator_ColumnPropNameInRow="Recovery_Adv" msprop:Generator_ColumnPropNameInTable="Recovery_AdvColumn" msprop:Generator_UserColumnName="Recovery_Adv" type="xs:double" minOccurs="0" />
+              <xs:element name="Others_Adv" msprop:Generator_ColumnVarNameInTable="columnOthers_Adv" msprop:Generator_ColumnPropNameInRow="Others_Adv" msprop:Generator_ColumnPropNameInTable="Others_AdvColumn" msprop:Generator_UserColumnName="Others_Adv" type="xs:double" minOccurs="0" />
+              <xs:element name="Net_Bill_Amount" msprop:Generator_ColumnVarNameInTable="columnNet_Bill_Amount" msprop:Generator_ColumnPropNameInRow="Net_Bill_Amount" msprop:Generator_ColumnPropNameInTable="Net_Bill_AmountColumn" msprop:Generator_UserColumnName="Net_Bill_Amount" type="xs:double" minOccurs="0" />
+              <xs:element name="Transport_Amount" msprop:Generator_ColumnVarNameInTable="columnTransport_Amount" msprop:Generator_ColumnPropNameInRow="Transport_Amount" msprop:Generator_ColumnPropNameInTable="Transport_AmountColumn" msprop:Generator_UserColumnName="Transport_Amount" type="xs:double" minOccurs="0" />
+              <xs:element name="Transport_Ltrcost" msprop:Generator_ColumnVarNameInTable="columnTransport_Ltrcost" msprop:Generator_ColumnPropNameInRow="Transport_Ltrcost" msprop:Generator_ColumnPropNameInTable="Transport_LtrcostColumn" msprop:Generator_UserColumnName="Transport_Ltrcost" type="xs:double" minOccurs="0" />
+              <xs:element name="ProcureVale_TSRate" msprop:Generator_ColumnVarNameInTable="columnProcureVale_TSRate" msprop:Generator_ColumnPropNameInRow="ProcureVale_TSRate" msprop:Generator_ColumnPropNameInTable="ProcureVale_TSRateColumn" msprop:Generator_UserColumnName="ProcureVale_TSRate" type="xs:double" minOccurs="0" />
+              <xs:element name="Transport_TSRate" msprop:Generator_ColumnVarNameInTable="columnTransport_TSRate" msprop:Generator_ColumnPropNameInRow="Transport_TSRate" msprop:Generator_ColumnPropNameInTable="Transport_TSRateColumn" msprop:Generator_UserColumnName="Transport_TSRate" type="xs:double" minOccurs="0" />
+              <xs:element name="ChillingCost_PerLt" msprop:Generator_ColumnVarNameInTable="columnChillingCost_PerLt" msprop:Generator_ColumnPropNameInRow="ChillingCost_PerLt" msprop:Generator_ColumnPropNameInTable="ChillingCost_PerLtColumn" msprop:Generator_UserColumnName="ChillingCost_PerLt" type="xs:double" minOccurs="0" />
+              <xs:element name="ChillingCost_TSRate" msprop:Generator_ColumnVarNameInTable="columnChillingCost_TSRate" msprop:Generator_ColumnPropNameInRow="ChillingCost_TSRate" msprop:Generator_ColumnPropNameInTable="ChillingCost_TSRateColumn" msprop:Generator_UserColumnName="ChillingCost_TSRate" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_TSRate" msprop:Generator_ColumnVarNameInTable="columnTotal_TSRate" msprop:Generator_ColumnPropNameInRow="Total_TSRate" msprop:Generator_ColumnPropNameInTable="Total_TSRateColumn" msprop:Generator_UserColumnName="Total_TSRate" type="xs:double" minOccurs="0" />
+              <xs:element name="kgmilk_Gain" msprop:Generator_ColumnVarNameInTable="columnkgmilk_Gain" msprop:Generator_ColumnPropNameInRow="kgmilk_Gain" msprop:Generator_ColumnPropNameInTable="kgmilk_GainColumn" msprop:Generator_UserColumnName="kgmilk_Gain" type="xs:double" minOccurs="0" />
+              <xs:element name="kgFat_Gain" msprop:Generator_ColumnVarNameInTable="columnkgFat_Gain" msprop:Generator_ColumnPropNameInRow="kgFat_Gain" msprop:Generator_ColumnPropNameInTable="kgFat_GainColumn" msprop:Generator_UserColumnName="kgFat_Gain" type="xs:double" minOccurs="0" />
+              <xs:element name="kgSnf_Gain" msprop:Generator_ColumnVarNameInTable="columnkgSnf_Gain" msprop:Generator_ColumnPropNameInRow="kgSnf_Gain" msprop:Generator_ColumnPropNameInTable="kgSnf_GainColumn" msprop:Generator_UserColumnName="kgSnf_Gain" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_FatSnfGain" msprop:Generator_ColumnVarNameInTable="columnTotal_FatSnfGain" msprop:Generator_ColumnPropNameInRow="Total_FatSnfGain" msprop:Generator_ColumnPropNameInTable="Total_FatSnfGainColumn" msprop:Generator_UserColumnName="Total_FatSnfGain" type="xs:double" minOccurs="0" />
+              <xs:element name="Fat_GainpercentperLtr" msprop:Generator_ColumnVarNameInTable="columnFat_GainpercentperLtr" msprop:Generator_ColumnPropNameInRow="Fat_GainpercentperLtr" msprop:Generator_ColumnPropNameInTable="Fat_GainpercentperLtrColumn" msprop:Generator_UserColumnName="Fat_GainpercentperLtr" type="xs:double" minOccurs="0" />
+              <xs:element name="Snf_GainpercentperLtr" msprop:Generator_ColumnVarNameInTable="columnSnf_GainpercentperLtr" msprop:Generator_ColumnPropNameInRow="Snf_GainpercentperLtr" msprop:Generator_ColumnPropNameInTable="Snf_GainpercentperLtrColumn" msprop:Generator_UserColumnName="Snf_GainpercentperLtr" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_GainpercentperLtr" msprop:Generator_ColumnVarNameInTable="columnTotal_GainpercentperLtr" msprop:Generator_ColumnPropNameInRow="Total_GainpercentperLtr" msprop:Generator_ColumnPropNameInTable="Total_GainpercentperLtrColumn" msprop:Generator_UserColumnName="Total_GainpercentperLtr" type="xs:double" minOccurs="0" />
+              <xs:element name="AvgFat_GainFatpercent" msprop:Generator_ColumnVarNameInTable="columnAvgFat_GainFatpercent" msprop:Generator_ColumnPropNameInRow="AvgFat_GainFatpercent" msprop:Generator_ColumnPropNameInTable="AvgFat_GainFatpercentColumn" msprop:Generator_UserColumnName="AvgFat_GainFatpercent" type="xs:double" minOccurs="0" />
+              <xs:element name="AvgSnf_GainSnfpercent" msprop:Generator_ColumnVarNameInTable="columnAvgSnf_GainSnfpercent" msprop:Generator_ColumnPropNameInRow="AvgSnf_GainSnfpercent" msprop:Generator_ColumnPropNameInTable="AvgSnf_GainSnfpercentColumn" msprop:Generator_UserColumnName="AvgSnf_GainSnfpercent" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_AvgGainSnfpercent" msprop:Generator_ColumnVarNameInTable="columnTotal_AvgGainSnfpercent" msprop:Generator_ColumnPropNameInRow="Total_AvgGainSnfpercent" msprop:Generator_ColumnPropNameInTable="Total_AvgGainSnfpercentColumn" msprop:Generator_UserColumnName="Total_AvgGainSnfpercent" type="xs:double" minOccurs="0" />
+              <xs:element name="Fat_Cost" msprop:Generator_ColumnVarNameInTable="columnFat_Cost" msprop:Generator_ColumnPropNameInRow="Fat_Cost" msprop:Generator_ColumnPropNameInTable="Fat_CostColumn" msprop:Generator_UserColumnName="Fat_Cost" type="xs:double" minOccurs="0" />
+              <xs:element name="Snf_Cost" msprop:Generator_ColumnVarNameInTable="columnSnf_Cost" msprop:Generator_ColumnPropNameInRow="Snf_Cost" msprop:Generator_ColumnPropNameInTable="Snf_CostColumn" msprop:Generator_UserColumnName="Snf_Cost" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_FSCost" msprop:Generator_ColumnVarNameInTable="columnTotal_FSCost" msprop:Generator_ColumnPropNameInRow="Total_FSCost" msprop:Generator_ColumnPropNameInTable="Total_FSCostColumn" msprop:Generator_UserColumnName="Total_FSCost" type="xs:double" minOccurs="0" />
+              <xs:element name="FatCost_Ltrs" msprop:Generator_ColumnVarNameInTable="columnFatCost_Ltrs" msprop:Generator_ColumnPropNameInRow="FatCost_Ltrs" msprop:Generator_ColumnPropNameInTable="FatCost_LtrsColumn" msprop:Generator_UserColumnName="FatCost_Ltrs" type="xs:double" minOccurs="0" />
+              <xs:element name="SnfCost_Ltrs" msprop:Generator_ColumnVarNameInTable="columnSnfCost_Ltrs" msprop:Generator_ColumnPropNameInRow="SnfCost_Ltrs" msprop:Generator_ColumnPropNameInTable="SnfCost_LtrsColumn" msprop:Generator_UserColumnName="SnfCost_Ltrs" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_FSCost_Ltrs" msprop:Generator_ColumnVarNameInTable="columnTotal_FSCost_Ltrs" msprop:Generator_ColumnPropNameInRow="Total_FSCost_Ltrs" msprop:Generator_ColumnPropNameInTable="Total_FSCost_LtrsColumn" msprop:Generator_UserColumnName="Total_FSCost_Ltrs" type="xs:double" minOccurs="0" />
+              <xs:element name="Fat_SnfPerTS" msprop:Generator_ColumnVarNameInTable="columnFat_SnfPerTS" msprop:Generator_ColumnPropNameInRow="Fat_SnfPerTS" msprop:Generator_ColumnPropNameInTable="Fat_SnfPerTSColumn" msprop:Generator_UserColumnName="Fat_SnfPerTS" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_Cost" msprop:Generator_ColumnVarNameInTable="columnTotal_Cost" msprop:Generator_ColumnPropNameInRow="Total_Cost" msprop:Generator_ColumnPropNameInTable="Total_CostColumn" msprop:Generator_UserColumnName="Total_Cost" type="xs:double" minOccurs="0" />
+              <xs:element name="Net_TSRate" msprop:Generator_ColumnVarNameInTable="columnNet_TSRate" msprop:Generator_ColumnPropNameInRow="Net_TSRate" msprop:Generator_ColumnPropNameInTable="Net_TSRateColumn" msprop:Generator_UserColumnName="Net_TSRate" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Procurementimport" msprop:Generator_TableClassName="ProcurementimportDataTable" msprop:Generator_TableVarName="tableProcurementimport" msprop:Generator_TablePropName="Procurementimport" msprop:Generator_RowDeletingName="ProcurementimportRowDeleting" msprop:Generator_UserTableName="Procurementimport" msprop:Generator_RowChangingName="ProcurementimportRowChanging" msprop:Generator_RowEvHandlerName="ProcurementimportRowChangeEventHandler" msprop:Generator_RowDeletedName="ProcurementimportRowDeleted" msprop:Generator_RowEvArgName="ProcurementimportRowChangeEvent" msprop:Generator_RowChangedName="ProcurementimportRowChanged" msprop:Generator_RowClassName="ProcurementimportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Agent_id" msprop:Generator_ColumnVarNameInTable="columnAgent_id" msprop:Generator_ColumnPropNameInRow="Agent_id" msprop:Generator_ColumnPropNameInTable="Agent_idColumn" msprop:Generator_UserColumnName="Agent_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Date" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sessions" msprop:Generator_ColumnVarNameInTable="columnSessions" msprop:Generator_ColumnPropNameInRow="Sessions" msprop:Generator_ColumnPropNameInTable="SessionsColumn" msprop:Generator_UserColumnName="Sessions" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Milk_Kg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMilk_Kg" msprop:Generator_ColumnPropNameInRow="Milk_Kg" msprop:Generator_ColumnPropNameInTable="Milk_KgColumn" msprop:Generator_UserColumnName="Milk_Kg" type="xs:double" minOccurs="0" />
+              <xs:element name="Modifykg" msprop:Generator_ColumnVarNameInTable="columnModifykg" msprop:Generator_ColumnPropNameInRow="Modifykg" msprop:Generator_ColumnPropNameInTable="ModifykgColumn" msprop:Generator_UserColumnName="Modifykg" type="xs:double" minOccurs="0" />
+              <xs:element name="Fat" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFat" msprop:Generator_ColumnPropNameInRow="Fat" msprop:Generator_ColumnPropNameInTable="FatColumn" msprop:Generator_UserColumnName="Fat" type="xs:double" minOccurs="0" />
+              <xs:element name="ModifyFat" msprop:Generator_ColumnVarNameInTable="columnModifyFat" msprop:Generator_ColumnPropNameInRow="ModifyFat" msprop:Generator_ColumnPropNameInTable="ModifyFatColumn" msprop:Generator_UserColumnName="ModifyFat" type="xs:double" minOccurs="0" />
+              <xs:element name="snf" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsnf" msprop:Generator_ColumnPropNameInRow="snf" msprop:Generator_ColumnPropNameInTable="snfColumn" msprop:Generator_UserColumnName="snf" type="xs:double" minOccurs="0" />
+              <xs:element name="Modify_snf" msprop:Generator_ColumnVarNameInTable="columnModify_snf" msprop:Generator_ColumnPropNameInRow="Modify_snf" msprop:Generator_ColumnPropNameInTable="Modify_snfColumn" msprop:Generator_UserColumnName="Modify_snf" type="xs:double" minOccurs="0" />
+              <xs:element name="DIFFKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDIFFKG" msprop:Generator_ColumnPropNameInRow="DIFFKG" msprop:Generator_ColumnPropNameInTable="DIFFKGColumn" msprop:Generator_UserColumnName="DIFFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="DIFFFAT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDIFFFAT" msprop:Generator_ColumnPropNameInRow="DIFFFAT" msprop:Generator_ColumnPropNameInTable="DIFFFATColumn" msprop:Generator_UserColumnName="DIFFFAT" type="xs:double" minOccurs="0" />
+              <xs:element name="DIFFSNF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDIFFSNF" msprop:Generator_ColumnPropNameInRow="DIFFSNF" msprop:Generator_ColumnPropNameInTable="DIFFSNFColumn" msprop:Generator_UserColumnName="DIFFSNF" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

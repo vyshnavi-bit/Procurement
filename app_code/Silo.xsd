@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Silo" targetNamespace="http://tempuri.org/Silo.xsd" xmlns:mstns="http://tempuri.org/Silo.xsd" xmlns="http://tempuri.org/Silo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Silo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="Silo" msprop:Generator_UserDSName="Silo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Procurement" msprop:Generator_TableClassName="ProcurementDataTable" msprop:Generator_TableVarName="tableProcurement" msprop:Generator_TablePropName="Procurement" msprop:Generator_RowDeletingName="ProcurementRowDeleting" msprop:Generator_UserTableName="Procurement" msprop:Generator_RowChangingName="ProcurementRowChanging" msprop:Generator_RowEvHandlerName="ProcurementRowChangeEventHandler" msprop:Generator_RowDeletedName="ProcurementRowDeleted" msprop:Generator_RowEvArgName="ProcurementRowChangeEvent" msprop:Generator_RowChangedName="ProcurementRowChanged" msprop:Generator_RowClassName="ProcurementRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Milk_kg" msprop:Generator_ColumnVarNameInTable="columnMilk_kg" msprop:Generator_ColumnPropNameInRow="Milk_kg" msprop:Generator_ColumnPropNameInTable="Milk_kgColumn" msprop:Generator_UserColumnName="Milk_kg" type="xs:double" minOccurs="0" />
+              <xs:element name="Fat" msprop:Generator_ColumnVarNameInTable="columnFat" msprop:Generator_ColumnPropNameInRow="Fat" msprop:Generator_ColumnPropNameInTable="FatColumn" msprop:Generator_UserColumnName="Fat" type="xs:double" minOccurs="0" />
+              <xs:element name="Snf" msprop:Generator_ColumnVarNameInTable="columnSnf" msprop:Generator_ColumnPropNameInRow="Snf" msprop:Generator_ColumnPropNameInTable="SnfColumn" msprop:Generator_UserColumnName="Snf" type="xs:double" minOccurs="0" />
+              <xs:element name="Rate" msprop:Generator_ColumnVarNameInTable="columnRate" msprop:Generator_ColumnPropNameInRow="Rate" msprop:Generator_ColumnPropNameInTable="RateColumn" msprop:Generator_UserColumnName="Rate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fat_kg" msprop:Generator_ColumnVarNameInTable="columnfat_kg" msprop:Generator_ColumnPropNameInRow="fat_kg" msprop:Generator_ColumnPropNameInTable="fat_kgColumn" msprop:Generator_UserColumnName="fat_kg" type="xs:double" minOccurs="0" />
+              <xs:element name="snf_kg" msprop:Generator_ColumnVarNameInTable="columnsnf_kg" msprop:Generator_ColumnPropNameInRow="snf_kg" msprop:Generator_ColumnPropNameInTable="snf_kgColumn" msprop:Generator_UserColumnName="snf_kg" type="xs:double" minOccurs="0" />
+              <xs:element name="Prdate" msprop:Generator_ColumnVarNameInTable="columnPrdate" msprop:Generator_ColumnPropNameInRow="Prdate" msprop:Generator_ColumnPropNameInTable="PrdateColumn" msprop:Generator_UserColumnName="Prdate" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

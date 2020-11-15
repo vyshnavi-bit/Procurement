@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Newsiloreport" targetNamespace="http://tempuri.org/Newsiloreport.xsd" xmlns:mstns="http://tempuri.org/Newsiloreport.xsd" xmlns="http://tempuri.org/Newsiloreport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AMPSConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AMPSConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AMPSConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OpeningTableAdapter" GeneratorDataComponentClassName="OpeningTableAdapter" Name="Opening" UserDataComponentName="OpeningTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT sum(o.MilkKg) AS DMILK_KG,AVG(o.Fat) AS DFAT,AVG(o.Snf) AS DSNF,AVG(o.Fat_Kg) AS DFATKG,AVG(o.Snf_Kg) AS DSNFKG,sum(o.Amount) AS DAMOUNT,sum(o.Rate)DRATE from Stock_openingmilk o </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DMILK_KG" DataSetColumn="DMILK_KG" />
+              <Mapping SourceColumn="DFAT" DataSetColumn="DFAT" />
+              <Mapping SourceColumn="DSNF" DataSetColumn="DSNF" />
+              <Mapping SourceColumn="DFATKG" DataSetColumn="DFATKG" />
+              <Mapping SourceColumn="DSNFKG" DataSetColumn="DSNFKG" />
+              <Mapping SourceColumn="DAMOUNT" DataSetColumn="DAMOUNT" />
+              <Mapping SourceColumn="DRATE" DataSetColumn="DRATE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProcurementTableAdapter" GeneratorDataComponentClassName="ProcurementTableAdapter" Name="Procurement" UserDataComponentName="ProcurementTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>Select sum(p.Milk_Kg) As PMILK_KG,AVG(p.fat) AS PFAT,AVG(p.snf) AS PSNF,AVG(p.fat_kg) AS PFATKG,AVG(p.snf_kg) AS PSNFKG,sum(p.amount) AS PAMOUNT,sum(p.rate) AS PRATE from procurement p </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PMILK_KG" DataSetColumn="PMILK_KG" />
+              <Mapping SourceColumn="PFAT" DataSetColumn="PFAT" />
+              <Mapping SourceColumn="PSNF" DataSetColumn="PSNF" />
+              <Mapping SourceColumn="PFATKG" DataSetColumn="PFATKG" />
+              <Mapping SourceColumn="PSNFKG" DataSetColumn="PSNFKG" />
+              <Mapping SourceColumn="PAMOUNT" DataSetColumn="PAMOUNT" />
+              <Mapping SourceColumn="PRATE" DataSetColumn="PRATE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DispatchTableAdapter" GeneratorDataComponentClassName="DispatchTableAdapter" Name="Dispatch" UserDataComponentName="DispatchTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT sum(d.MilkKg) AS DMILK_KG,AVG(d.Fat) AS DFAT,AVG(d.Snf) AS DSNF,AVG(d.Fat_Kg) AS DFATKG,AVG(d.Snf_Kg) AS DSNFKG,sum(d.Amount) AS DAMOUNT,sum(d.Rate)DRATE from Despatchnew d </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DMILK_KG" DataSetColumn="DMILK_KG" />
+              <Mapping SourceColumn="DFAT" DataSetColumn="DFAT" />
+              <Mapping SourceColumn="DSNF" DataSetColumn="DSNF" />
+              <Mapping SourceColumn="DFATKG" DataSetColumn="DFATKG" />
+              <Mapping SourceColumn="DSNFKG" DataSetColumn="DSNFKG" />
+              <Mapping SourceColumn="DAMOUNT" DataSetColumn="DAMOUNT" />
+              <Mapping SourceColumn="DRATE" DataSetColumn="DRATE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClosingTableAdapter" GeneratorDataComponentClassName="ClosingTableAdapter" Name="Closing" UserDataComponentName="ClosingTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AMPSConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT sum(c.MilkKg) AS DMILK_KG,AVG(c.Fat) AS DFAT,AVG(c.Snf) AS DSNF,AVG(c.Fat_Kg) AS DFATKG,AVG(c.Snf_Kg) AS DSNFKG,sum(c.Amount) AS DAMOUNT,sum(c.Rate)DRATE from Stock_Milk c </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DMILK_KG" DataSetColumn="DMILK_KG" />
+              <Mapping SourceColumn="DFAT" DataSetColumn="DFAT" />
+              <Mapping SourceColumn="DSNF" DataSetColumn="DSNF" />
+              <Mapping SourceColumn="DFATKG" DataSetColumn="DFATKG" />
+              <Mapping SourceColumn="DSNFKG" DataSetColumn="DSNFKG" />
+              <Mapping SourceColumn="DAMOUNT" DataSetColumn="DAMOUNT" />
+              <Mapping SourceColumn="DRATE" DataSetColumn="DRATE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Newsiloreport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="Newsiloreport" msprop:Generator_UserDSName="Newsiloreport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Opening" msprop:Generator_TableClassName="OpeningDataTable" msprop:Generator_TableVarName="tableOpening" msprop:Generator_TablePropName="Opening" msprop:Generator_RowDeletingName="OpeningRowDeleting" msprop:Generator_UserTableName="Opening" msprop:Generator_RowChangingName="OpeningRowChanging" msprop:Generator_RowEvHandlerName="OpeningRowChangeEventHandler" msprop:Generator_RowDeletedName="OpeningRowDeleted" msprop:Generator_RowEvArgName="OpeningRowChangeEvent" msprop:Generator_RowChangedName="OpeningRowChanged" msprop:Generator_RowClassName="OpeningRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DMILK_KG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDMILK_KG" msprop:Generator_ColumnPropNameInRow="DMILK_KG" msprop:Generator_ColumnPropNameInTable="DMILK_KGColumn" msprop:Generator_UserColumnName="DMILK_KG" type="xs:double" minOccurs="0" />
+              <xs:element name="DFAT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDFAT" msprop:Generator_ColumnPropNameInRow="DFAT" msprop:Generator_ColumnPropNameInTable="DFATColumn" msprop:Generator_UserColumnName="DFAT" type="xs:double" minOccurs="0" />
+              <xs:element name="DSNF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDSNF" msprop:Generator_ColumnPropNameInRow="DSNF" msprop:Generator_ColumnPropNameInTable="DSNFColumn" msprop:Generator_UserColumnName="DSNF" type="xs:double" minOccurs="0" />
+              <xs:element name="DFATKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDFATKG" msprop:Generator_ColumnPropNameInRow="DFATKG" msprop:Generator_ColumnPropNameInTable="DFATKGColumn" msprop:Generator_UserColumnName="DFATKG" type="xs:double" minOccurs="0" />
+              <xs:element name="DSNFKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDSNFKG" msprop:Generator_ColumnPropNameInRow="DSNFKG" msprop:Generator_ColumnPropNameInTable="DSNFKGColumn" msprop:Generator_UserColumnName="DSNFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="DAMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDAMOUNT" msprop:Generator_ColumnPropNameInRow="DAMOUNT" msprop:Generator_ColumnPropNameInTable="DAMOUNTColumn" msprop:Generator_UserColumnName="DAMOUNT" type="xs:double" minOccurs="0" />
+              <xs:element name="DRATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDRATE" msprop:Generator_ColumnPropNameInRow="DRATE" msprop:Generator_ColumnPropNameInTable="DRATEColumn" msprop:Generator_UserColumnName="DRATE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Procurement" msprop:Generator_TableClassName="ProcurementDataTable" msprop:Generator_TableVarName="tableProcurement" msprop:Generator_TablePropName="Procurement" msprop:Generator_RowDeletingName="ProcurementRowDeleting" msprop:Generator_UserTableName="Procurement" msprop:Generator_RowChangingName="ProcurementRowChanging" msprop:Generator_RowEvHandlerName="ProcurementRowChangeEventHandler" msprop:Generator_RowDeletedName="ProcurementRowDeleted" msprop:Generator_RowEvArgName="ProcurementRowChangeEvent" msprop:Generator_RowChangedName="ProcurementRowChanged" msprop:Generator_RowClassName="ProcurementRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PMILK_KG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPMILK_KG" msprop:Generator_ColumnPropNameInRow="PMILK_KG" msprop:Generator_ColumnPropNameInTable="PMILK_KGColumn" msprop:Generator_UserColumnName="PMILK_KG" type="xs:double" minOccurs="0" />
+              <xs:element name="PFAT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPFAT" msprop:Generator_ColumnPropNameInRow="PFAT" msprop:Generator_ColumnPropNameInTable="PFATColumn" msprop:Generator_UserColumnName="PFAT" type="xs:double" minOccurs="0" />
+              <xs:element name="PSNF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPSNF" msprop:Generator_ColumnPropNameInRow="PSNF" msprop:Generator_ColumnPropNameInTable="PSNFColumn" msprop:Generator_UserColumnName="PSNF" type="xs:double" minOccurs="0" />
+              <xs:element name="PFATKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPFATKG" msprop:Generator_ColumnPropNameInRow="PFATKG" msprop:Generator_ColumnPropNameInTable="PFATKGColumn" msprop:Generator_UserColumnName="PFATKG" type="xs:double" minOccurs="0" />
+              <xs:element name="PSNFKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPSNFKG" msprop:Generator_ColumnPropNameInRow="PSNFKG" msprop:Generator_ColumnPropNameInTable="PSNFKGColumn" msprop:Generator_UserColumnName="PSNFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="PAMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPAMOUNT" msprop:Generator_ColumnPropNameInRow="PAMOUNT" msprop:Generator_ColumnPropNameInTable="PAMOUNTColumn" msprop:Generator_UserColumnName="PAMOUNT" type="xs:double" minOccurs="0" />
+              <xs:element name="PRATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPRATE" msprop:Generator_ColumnPropNameInRow="PRATE" msprop:Generator_ColumnPropNameInTable="PRATEColumn" msprop:Generator_UserColumnName="PRATE" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Dispatch" msprop:Generator_TableClassName="DispatchDataTable" msprop:Generator_TableVarName="tableDispatch" msprop:Generator_TablePropName="Dispatch" msprop:Generator_RowDeletingName="DispatchRowDeleting" msprop:Generator_UserTableName="Dispatch" msprop:Generator_RowChangingName="DispatchRowChanging" msprop:Generator_RowEvHandlerName="DispatchRowChangeEventHandler" msprop:Generator_RowDeletedName="DispatchRowDeleted" msprop:Generator_RowEvArgName="DispatchRowChangeEvent" msprop:Generator_RowChangedName="DispatchRowChanged" msprop:Generator_RowClassName="DispatchRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DMILK_KG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDMILK_KG" msprop:Generator_ColumnPropNameInRow="DMILK_KG" msprop:Generator_ColumnPropNameInTable="DMILK_KGColumn" msprop:Generator_UserColumnName="DMILK_KG" type="xs:double" minOccurs="0" />
+              <xs:element name="DFAT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDFAT" msprop:Generator_ColumnPropNameInRow="DFAT" msprop:Generator_ColumnPropNameInTable="DFATColumn" msprop:Generator_UserColumnName="DFAT" type="xs:double" minOccurs="0" />
+              <xs:element name="DSNF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDSNF" msprop:Generator_ColumnPropNameInRow="DSNF" msprop:Generator_ColumnPropNameInTable="DSNFColumn" msprop:Generator_UserColumnName="DSNF" type="xs:double" minOccurs="0" />
+              <xs:element name="DFATKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDFATKG" msprop:Generator_ColumnPropNameInRow="DFATKG" msprop:Generator_ColumnPropNameInTable="DFATKGColumn" msprop:Generator_UserColumnName="DFATKG" type="xs:double" minOccurs="0" />
+              <xs:element name="DSNFKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDSNFKG" msprop:Generator_ColumnPropNameInRow="DSNFKG" msprop:Generator_ColumnPropNameInTable="DSNFKGColumn" msprop:Generator_UserColumnName="DSNFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="DAMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDAMOUNT" msprop:Generator_ColumnPropNameInRow="DAMOUNT" msprop:Generator_ColumnPropNameInTable="DAMOUNTColumn" msprop:Generator_UserColumnName="DAMOUNT" type="xs:double" minOccurs="0" />
+              <xs:element name="DRATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDRATE" msprop:Generator_ColumnPropNameInRow="DRATE" msprop:Generator_ColumnPropNameInTable="DRATEColumn" msprop:Generator_UserColumnName="DRATE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Closing" msprop:Generator_TableClassName="ClosingDataTable" msprop:Generator_TableVarName="tableClosing" msprop:Generator_TablePropName="Closing" msprop:Generator_RowDeletingName="ClosingRowDeleting" msprop:Generator_UserTableName="Closing" msprop:Generator_RowChangingName="ClosingRowChanging" msprop:Generator_RowEvHandlerName="ClosingRowChangeEventHandler" msprop:Generator_RowDeletedName="ClosingRowDeleted" msprop:Generator_RowEvArgName="ClosingRowChangeEvent" msprop:Generator_RowChangedName="ClosingRowChanged" msprop:Generator_RowClassName="ClosingRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DMILK_KG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDMILK_KG" msprop:Generator_ColumnPropNameInRow="DMILK_KG" msprop:Generator_ColumnPropNameInTable="DMILK_KGColumn" msprop:Generator_UserColumnName="DMILK_KG" type="xs:double" minOccurs="0" />
+              <xs:element name="DFAT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDFAT" msprop:Generator_ColumnPropNameInRow="DFAT" msprop:Generator_ColumnPropNameInTable="DFATColumn" msprop:Generator_UserColumnName="DFAT" type="xs:double" minOccurs="0" />
+              <xs:element name="DSNF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDSNF" msprop:Generator_ColumnPropNameInRow="DSNF" msprop:Generator_ColumnPropNameInTable="DSNFColumn" msprop:Generator_UserColumnName="DSNF" type="xs:double" minOccurs="0" />
+              <xs:element name="DFATKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDFATKG" msprop:Generator_ColumnPropNameInRow="DFATKG" msprop:Generator_ColumnPropNameInTable="DFATKGColumn" msprop:Generator_UserColumnName="DFATKG" type="xs:double" minOccurs="0" />
+              <xs:element name="DSNFKG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDSNFKG" msprop:Generator_ColumnPropNameInRow="DSNFKG" msprop:Generator_ColumnPropNameInTable="DSNFKGColumn" msprop:Generator_UserColumnName="DSNFKG" type="xs:double" minOccurs="0" />
+              <xs:element name="DAMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDAMOUNT" msprop:Generator_ColumnPropNameInRow="DAMOUNT" msprop:Generator_ColumnPropNameInTable="DAMOUNTColumn" msprop:Generator_UserColumnName="DAMOUNT" type="xs:double" minOccurs="0" />
+              <xs:element name="DRATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDRATE" msprop:Generator_ColumnPropNameInRow="DRATE" msprop:Generator_ColumnPropNameInTable="DRATEColumn" msprop:Generator_UserColumnName="DRATE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
